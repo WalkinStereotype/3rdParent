@@ -1,0 +1,16 @@
+:root {
+    /* Colors */
+    --color-text: #564F3F;
+    --color-background-page: #FFF8E6;
+
+    --color-text-header: var(--color-text);
+    --color-background-header: #BEC5A4;
+
+    --color-accent: #D99391;
+
+    --color-link: var(--color-accent);
+
+    /* Typography */
+    --font-text: ;
+    --font-text-header: ;
+}
