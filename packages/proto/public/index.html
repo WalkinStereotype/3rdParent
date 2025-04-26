@@ -5,48 +5,91 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kurale&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/index.css" />
     <link rel="stylesheet" href="/styles/page.css" />
   </head>
   <body>
-    <header>
-        <h1>
-            3rd Parent
-        </h1>
-    </header>
-    <img />
-    <h2>
-      50so.dre
-    </h2>
+    <div class="container">
+      <div class="sidebar">
+        
+        <div class="title-wrapper">
+          <div class="app-logo">:3 :P</div>
+          <h1>3rd Parent</h1>
+        </div>
+        
+        
+        <h2>50so.dre</h2>
+        <nav class="menu">
+          <a href="index.html">
+            <svg class="icon">
+              <use href="/icons/sprite.svg#icon-home" />
+            </svg>
+            Home
+          </a>
+          <br>
+          <a href="skill-list.html">
+            <svg class="icon">
+              <use href="/icons/sprite.svg#icon-skills" />
+            </svg>
+            Skills
+          </a>
+          <br>
+          <a href="todo-list.html">
+            <svg class="icon">
+              <use href="/icons/sprite.svg#icon-todo" />
+            </svg>
+            To-Do
+          </a>
+          <br>
+          <a href="log.html">
+            <svg class="icon">
+              <use href="/icons/sprite.svg#icon-logs" />
+            </svg>
+            Logs
+          </a>
+        </nav>
+      </div>
+  
+      <div class="index-main">
+        <div class="searchbar">Search...</div>
+        <h2>In Progress...</h2>
+        <br>
 
-    <nav class="resource_list">
-        <h3>Contents</h3>
-        <p>
-          <svg class="icon">
-            <use href="/icons/sprite.svg#icon-home" />
-          </svg>
-          Home
-        </p>
-        <a href="skill-list.html">
-          <svg class="icon">
-            <use href="/icons/sprite.svg#icon-skills" />
-          </svg>
-          Skills
+        <a href="skill2.html" class="task-todo-link">
+          <div class="task-todo">
+            <div class="task-todo-icon">C</div>
+            <div class="task-todo-title">Replacing a tire</div>
+            <button class="task-todo-edit-btn" onclick="event.stopPropagation()">Done?</button>
+          </div>
         </a>
+
+        <a href="skill2.html" class="task-todo-link">
+          <div class="task-todo">
+            <div class="task-todo-icon">C</div>
+            <div class="task-todo-title">Replacing a tire</div>
+            <button class="task-todo-edit-btn" onclick="event.stopPropagation()">Done?</button>
+          </div>
+        </a>
+
+        <a href="skill2.html" class="task-todo-link">
+          <div class="task-todo">
+            <div class="task-todo-icon">C</div>
+            <div class="task-todo-title">Replacing a tire</div>
+            <button class="task-todo-edit-btn" onclick="event.stopPropagation()">Done?</button>
+          </div>
+        </a>
+        
+      </div>
+  
+      <div class="index-extra">
+        <div class="text-center">
+          <h3>Recent Accomplishments</h3>
+        </div>
         <br>
-        <a href="todo-list.html">
-          <svg class="icon">
-            <use href="/icons/sprite.svg#icon-todo" />
-          </svg>
-          To-Do
-        </a>
-        <br>
-        <a href="log.html">
-          <svg class="icon">
-            <use href="/icons/sprite.svg#icon-logs" />
-          </svg>
-          Logs
-        </a>
-    </nav>
+        <p>Text</p>
+      </div>
+    </div>
   </body>
 </html>

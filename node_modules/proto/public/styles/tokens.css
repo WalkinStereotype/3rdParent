@@ -6,11 +6,21 @@
     --color-text-header: var(--color-text);
     --color-background-header: #BEC5A4;
 
+    --color-task-todo-background: #E8DDC1;
+
     --color-accent: #D99391;
 
     --color-link: var(--color-accent);
 
+    --color-text-searchbar: #939393;
+    --color-background-searchbar: #E0DAC9;
+    --color-border-searchbar: #65635D;
+
+    --color-text-logo: #000000;
+    --color-background-logo: #9FA483;
+    --color-border-logo: var(--color-text-logo);
+
     /* Typography */
-    --font-text: ;
-    --font-text-header: ;
+    --font-display: "Kurale", sans-serif;
+    --font-text: "Lora", serif;
 }

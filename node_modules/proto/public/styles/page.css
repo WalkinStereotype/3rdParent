@@ -1,7 +1,7 @@
 header {
     color: var(--color-text-header);
     background-color: var(--color-background-header);
-    font-family: "Kurale", sans-serif;
+    font-family: var(--font-display);
     font-weight: 400;
     font-style: normal; 
     margin: 0;                
@@ -16,7 +16,7 @@ html {
 body {
     color: var(--color-text); 
     background-color: var(--color-background-page);       
-    font-family: "Lora", serif;
+    font-family: var(--font-text);
     font-optical-sizing: auto;
     font-weight: 500; /* 400 - 700 */
     font-style: normal;
@@ -24,18 +24,28 @@ body {
     padding: 0;
 }
   
-h1, h2, h3, h4, h5, h6 {
-    color: inherit; 
+h1 {
+  color: inherit;
+  font-size: 1.8 rem;  
+}
+
+h2, h3, h4, h5, h6 {
+  color: inherit; 
 }
 
 a {
-    color: var(--color-link);
+    color: var(--color-text-header);
     text-decoration: underline; 
     font-weight: normal;   
 }
   
 a:hover {
     font-weight: bold;     
+}
+
+.menu {
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 svg.icon {
@@ -46,63 +56,78 @@ svg.icon {
   fill: currentColor;
 }
 
-.lato-thin {
-    font-family: "Lato", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-  }
-  
-  .lato-light {
-    font-family: "Lato", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-  
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  margin-bottom: 20px;
+}
+
+.app-logo {
+  background-color: var(--color-background-logo);
+  color: inherit;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  width: 40px;
+  height: 40px;
+
+  border: 2px solid var(--color-border-logo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.page > header {
+  flex-basis: min-content;
+}
+.page > section {
+  flex-basis: 100%;
+  overflow: auto;
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.container {
+  display: flex;
+  height: 100vh; /* full screen height */
+}
+
+.sidebar {
+  width: 225x;
+  color: var(--color-text-header);
+  background-color: var(--color-background-header);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal; 
+  padding: 1rem;
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-text);
+  color: var(--color-text-searchbar);
+  background-color: var(--color-background-searchbar);
+  border: 2px solid var(--color-border-searchbar);
+  padding: 6px 16px;
+  border-radius: 64px;
+  margin-bottom: 16px;
+}
+  /*
   .lato-regular {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     font-style: normal;
   }
-  
-  .lato-bold {
-    font-family: "Lato", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-  .lato-black {
-    font-family: "Lato", sans-serif;
-    font-weight: 900;
-    font-style: normal;
-  }
-  
-  .lato-thin-italic {
-    font-family: "Lato", sans-serif;
-    font-weight: 100;
-    font-style: italic;
-  }
-  
-  .lato-light-italic {
-    font-family: "Lato", sans-serif;
-    font-weight: 300;
-    font-style: italic;
-  }
-  
-  .lato-regular-italic {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-style: italic;
-  }
-  
-  .lato-bold-italic {
-    font-family: "Lato", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-  }
-  
-  .lato-black-italic {
-    font-family: "Lato", sans-serif;
-    font-weight: 900;
-    font-style: italic;
-  }
-  
+   */
