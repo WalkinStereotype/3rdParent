@@ -1,26 +1,48 @@
 :root {
-    /* Colors */
+    /*** Colors ***/
+
+    /** General **/
     --color-text: #564F3F;
     --color-background-page: #FFF8E6;
 
     --color-text-header: var(--color-text);
     --color-background-header: #BEC5A4;
 
-    --color-task-todo-background: #E8DDC1;
+    /* --color-accent: #D99391;
+    --color-link: var(--color-accent); */
 
-    --color-accent: #D99391;
+    --color-link: #5A7D9A;
+    --color-link-hover: #46637A;
 
-    --color-link: var(--color-accent);
-
-    --color-text-searchbar: #939393;
-    --color-background-searchbar: #E0DAC9;
-    --color-border-searchbar: #65635D;
-
+    /* Logo */
     --color-text-logo: #000000;
     --color-background-logo: #9FA483;
     --color-border-logo: var(--color-text-logo);
 
-    /* Typography */
+    /** Main Page **/
+    /* To-do */
+    --color-task-todo-background: #E8DDC1;
+
+    /* Search Bar */
+    --color-text-searchbar: #939393;
+    --color-background-searchbar: #E0DAC9;
+    --color-border-searchbar: #65635D;
+
+
+    /** Skills Page **/
+    /* Skill Categories */
+    --color-background-home: #D8A7B1;
+    --color-background-car: #D49B7B;
+    --color-background-finance: #E1C16E;
+    --color-background-misc: #AFCBDA;
+    --color-background-custom: #C4B7D3;
+
+
+    /*** Typography ***/
     --font-display: "Kurale", sans-serif;
     --font-text: "Lora", serif;
+
+    /*** Layout ***/
+    --max-width-main: 450px;
+
 }

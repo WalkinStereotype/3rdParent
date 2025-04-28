@@ -1,0 +1,5 @@
+.general-main {
+    flex: 1;
+    background-color: var(--color-background-page);
+    padding: 1rem;
+}

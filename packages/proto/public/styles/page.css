@@ -114,6 +114,7 @@ svg.icon {
 
 .searchbar {
   display: flex;
+  max-width: var(--max-width-main);
   align-items: center;
   justify-content: space-between;
   font-family: var(--font-text);
