@@ -18,6 +18,7 @@
   
 .skill-expand-category {
     display: flex;
+    font-family: var(--font-text);
     font-size: 24px;
     margin-right: 12px;
 }
@@ -31,9 +32,10 @@
 .skill-expand-title {
     flex-grow: 1;
     font-family: var(--font-display);
-    font-size: 25px;
-    /* font-weight: bold; */
+    font-size: 35px;
+    font-weight: bold;
     text-align: left;
+    letter-spacing: 0.05em;
 }
 
 .skill-expand-description {
@@ -51,4 +53,12 @@
     border-radius: 24px;
     cursor: pointer;
     font-size: 14px;
+}
+
+a.resource {
+    color: var(--color-link);
+    font-style: italic;
+}
+a.reource:hover {
+    color: var(--color-link-hover);
 }

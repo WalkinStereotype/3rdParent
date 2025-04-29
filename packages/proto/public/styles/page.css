@@ -48,6 +48,14 @@ a:hover {
   font-weight: bold;
 }
 
+svg.nav-icon {
+  display: inline;
+  height: 2em;
+  width: 2em;
+  vertical-align: top;
+  fill: currentColor;
+}
+
 svg.icon {
   display: inline;
   height: 2em;
@@ -81,29 +89,8 @@ svg.icon {
   text-align: center;
 }
 
-.page {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
-.page > header {
-  flex-basis: min-content;
-}
-.page > section {
-  flex-basis: 100%;
-  overflow: auto;
-  margin: 0;
-  padding: 0.5rem;
-}
-
-.container {
-  display: flex;
-  height: 100vh; /* full screen height */
-}
-
 .sidebar {
-  width: 225x;
+  width: 250px;
   color: var(--color-text-header);
   background-color: var(--color-background-header);
   font-family: var(--font-display);
@@ -124,6 +111,21 @@ svg.icon {
   padding: 6px 16px;
   border-radius: 64px;
   margin-bottom: 16px;
+}
+
+@media (max-width: 900px) {
+  .nav-title {
+    display: none;
+  }
+  .nav-user {
+    display: none;
+  }
+  .nav-label {
+    display: none;
+  }
+  .sidebar {
+    width: 80px;
+  }
 }
   /*
   .lato-regular {

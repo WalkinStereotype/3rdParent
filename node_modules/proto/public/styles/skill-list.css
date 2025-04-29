@@ -1,5 +1,7 @@
 .skill-link {
     text-decoration: none; 
+    max-width: var(--max-width-main);
+    max-height: var(--max-height-main);
     color: inherit;         
     display: block;
     width: 100%;
@@ -9,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: var(--max-width-main);
+    max-height: var(--max-height-main);
     color: var(--color-text-logo);
     background-color: var(--color-task-todo-background);
     padding: 12px 16px;
