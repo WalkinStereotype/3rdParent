@@ -71,16 +71,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: var(--color-text-logo);
+    color: var(--color-text);
     background-color: var(--color-task-todo-background);
     padding: 12px 16px;
     border-radius: 8px;
     margin-bottom: 16px;
-    transition: background-color 0.2s;
+    /* transition: background-color 0.2s; */
 }
   
 .task-todo:hover {
-    background-color: #ccc2a9;
+    background-color: var(--color-task-todo-background-hover);
 }
   
 .task-todo-icon {

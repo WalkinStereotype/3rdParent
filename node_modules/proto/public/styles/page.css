@@ -22,6 +22,11 @@ body {
     font-style: normal;
     margin: 0;                
     padding: 0;
+
+}
+
+body, body * {
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
   
 h1 {
@@ -73,7 +78,7 @@ svg.icon {
 
 .app-logo {
   background-color: var(--color-background-logo);
-  color: inherit;
+  color: var(--color-text-logo);
   padding: 5px 10px;
   border-radius: 6px;
   font-size: 14px;

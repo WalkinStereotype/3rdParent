@@ -15,13 +15,14 @@
     --color-link-hover: #46637A;
 
     /* Logo */
-    --color-text-logo: #000000;
+    --color-text-logo: #564F3F;
     --color-background-logo: #9FA483;
     --color-border-logo: var(--color-text-logo);
 
     /** Main Page **/
     /* To-do */
     --color-task-todo-background: #E8DDC1;
+    --color-task-todo-background-hover: #ccc2a9;
 
     /* Search Bar */
     --color-text-searchbar: #939393;
@@ -46,5 +47,18 @@
     --max-width-main: 600px;
 
     --max-height-main: 62px;
+}
 
+body.dark-mode {
+    --color-background-page: #1E1E1C;
+    --color-text: #E8E0C4;
+
+    --color-text-header: var(--color-text);
+    --color-background-header: #7C8B62;
+
+    --color-link: #8BB9E0;
+    --color-link-hover: #A3CFF1;
+
+    --color-task-todo-background: #2B2B28;
+    --color-task-todo-background-hover: #52524c;
 }
