@@ -98,6 +98,15 @@
               <button class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button>
             </div>
         </a>
+
+        <skill
+          href="skill1.html"
+          cat-color="skill--home"
+          icon="Home"
+          title="Sewing a button"
+        >
+          <button slot="action" onclick="event.stopPropagation()">Star</button>
+        <skill>
         
         <!-- <a href="index.html">
             <svg class="icon">
@@ -105,6 +114,13 @@
             </svg>
             Main Page
         </a> -->
-        
+      <script type="module">
+        import { define } from "@calpoly/mustang";
+        import { SkillElement } from "/src/skill.js";
+      
+        define({
+          "skill": SkillElement
+        });
+      </script>  
   </body>
 </html>

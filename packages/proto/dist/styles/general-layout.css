@@ -1,0 +1,21 @@
+.general-main {
+    flex: 1;
+    background-color: var(--color-background-page);
+    padding: 1rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-areas: "left middle";
+    height: 100vh; /* full screen height */
+}
+
+@media (max-width: 900px) {
+    .container {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        grid-template-areas: "left middle";
+        height: 100vh; /* full screen height */
+    }
+}
