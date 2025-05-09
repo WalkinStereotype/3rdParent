@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kurale&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/general-layout.css" />
+    <link rel="stylesheet" href="/styles/skill-list.css" />
+    <link rel="stylesheet" href="/styles/skill-color.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <script type="module" crossorigin src="/assets/todo_list-BJ9Ism4C.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/navbar-CQmFDbxj.js">
+  </head>
+  <body>
+    <div class="container">
+      <navbar-yuh></navbar-yuh>
+  
+      <div class="general-main">
+        <div class="searchbar">Search...</div>
+        <div class="todo-actual">
+          <h2>To-Do</h2>
+          <br>
+          <a href="skill-expand.html" class="skill-link">
+              <div class="skill skill--car">
+                <div class="skill-icon">Car</div>
+                <div class="skill-title">Replacing a tire</div>
+                <button class="skill-favorite-btn" onclick="event.stopPropagation()">Unprioritize</button>
+                <button class="skill-favorite-btn" onclick="event.stopPropagation()">Remove</button>
+              </div>
+          </a>
+          <a href="skill-expand.html" class="skill-link">
+            <div class="skill skill--car">
+              <div class="skill-icon">Car</div>
+              <div class="skill-title">Replacing a tire</div>
+              <button class="skill-favorite-btn" onclick="event.stopPropagation()">Unprioritize</button>
+                <button class="skill-favorite-btn" onclick="event.stopPropagation()">Remove</button>
+            </div>
+          </a>
+        </div>
+        <br>
+        <br>
+        <div class="todo-interested">
+          <h2>Interested</h2>
+          <br>
+          <a href="skill-expand.html" class="skill-link">
+            <div class="skill skill--finance">
+              <div class="skill-icon">Finance</div>
+              <div class="skill-title">Filing taxes</div>
+              <button class="skill-favorite-btn" onclick="event.stopPropagation()">Prioritize</button>
+                <button class="skill-favorite-btn" onclick="event.stopPropagation()">Remove</button>
+            </div>
+          </a>
+        </div>
+  
+  </body>
+</html>

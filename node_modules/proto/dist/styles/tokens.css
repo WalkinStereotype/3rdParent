@@ -1,0 +1,64 @@
+:root {
+    /*** Colors ***/
+
+    /** General **/
+    --color-text: #564F3F;
+    --color-background-page: #FFF8E6;
+
+    --color-text-header: var(--color-text);
+    --color-background-header: #BEC5A4;
+
+    /* --color-accent: #D99391;
+    --color-link: var(--color-accent); */
+
+    --color-link: #5A7D9A;
+    --color-link-hover: #46637A;
+
+    /* Logo */
+    --color-text-logo: #564F3F;
+    --color-background-logo: #9FA483;
+    --color-border-logo: var(--color-text-logo);
+
+    /** Main Page **/
+    /* To-do */
+    --color-task-todo-background: #E8DDC1;
+    --color-task-todo-background-hover: #ccc2a9;
+
+    /* Search Bar */
+    --color-text-searchbar: #939393;
+    --color-background-searchbar: #E0DAC9;
+    --color-border-searchbar: #65635D;
+
+
+    /** Skills Page **/
+    /* Skill Categories */
+    --color-background-home: #D8A7B1;
+    --color-background-car: #D49B7B;
+    --color-background-finance: #E1C16E;
+    --color-background-misc: #AFCBDA;
+    --color-background-custom: #C4B7D3;
+
+
+    /*** Typography ***/
+    --font-display: "Kurale", sans-serif;
+    --font-text: "Lora", serif;
+
+    /*** Layout ***/
+    --max-width-main: 600px;
+
+    --max-height-main: 62px;
+}
+
+body.dark-mode {
+    --color-background-page: #1E1E1C;
+    --color-text: #E8E0C4;
+
+    --color-text-header: var(--color-text);
+    --color-background-header: #7C8B62;
+
+    --color-link: #8BB9E0;
+    --color-link-hover: #A3CFF1;
+
+    --color-task-todo-background: #2B2B28;
+    --color-task-todo-background-hover: #52524c;
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kurale&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/styles/reset.css" />
+        <link rel="stylesheet" href="/styles/tokens.css" />
+        <link rel="stylesheet" href="/styles/general-layout.css" />
+        <link rel="stylesheet" href="/styles/skill.css" />
+        <link rel="stylesheet" href="/styles/skill-color.css" />
+        <link rel="stylesheet" href="/styles/page.css" />
+    </head>
+  <body>
+      <div class="container">
+
+      <navbar-yuh></navbar-yuh>
+  
+      <div class="general-main">
+        <div class="searchbar">Search...</div>
+        <nav>
+          <a href="skill-list.html">
+              <svg class="icon">
+                  <use href="/icons/sprite.svg#icon-back" />
+              </svg>
+              Skill List
+          </a>
+        </nav>
+        <br>
+
+        <skill-expand 
+          title="Sewing a button" 
+          category="Home"
+          cat-color="skill--home"
+        >
+          <div slot="icon">(Icon)</div>
+          <div slot="description">
+            This skill can be used when one of your buttons fall off of an article of clothing
+          </div>
+          <button slot="favorite" onclick="event.stopPropagation()">Star</button>
+          <div slot="resources">
+            <a class=resource href="https://www.youtube.com/watch?v=MmcEF2GR584" target="_blank">Youtube: How to sew a button</a>
+            <br>
+            <a class=resource href="https://www.wikihow.com/Sew-a-Button" target="_blank">Wikihow</a>
+            <br>
+          </div>
+        </skill-expand>
+      </div>
+
+      <script src="mode-toggle.js"></script>
+      <script type="module">
+        import { define } from "@calpoly/mustang";
+        import { SkillExpandElement } from "/src/scripts/skill-expand.js";
+        import { NavBarElement } from "/src/scripts/navbar.js";
+      
+        define({
+          "skill-expand": SkillExpandElement,
+          "navbar-yuh": NavBarElement
+        });
+      </script>
+  </body>
+</html>
