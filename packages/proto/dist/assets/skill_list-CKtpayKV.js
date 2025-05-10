@@ -1,4 +1,4 @@
-import{i as d,x as p,r as h,a as f,d as x,N as g}from"./navbar-CQmFDbxj.js";import{n as i}from"./property-B2nmQAVS.js";import{s as v}from"./skill-color.css-CJj7uX2C.js";var b=Object.defineProperty,r=(a,s,n,k)=>{for(var o=void 0,e=a.length-1,c;e>=0;e--)(c=a[e])&&(o=c(s,n,o)||o);return o&&b(s,n,o),o};const l=class l extends d{constructor(){super(...arguments),this.href="",this.catColor="skill--custom",this.title="Default Title"}render(){return p`
+import{i as d,x as p,r as h,a as f,d as x,N as g}from"./navbar-MqYjxahf.js";import{n as i}from"./property-BCxzKwbG.js";import{s as v}from"./skill-color.css-BZ-yH0tN.js";var b=Object.defineProperty,r=(a,s,n,k)=>{for(var o=void 0,e=a.length-1,c;e>=0;e--)(c=a[e])&&(o=c(s,n,o)||o);return o&&b(s,n,o),o};const l=class l extends d{constructor(){super(...arguments),this.href="",this.catColor="skill--custom",this.title="Default Title"}render(){return p`
         <a href=${this.href} class="skill-link">
             <div class="skill ${this.catColor}">
               <div class="skill-icon">${this.icon}</div>

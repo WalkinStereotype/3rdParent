@@ -1,4 +1,4 @@
-import{i as d,x as p,r as f,a as x,d as g,N as v}from"./navbar-CQmFDbxj.js";import{n as o}from"./property-B2nmQAVS.js";import{s as h}from"./skill-color.css-CJj7uX2C.js";var u=Object.defineProperty,i=(s,a,n,y)=>{for(var e=void 0,r=s.length-1,c;r>=0;r--)(c=s[r])&&(e=c(a,n,e)||e);return e&&u(a,n,e),e};const l=class l extends d{constructor(){super(...arguments),this.catColor="skill--custom",this.title="Filler Title",this.category="custom",this.icon="C"}render(){return p`
+import{i as d,x as p,r as f,a as x,d as g,N as v}from"./navbar-MqYjxahf.js";import{n as o}from"./property-BCxzKwbG.js";import{s as h}from"./skill-color.css-BZ-yH0tN.js";var u=Object.defineProperty,i=(s,a,n,y)=>{for(var e=void 0,r=s.length-1,c;r>=0;r--)(c=s[r])&&(e=c(a,n,e)||e);return e&&u(a,n,e),e};const l=class l extends d{constructor(){super(...arguments),this.catColor="skill--custom",this.title="Filler Title",this.category="custom",this.icon="C"}render(){return p`
         <div class="skill-expand ${this.catColor}">
             <div class="skill-expand-header">
                 <div class="skill-expand-title">${this.title}</div>

@@ -29,35 +29,20 @@
           </a>
         </nav>
         <br>
-
-        <skill-expand 
-          title="Sewing a button" 
-          category="Home"
-          cat-color="skill--home"
-        >
-          <div slot="icon">(Icon)</div>
-          <div slot="description">
-            This skill can be used when one of your buttons fall off of an article of clothing
-          </div>
-          <button slot="favorite" onclick="event.stopPropagation()">Star</button>
-          <div slot="resources">
-            <a class=resource href="https://www.youtube.com/watch?v=MmcEF2GR584" target="_blank">Youtube: How to sew a button</a>
-            <br>
-            <a class=resource href="https://www.wikihow.com/Sew-a-Button" target="_blank">Wikihow</a>
-            <br>
-          </div>
-        </skill-expand>
+        <skill-expand-wrapper src="/data/skill-expand-sample.json"></skill-expand-wrapper>
       </div>
 
       <script type="module" src="mode-toggle.js"></script>
       <script type="module">
         import { define } from "@calpoly/mustang";
         import { SkillExpandElement } from "/src/skill-expand.js";
+        import { SkillExpandElementWrapper } from "/src/skill-expand-wrapper.js";
         import { NavBarElement } from "/src/navbar.js";
       
         define({
           "skill-expand": SkillExpandElement,
-          "navbar-yuh": NavBarElement
+          "skill-expand-wrapper": SKillExapandWrapperElement,
+          "navbar-yuh": NavBarElement,
         });
       </script>
   </body>

@@ -95,6 +95,10 @@ export class NavBarElement extends LitElement {
     reset.styles,
     page.styles,
     css`
+        :root {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }    
+
         .menu {
             font-size: 1.5em;
             font-weight: bold;
@@ -151,6 +155,7 @@ export class NavBarElement extends LitElement {
             padding: 1rem;
             height: 100vh;
             position: sticky;
+            transition: --color-background-header 3s ease, --color-text-header 3s ease;
         }
 
         @media (max-width: 900px) {

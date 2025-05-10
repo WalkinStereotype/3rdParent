@@ -1,4 +1,4 @@
-import{a as o}from"./navbar-CQmFDbxj.js";const r=o`
+import{a as o}from"./navbar-MqYjxahf.js";const r=o`
     .skill--home {
         background-color: var(--color-background-home);
     }

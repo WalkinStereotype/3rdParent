@@ -1,4 +1,4 @@
-import{i as c,x as p,r as f,a as b,d as v,N as g}from"./navbar-CQmFDbxj.js";import{n as e}from"./property-B2nmQAVS.js";var k=Object.defineProperty,s=(i,d,n,h)=>{for(var t=void 0,r=i.length-1,l;r>=0;r--)(l=i[r])&&(t=l(d,n,t)||t);return t&&k(d,n,t),t};const a=class a extends c{constructor(){super(...arguments),this.href="",this.title="Default Title"}render(){return p`
+import{i as c,x as p,r as f,a as b,d as v,N as g}from"./navbar-MqYjxahf.js";import{n as e}from"./property-BCxzKwbG.js";var k=Object.defineProperty,s=(i,d,n,h)=>{for(var t=void 0,r=i.length-1,l;r>=0;r--)(l=i[r])&&(t=l(d,n,t)||t);return t&&k(d,n,t),t};const a=class a extends c{constructor(){super(...arguments),this.href="",this.title="Default Title"}render(){return p`
       <a href=${this.href} class="task-todo-link">
           <div class="task-todo">
             <div class="task-todo-icon">${this.svgSrc}</div>
