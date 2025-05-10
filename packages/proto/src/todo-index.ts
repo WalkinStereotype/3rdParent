@@ -61,7 +61,8 @@ export class TaskToDoElement extends LitElement {
       }
       
       .task-todo-edit-btn {
-          background-color: #C8BEA4;
+          color: var(--color-text);
+          background-color: var(--color-background-button);
           border: 1px solid var(--color-border-searchbar);
           padding: 4px 12px;
           border-radius: 24px;

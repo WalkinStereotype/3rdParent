@@ -32,16 +32,29 @@
         <skill-expand-wrapper src="/data/skill-expand-sample.json"></skill-expand-wrapper>
       </div>
 
+      <!-- <div class="skill-expand skill--home">
+        <div class="skill-expand-header">
+            <div class="skill-expand-title">Sewing a button</div>
+            <button class="skill-expand-favorite-btn" onclick="event.stopPropagation()">Star</button>
+        </div>
+        <div class="skill-expand-category">
+            Category: Home
+            <div class="skill-expand-icon">(Icon)</div>
+        </div>
+        <div style="height: 1px; background: black; margin: 8px 0;"></div>
+        <div class="skill-expand-description">This skill can be used when one of your buttons fall off of an article of clothing</div>
+      </div> -->
+
       <script type="module" src="mode-toggle.js"></script>
       <script type="module">
         import { define } from "@calpoly/mustang";
         import { SkillExpandElement } from "/src/skill-expand.js";
-        import { SkillExpandElementWrapper } from "/src/skill-expand-wrapper.js";
+        import { SkillExpandWrapperElement } from "/src/skill-expand-wrapper.js";
         import { NavBarElement } from "/src/navbar.js";
       
         define({
           "skill-expand": SkillExpandElement,
-          "skill-expand-wrapper": SKillExapandWrapperElement,
+          "skill-expand-wrapper": SkillExpandWrapperElement,
           "navbar-yuh": NavBarElement,
         });
       </script>

@@ -3,6 +3,7 @@
 
     /** General **/
     --color-text: #564F3F;
+    --color-text-no-dark: #564F3F;
     --color-background-page: #FFF8E6;
 
     --color-text-header: var(--color-text);
@@ -13,6 +14,9 @@
 
     --color-link: #5A7D9A;
     --color-link-hover: #46637A;
+
+    --color-background-button: #C8BEA4;
+    --color-background-button-no-dark: var(--color-background-button);
 
     /* Logo */
     --color-text-logo: #564F3F;
@@ -61,4 +65,6 @@ body.dark-mode {
 
     --color-task-todo-background: #2B2B28;
     --color-task-todo-background-hover: #52524c;
+
+    --color-background-button: var(--color-background-page);
 }

@@ -32,7 +32,7 @@ export class SkillExpandWrapperElement extends LitElement {
         function renderResource(resource: Resource){
             return html `
                 <a 
-                    class=resource 
+                    class="resource" 
                     href=${resource.url}
                     target="_blank"
                 >
@@ -50,7 +50,7 @@ export class SkillExpandWrapperElement extends LitElement {
             >
                 <div slot="icon">${this.icon}</div>
                 <div slot="description">${this.description}</div>
-                <button slot="favorite" onclick="event.stopPropagation()">Star</button>
+                <button slot="favorite" class="skill-expand-favorite-btn" onclick="event.stopPropagation()">Star</button>
                 <div slot="resources">
                     ${resources.map(renderResource)}
                 </div>
@@ -86,4 +86,26 @@ export class SkillExpandWrapperElement extends LitElement {
             }
         })
     }
+
+    static styles = 
+        css`  
+            .skill-expand-favorite-btn {
+                color: var(--color-text-no-dark);
+                background-color: var(--color-background-button-no-dark);
+                border: 1px solid var(--color-border-searchbar);
+                padding: 4px 12px;
+                border-radius: 24px;
+                cursor: pointer;
+                font-size: 14px;
+            }
+
+            a.resource {
+                color: var(--color-link);
+                font-style: italic;
+            }
+            a.resource:hover {
+                font-weight: bold;
+                color: var(--color-link-hover);
+            }
+        `;
 }
