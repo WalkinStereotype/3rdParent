@@ -1,13 +1,15 @@
 import { Schema, model } from "mongoose";
 import { Skill } from "../models/skill";
 
+import { Types } from "mongoose";
+
 const SkillSchema = new Schema<Skill>(
     {
-        id: { type: String, required: true, trim: true },
         title: { type: String, required: true, trim: true },
         category: { type: String, required: true, trim: true },
         description: { type: String, trim: true },
-        creatorID: { type: String, trim: true }
+        creatorID: { type: String, trim: true },
+        resources: [{ type: {type: String}, label: String, url: String}]
     },
     { collection: "skills" }
 );
@@ -37,5 +39,27 @@ function indexByCreator(userID: String): Promise<Skill[]>{
         ]
     })
 }
+
+function create(json: Skill): Promise<Skill> {
+  const s = new SkillModel(json);
+  return s.save();
+}
+
+function update(userid: string, skill: Skill): Promise<Skill> {
+  return SkillModel.findOneAndUpdate({ _id: new Types.ObjectId(userid) }, skill, {
+    new: true
+  }).then((updated) => {
+    if (!updated) throw `${userid} not updated`;
+    else return updated as Skill;
+  });
+}
+
+function remove(userid: String): Promise<void> {
+  return SkillModel.findOneAndDelete({ userid }).then(
+    (deleted) => {
+      if (!deleted) throw `${userid} not deleted`;
+    }
+  );
+}
   
-export default { index, get, indexByCreator };
+export default { index, get, indexByCreator, create, update, remove };

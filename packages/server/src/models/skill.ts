@@ -1,5 +1,5 @@
 export interface Skill {
-    id: string;
+    _id?: string;
     title: string;
     category: string;
     description: string | undefined;

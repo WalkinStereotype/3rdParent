@@ -22,13 +22,14 @@ __export(skill_svc_exports, {
 });
 module.exports = __toCommonJS(skill_svc_exports);
 var import_mongoose = require("mongoose");
+var import_mongoose2 = require("mongoose");
 const SkillSchema = new import_mongoose.Schema(
   {
-    id: { type: String, required: true, trim: true },
     title: { type: String, required: true, trim: true },
     category: { type: String, required: true, trim: true },
     description: { type: String, trim: true },
-    creatorID: { type: String, trim: true }
+    creatorID: { type: String, trim: true },
+    resources: [{ type: { type: String }, label: String, url: String }]
   },
   { collection: "skills" }
 );
@@ -52,4 +53,23 @@ function indexByCreator(userID) {
     ]
   });
 }
-var skill_svc_default = { index, get, indexByCreator };
+function create(json) {
+  const s = new SkillModel(json);
+  return s.save();
+}
+function update(userid, skill) {
+  return SkillModel.findOneAndUpdate({ _id: new import_mongoose2.Types.ObjectId(userid) }, skill, {
+    new: true
+  }).then((updated) => {
+    if (!updated) throw `${userid} not updated`;
+    else return updated;
+  });
+}
+function remove(userid) {
+  return SkillModel.findOneAndDelete({ userid }).then(
+    (deleted) => {
+      if (!deleted) throw `${userid} not deleted`;
+    }
+  );
+}
+var skill_svc_default = { index, get, indexByCreator, create, update, remove };

@@ -1,0 +1,58 @@
+import express, { Request, Response } from "express";
+import { Skill } from "../models/skill";
+
+import Skills from "../services/skill-svc";
+
+
+const router = express.Router();
+
+router.get("/", (_, res: Response) => {
+    Skills.index().then((data) => {
+        if (data) res 
+            .set("Content-Type", "application/json")
+            .send(JSON.stringify(data));
+        else res 
+            .status(404).send();
+    })
+});
+
+  
+router.get("/:userid", (req: Request, res: Response) => {
+    const { userid } = req.params;
+  
+    Skills.get(userid)
+      .then((Skill: Skill) => res.json(Skill))
+      .catch((err) => res.status(404).send(err));
+});
+
+router.post("/", (req: Request, res: Response) => {
+  const newSkill = req.body;
+
+  Skills.create(newSkill)
+    .then((Skill: Skill) =>
+      res.status(201).json(Skill)
+    )
+    .catch((err) => res.status(500).send(err));
+});
+
+router.put("/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+  const newSkill = req.body;
+
+  console.log(id);
+  console.log(newSkill);
+
+  Skills.update(id, newSkill)
+    .then((skill: Skill) => res.json(skill))
+    .catch((err) => res.status(404).end());
+});
+
+router.delete("/:userid", (req: Request, res: Response) => {
+  const { userid } = req.params;
+ 
+  Skills.remove(userid)
+    .then(() => res.status(204).end())
+    .catch((err) => res.status(404).send(err));
+});
+
+export default router;

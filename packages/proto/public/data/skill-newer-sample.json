@@ -1,0 +1,17 @@
+{
+    "title": "Fixing a leaky faucet",
+    "category": "misc",
+    "description": "A leaky faucet can be expensive if left alone for a while, fix it now!",
+    "resources": [
+      {
+        "type": "Other",
+        "label": "Home Depot's How to fix a leaky faucet",
+        "url": "https://www.homedepot.com/c/ah/how-to-fix-a-leaky-faucet/9ba683603be9fa5395fab90ee6659fb"
+      },
+      {
+        "type": "Wikihow",
+        "label": "How to fix a leaky faucet",
+        "url": "https://www.wikihow.com/Fix-a-Leaky-Faucet"
+      }
+    ]
+  }
