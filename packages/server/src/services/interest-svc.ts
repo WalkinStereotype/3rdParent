@@ -1,6 +1,8 @@
 import { Schema, model } from "mongoose";
 import { Interest } from "../models/interest";
 
+import { Types } from "mongoose";
+
 const InterestSchema = new Schema<Interest>(
     {
         id: { type: String, required: true, trim: true },
@@ -33,5 +35,27 @@ function indexByCreator(userID: String): Promise<Interest[]>{
         userID: userID
     })
 }
+
+function create(json: Interest): Promise<Interest> {
+  const i = new InterestModel(json);
+  return i.save();
+}
+
+function update(userid: string, interest: Interest): Promise<Interest> {
+  return InterestModel.findOneAndUpdate({ _id: new Types.ObjectId(userid) }, interest, {
+    new: true
+  }).then((updated) => {
+    if (!updated) throw `${userid} not updated`;
+    else return updated as Interest;
+  });
+}
+
+function remove(userid: String): Promise<void> {
+  return InterestModel.findOneAndDelete({ userid }).then(
+    (deleted) => {
+      if (!deleted) throw `${userid} not deleted`;
+    }
+  );
+}
   
-export default { index, get, indexByCreator };
+export default { index, get, indexByCreator, create, update, remove };

@@ -22,6 +22,7 @@ __export(interest_svc_exports, {
 });
 module.exports = __toCommonJS(interest_svc_exports);
 var import_mongoose = require("mongoose");
+var import_mongoose2 = require("mongoose");
 const InterestSchema = new import_mongoose.Schema(
   {
     id: { type: String, required: true, trim: true },
@@ -48,4 +49,23 @@ function indexByCreator(userID) {
     userID
   });
 }
-var interest_svc_default = { index, get, indexByCreator };
+function create(json) {
+  const i = new InterestModel(json);
+  return i.save();
+}
+function update(userid, interest) {
+  return InterestModel.findOneAndUpdate({ _id: new import_mongoose2.Types.ObjectId(userid) }, interest, {
+    new: true
+  }).then((updated) => {
+    if (!updated) throw `${userid} not updated`;
+    else return updated;
+  });
+}
+function remove(userid) {
+  return InterestModel.findOneAndDelete({ userid }).then(
+    (deleted) => {
+      if (!deleted) throw `${userid} not deleted`;
+    }
+  );
+}
+var interest_svc_default = { index, get, indexByCreator, create, update, remove };

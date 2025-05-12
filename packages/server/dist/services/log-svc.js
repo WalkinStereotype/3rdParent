@@ -22,6 +22,7 @@ __export(log_svc_exports, {
 });
 module.exports = __toCommonJS(log_svc_exports);
 var import_mongoose = require("mongoose");
+var import_mongoose2 = require("mongoose");
 const LogSchema = new import_mongoose.Schema(
   {
     id: { type: String, required: true, trim: true },
@@ -48,4 +49,23 @@ function indexByCreator(userID) {
     userID
   });
 }
-var log_svc_default = { index, get, indexByCreator };
+function create(json) {
+  const l = new LogModel(json);
+  return l.save();
+}
+function update(userid, log) {
+  return LogModel.findOneAndUpdate({ _id: new import_mongoose2.Types.ObjectId(userid) }, log, {
+    new: true
+  }).then((updated) => {
+    if (!updated) throw `${userid} not updated`;
+    else return updated;
+  });
+}
+function remove(userid) {
+  return LogModel.findOneAndDelete({ userid }).then(
+    (deleted) => {
+      if (!deleted) throw `${userid} not deleted`;
+    }
+  );
+}
+var log_svc_default = { index, get, indexByCreator, create, update, remove };
