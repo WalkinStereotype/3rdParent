@@ -5,7 +5,7 @@ import { Types } from "mongoose";
 
 const LogSchema = new Schema<Log>(
     {
-        id: { type: String, required: true, trim: true },
+        _id: { type: String, trim: true },
         userID: { type: String, required: true, trim: true },
         skillID: { type: String, required: true, trim: true },
         reflection: { type: String, trim: true },

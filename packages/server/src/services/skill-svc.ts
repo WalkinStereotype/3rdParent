@@ -5,6 +5,7 @@ import { Types } from "mongoose";
 
 const SkillSchema = new Schema<Skill>(
     {
+        _id: { type: String, trim: true },
         title: { type: String, required: true, trim: true },
         category: { type: String, required: true, trim: true },
         description: { type: String, trim: true },
@@ -46,6 +47,7 @@ function create(json: Skill): Promise<Skill> {
 }
 
 function update(userid: string, skill: Skill): Promise<Skill> {
+  console.log(skill);
   return SkillModel.findOneAndUpdate({ _id: new Types.ObjectId(userid) }, skill, {
     new: true
   }).then((updated) => {

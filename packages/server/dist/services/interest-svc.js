@@ -25,7 +25,7 @@ var import_mongoose = require("mongoose");
 var import_mongoose2 = require("mongoose");
 const InterestSchema = new import_mongoose.Schema(
   {
-    id: { type: String, required: true, trim: true },
+    _id: { type: String, trim: true },
     userID: { type: String, required: true, trim: true },
     skillID: { type: String, required: true, trim: true },
     priority: { type: Boolean, required: true }

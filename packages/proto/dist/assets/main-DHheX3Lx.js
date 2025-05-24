@@ -1,4 +1,4 @@
-import{i as c,x as p,r as f,a as b,d as v,N as g}from"./navbar-MqYjxahf.js";import{n as e}from"./property-BCxzKwbG.js";var k=Object.defineProperty,s=(i,d,n,h)=>{for(var t=void 0,r=i.length-1,l;r>=0;r--)(l=i[r])&&(t=l(d,n,t)||t);return t&&k(d,n,t),t};const a=class a extends c{constructor(){super(...arguments),this.href="",this.title="Default Title"}render(){return p`
+import{i as p,x as b,r as v,a as f,n as e,d as u,b as g}from"./reset.css-DmUNvvkv.js";import{N as c}from"./navbar-CIKKDtv3.js";var h=Object.defineProperty,a=(i,n,d,k)=>{for(var t=void 0,r=i.length-1,l;r>=0;r--)(l=i[r])&&(t=l(n,d,t)||t);return t&&h(n,d,t),t};const s=class s extends p{constructor(){super(...arguments),this.href="",this.title="Default Title"}render(){return b`
       <a href=${this.href} class="task-todo-link">
           <div class="task-todo">
             <div class="task-todo-icon">${this.svgSrc}</div>
@@ -6,7 +6,7 @@ import{i as c,x as p,r as f,a as b,d as v,N as g}from"./navbar-MqYjxahf.js";impo
             <slot="action"><button class="task-todo-edit-btn" onclick="event.stopPropagation()">Done?</button></slot>
           </div>
       </a>
-    `}};a.styles=[f.styles,b`
+    `}};s.styles=[v.styles,f`
       .task-todo-link {
           text-decoration: none; 
           color: inherit;         
@@ -46,11 +46,12 @@ import{i as c,x as p,r as f,a as b,d as v,N as g}from"./navbar-MqYjxahf.js";impo
       }
       
       .task-todo-edit-btn {
-          background-color: #C8BEA4;
+          color: var(--color-text);
+          background-color: var(--color-background-button);
           border: 1px solid var(--color-border-searchbar);
           padding: 4px 12px;
           border-radius: 24px;
           cursor: pointer;
           font-size: 14px;
       }
-    `];let o=a;s([e()],o.prototype,"href");s([e()],o.prototype,"title");s([e({attribute:"svg-src"})],o.prototype,"svgSrc");v({"task-todo":o,"navbar-yuh":g});
+    `];let o=s;a([e()],o.prototype,"href");a([e()],o.prototype,"title");a([e({attribute:"svg-src"})],o.prototype,"svgSrc");u({"task-todo":o,"navbar-yuh":c,"mu-auth":g.Provider});c.initializeOnce();

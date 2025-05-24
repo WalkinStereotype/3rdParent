@@ -11,59 +11,64 @@
     <link rel="stylesheet" href="/styles/page.css" />
   </head>
   <body>
-    <div class="container">
+    <mu-auth provides="bigbrother:auth">
+      <div class="container">
 
-      <navbar-yuh></navbar-yuh>
-  
-      <div class="index-main">
-        <div class="searchbar">Search...</div>
-        <h2>In Progress...</h2>
-        <br>
+        <navbar-yuh></navbar-yuh>
+    
+        <div class="index-main">
+          <div class="searchbar">Search...</div>
+          <h2>In Progress...</h2>
+          <br>
 
-        <task-todo 
-          href="skill-expand.html" 
-          title="Replacing a tire" 
-          svg-src="C"
-        >
-          <button slot="action" onclick="event.stopPropagation()">Done?</button>
-        </task-todo>
-        <task-todo 
-          href="skill-expand.html" 
-          title="Filing Taxes" 
-          svg-src="F"
-        >
-          <button slot="action" onclick="event.stopPropagation()">Done?</button>
-        </task-todo>
+          <task-todo 
+            href="skill-expand.html" 
+            title="Replacing a tire" 
+            svg-src="C"
+          >
+            <button slot="action" onclick="event.stopPropagation()">Done?</button>
+          </task-todo>
+          <task-todo 
+            href="skill-expand.html" 
+            title="Filing Taxes" 
+            svg-src="F"
+          >
+            <button slot="action" onclick="event.stopPropagation()">Done?</button>
+          </task-todo>
 
-        <task-todo 
-          href="skill-expand.html" 
-          title="Replacing a tire" 
-          svg-src="C"
-        >
-          <button slot="action" onclick="event.stopPropagation()">Done?</button>
-        </task-todo>
-        
-      </div>
-  
-      <div class="index-extra">
-        <div class="text-center">
-          <h3>Recent Accomplishments</h3>
+          <task-todo 
+            href="skill-expand.html" 
+            title="Replacing a tire" 
+            svg-src="C"
+          >
+            <button slot="action" onclick="event.stopPropagation()">Done?</button>
+          </task-todo>
+
         </div>
-        <br>
-        <p>Text</p>
+    
+        <div class="index-extra">
+          <div class="text-center">
+            <h3>Recent Accomplishments</h3>
+          </div>
+          <br>
+          <p>Text</p>
+        </div>
       </div>
-    </div>
+    </mu-auth>
 
     <script type="module" src="mode-toggle.js"></script>
     <script type="module">
-      import { define } from "@calpoly/mustang";
+      import { define, Auth } from "@calpoly/mustang";
       import { TaskToDoElement } from "/src/todo-index.js";
       import { NavBarElement } from "/src/navbar.js";
     
       define({
         "task-todo": TaskToDoElement,
-        "navbar-yuh": NavBarElement
+        "navbar-yuh": NavBarElement,
+        "mu-auth": Auth.Provider
       });
+
+      NavBarElement.initializeOnce();
     </script>
   </body>
 </html>

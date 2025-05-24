@@ -1,18 +1,18 @@
 {
     "title": "Sewing a button",
     "category": "Home",
-    "cat-color": "skill--home",
+    "catColor": "skill--home",
     "icon": "(Icon)",
     "description": "This skill can be used when one of your buttons fall off of an article of clothing",
     "resources": [
         {
             "type": "Youtube",
-            "label": "Youtube: How to sew a button",
+            "label": "How to sew a button",
             "url": "https://www.youtube.com/watch?v=MmcEF2GR584"
         },
         {
             "type": "Wikihow",
-            "label": "Wikihow",
+            "label": "How to sew a button",
             "url": "https://www.wikihow.com/Sew-a-Button"
         }
     ]

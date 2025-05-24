@@ -1,5 +1,5 @@
 export interface Log {
-    id: string;
+    _id?: string;
     userID: string;
     skillID: string;
     reflection: string;

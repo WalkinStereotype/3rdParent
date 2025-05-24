@@ -5,7 +5,7 @@ import { Types } from "mongoose";
 
 const InterestSchema = new Schema<Interest>(
     {
-        id: { type: String, required: true, trim: true },
+        _id: { type: String, trim: true },
         userID: { type: String, required: true, trim: true },
         skillID: { type: String, required: true, trim: true },
         priority: { type: Boolean, required: true },

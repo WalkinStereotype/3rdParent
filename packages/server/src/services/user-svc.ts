@@ -5,7 +5,6 @@ import { Types } from "mongoose";
 
 const UserSchema = new Schema<User>(
     {
-        id: { type: String, required: true, trim: true },
         username: { type: String, required: true, trim: true },
         name: { type: String, trim: true },
         hashedPW: { type: String, required: true, trim: true }

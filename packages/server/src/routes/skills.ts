@@ -16,7 +16,7 @@ router.get("/", (_, res: Response) => {
     })
 });
 
-  
+//Get Skills, including the user's custom skills
 router.get("/:userid", (req: Request, res: Response) => {
     const { userid } = req.params;
   

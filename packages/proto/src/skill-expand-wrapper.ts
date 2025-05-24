@@ -1,5 +1,6 @@
 import { html, css, LitElement } from "lit";
 import { property, state } from "lit/decorators.js";
+import { Observer, Auth } from "@calpoly/mustang";
 
 type Skill = {
     title: string;
@@ -25,6 +26,17 @@ export class SkillExpandWrapperElement extends LitElement {
     @state() icon: string = "";
     @state() description: string = "";
     @state() resources: Array<Resource> = [];
+
+    _authObserver = new Observer<Auth.Model>(this, "bigbrother:auth");
+    _user?: Auth.User;
+    
+    get authorization() {
+        return (
+            this._user?.authenticated && {
+                Authorization: `Bearer ${(this._user as Auth.AuthenticatedUser).token}`
+            }
+        );
+    }
 
     render() {
         const { resources } = this;
@@ -60,6 +72,11 @@ export class SkillExpandWrapperElement extends LitElement {
 
     connectedCallback() {
         super.connectedCallback();
+
+        this._authObserver.observe((auth: Auth.Model) => {
+            this._user = auth.user;
+        });
+
         if (this.src) this.hydrate(this.src);
     }
 

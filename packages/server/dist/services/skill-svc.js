@@ -25,6 +25,7 @@ var import_mongoose = require("mongoose");
 var import_mongoose2 = require("mongoose");
 const SkillSchema = new import_mongoose.Schema(
   {
+    _id: { type: String, trim: true },
     title: { type: String, required: true, trim: true },
     category: { type: String, required: true, trim: true },
     description: { type: String, trim: true },
@@ -58,6 +59,7 @@ function create(json) {
   return s.save();
 }
 function update(userid, skill) {
+  console.log(skill);
   return SkillModel.findOneAndUpdate({ _id: new import_mongoose2.Types.ObjectId(userid) }, skill, {
     new: true
   }).then((updated) => {

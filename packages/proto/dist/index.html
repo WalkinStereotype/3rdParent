@@ -9,53 +9,55 @@
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/index.css" />
     <link rel="stylesheet" href="/styles/page.css" />
-    <script type="module" crossorigin src="/assets/main-I7umNT5D.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/navbar-MqYjxahf.js">
-    <link rel="modulepreload" crossorigin href="/assets/property-BCxzKwbG.js">
+    <script type="module" crossorigin src="/assets/main-DHheX3Lx.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/reset.css-DmUNvvkv.js">
+    <link rel="modulepreload" crossorigin href="/assets/navbar-CIKKDtv3.js">
   </head>
   <body>
-    <div class="container">
+    <mu-auth provides="bigbrother:auth">
+      <div class="container">
 
-      <navbar-yuh></navbar-yuh>
-  
-      <div class="index-main">
-        <div class="searchbar">Search...</div>
-        <h2>In Progress...</h2>
-        <br>
+        <navbar-yuh></navbar-yuh>
+    
+        <div class="index-main">
+          <div class="searchbar">Search...</div>
+          <h2>In Progress...</h2>
+          <br>
 
-        <task-todo 
-          href="skill-expand.html" 
-          title="Replacing a tire" 
-          svg-src="C"
-        >
-          <button slot="action" onclick="event.stopPropagation()">Done?</button>
-        </task-todo>
-        <task-todo 
-          href="skill-expand.html" 
-          title="Filing Taxes" 
-          svg-src="F"
-        >
-          <button slot="action" onclick="event.stopPropagation()">Done?</button>
-        </task-todo>
+          <task-todo 
+            href="skill-expand.html" 
+            title="Replacing a tire" 
+            svg-src="C"
+          >
+            <button slot="action" onclick="event.stopPropagation()">Done?</button>
+          </task-todo>
+          <task-todo 
+            href="skill-expand.html" 
+            title="Filing Taxes" 
+            svg-src="F"
+          >
+            <button slot="action" onclick="event.stopPropagation()">Done?</button>
+          </task-todo>
 
-        <task-todo 
-          href="skill-expand.html" 
-          title="Replacing a tire" 
-          svg-src="C"
-        >
-          <button slot="action" onclick="event.stopPropagation()">Done?</button>
-        </task-todo>
-        
-      </div>
-  
-      <div class="index-extra">
-        <div class="text-center">
-          <h3>Recent Accomplishments</h3>
+          <task-todo 
+            href="skill-expand.html" 
+            title="Replacing a tire" 
+            svg-src="C"
+          >
+            <button slot="action" onclick="event.stopPropagation()">Done?</button>
+          </task-todo>
+
         </div>
-        <br>
-        <p>Text</p>
+    
+        <div class="index-extra">
+          <div class="text-center">
+            <h3>Recent Accomplishments</h3>
+          </div>
+          <br>
+          <p>Text</p>
+        </div>
       </div>
-    </div>
+    </mu-auth>
 
   </body>
 </html>

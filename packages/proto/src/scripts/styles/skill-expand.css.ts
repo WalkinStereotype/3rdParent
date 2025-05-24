@@ -61,7 +61,7 @@ const styles = css`
         color: var(--color-link);
         font-style: italic;
     }
-    a.reource:hover {
+    a.resource:hover {
         color: var(--color-link-hover);
     }
 `;

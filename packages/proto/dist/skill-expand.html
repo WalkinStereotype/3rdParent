@@ -12,10 +12,10 @@
         <link rel="stylesheet" href="/styles/skill.css" />
         <link rel="stylesheet" href="/styles/skill-color.css" />
         <link rel="stylesheet" href="/styles/page.css" />
-      <script type="module" crossorigin src="/assets/skill_expand-DTWoQzYy.js"></script>
-      <link rel="modulepreload" crossorigin href="/assets/navbar-MqYjxahf.js">
-      <link rel="modulepreload" crossorigin href="/assets/property-BCxzKwbG.js">
-      <link rel="modulepreload" crossorigin href="/assets/skill-color.css-BZ-yH0tN.js">
+      <script type="module" crossorigin src="/assets/skill_expand-DOHtAS6o.js"></script>
+      <link rel="modulepreload" crossorigin href="/assets/reset.css-DmUNvvkv.js">
+      <link rel="modulepreload" crossorigin href="/assets/navbar-CIKKDtv3.js">
+      <link rel="modulepreload" crossorigin href="/assets/skill-color.css-CPk2sX6q.js">
     </head>
   <body>
       <div class="container">
@@ -33,25 +33,21 @@
           </a>
         </nav>
         <br>
-
-        <skill-expand 
-          title="Sewing a button" 
-          category="Home"
-          cat-color="skill--home"
-        >
-          <div slot="icon">(Icon)</div>
-          <div slot="description">
-            This skill can be used when one of your buttons fall off of an article of clothing
-          </div>
-          <button slot="favorite" onclick="event.stopPropagation()">Star</button>
-          <div slot="resources">
-            <a class=resource href="https://www.youtube.com/watch?v=MmcEF2GR584" target="_blank">Youtube: How to sew a button</a>
-            <br>
-            <a class=resource href="https://www.wikihow.com/Sew-a-Button" target="_blank">Wikihow</a>
-            <br>
-          </div>
-        </skill-expand>
+        <skill-expand-wrapper src="/data/skill-expand-sample.json"></skill-expand-wrapper>
       </div>
+
+      <!-- <div class="skill-expand skill--home">
+        <div class="skill-expand-header">
+            <div class="skill-expand-title">Sewing a button</div>
+            <button class="skill-expand-favorite-btn" onclick="event.stopPropagation()">Star</button>
+        </div>
+        <div class="skill-expand-category">
+            Category: Home
+            <div class="skill-expand-icon">(Icon)</div>
+        </div>
+        <div style="height: 1px; background: black; margin: 8px 0;"></div>
+        <div class="skill-expand-description">This skill can be used when one of your buttons fall off of an article of clothing</div>
+      </div> -->
 
   </body>
 </html>

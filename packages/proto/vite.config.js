@@ -13,6 +13,7 @@ export default defineConfig({
         todo_list: resolve(__dirname, 'todo-list.html'),
         skill_expand: resolve(__dirname, 'skill-expand.html'),
         log: resolve(__dirname, 'log.html'),
+        login: resolve(__dirname, 'login.html'),
       },
     },
   },

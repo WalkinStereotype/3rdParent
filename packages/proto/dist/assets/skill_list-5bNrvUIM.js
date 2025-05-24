@@ -1,4 +1,4 @@
-import{i as d,x as p,r as h,a as f,d as x,N as g}from"./navbar-MqYjxahf.js";import{n as i}from"./property-BCxzKwbG.js";import{s as v}from"./skill-color.css-BZ-yH0tN.js";var b=Object.defineProperty,r=(a,s,n,k)=>{for(var o=void 0,e=a.length-1,c;e>=0;e--)(c=a[e])&&(o=c(s,n,o)||o);return o&&b(s,n,o),o};const l=class l extends d{constructor(){super(...arguments),this.href="",this.catColor="skill--custom",this.title="Default Title"}render(){return p`
+import{i as d,x as p,r as h,a as f,n as r,d as x}from"./reset.css-DmUNvvkv.js";import{N as v}from"./navbar-CIKKDtv3.js";import{s as b}from"./skill-color.css-CPk2sX6q.js";var g=Object.defineProperty,i=(e,s,n,k)=>{for(var o=void 0,a=e.length-1,c;a>=0;a--)(c=e[a])&&(o=c(s,n,o)||o);return o&&g(s,n,o),o};const l=class l extends d{constructor(){super(...arguments),this.href="",this.catColor="skill--custom",this.title="Default Title"}render(){return p`
         <a href=${this.href} class="skill-link">
             <div class="skill ${this.catColor}">
               <div class="skill-icon">${this.icon}</div>
@@ -6,7 +6,7 @@ import{i as d,x as p,r as h,a as f,d as x,N as g}from"./navbar-MqYjxahf.js";impo
               <slot="action"><button class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button></slot>
             </div>
         </a>
-    `}};l.styles=[h.styles,v.styles,f`
+    `}};l.styles=[h.styles,b.styles,f`
         .skill-link {
             text-decoration: none; 
             max-width: var(--max-width-main);
@@ -49,7 +49,8 @@ import{i as d,x as p,r as h,a as f,d as x,N as g}from"./navbar-MqYjxahf.js";impo
         }
         
         .skill-favorite-btn {
-            background-color: #C8BEA4;
+            color: var(--color-text-no-dark);
+            background-color: var(--color-background-button-no-dark);
             border: 1px solid var(--color-border-searchbar);
             padding: 4px 12px;
             border-radius: 24px;
@@ -60,4 +61,4 @@ import{i as d,x as p,r as h,a as f,d as x,N as g}from"./navbar-MqYjxahf.js";impo
         .text-center {
             text-align: center;
         }
-    `];let t=l;r([i()],t.prototype,"href");r([i({attribute:"cat-color"})],t.prototype,"catColor");r([i()],t.prototype,"title");r([i()],t.prototype,"icon");x({"skill-yuh":t,"navbar-yuh":g});
+    `];let t=l;i([r()],t.prototype,"href");i([r({attribute:"cat-color"})],t.prototype,"catColor");i([r()],t.prototype,"title");i([r()],t.prototype,"icon");x({"skill-yuh":t,"navbar-yuh":v});
