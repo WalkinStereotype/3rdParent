@@ -23,6 +23,7 @@ const styles = css`
         display: flex;
         flex-direction: column;
         background-color: var(--color-background-searchbar);
+        border-radius: 8px;
         padding: 1rem;
         font-family: var(--font-text);
     }
@@ -33,6 +34,7 @@ const styles = css`
     }
     
     .log-entry-title {
+        color: var(--color-text-no-dark);
         flex-grow: 1;
         font-family: var(--font-display);
         font-size: 25px;

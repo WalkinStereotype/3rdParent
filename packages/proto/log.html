@@ -21,28 +21,52 @@
         <div class="searchbar">Search...</div>
         <div class="log-table">
           <h2>Log</h2>
-          <br>
-          <div class="log-entry skill--home">
-            <div class="log-entry-top">
-              <div class="log-entry-info">
-                <div class="log-entry-date">4/30/25</div>
-                <a href="skill-expand.html" class="log-entry-title">Sewing a button</a>
-              </div>
-              <button class="edit-btn">Edit</button>
-            </div>
-            <div class="log-entry-description">
-              <p>I broke a button on my jacket's sleeve when I was crab walking at a social event, leading to it falling off. Can't believe I fixed it!</p>
-            </div>
-          </div>
+
+          <reflection-yuh
+            date="4/30/25"
+            title="Sewing a button"
+            cat-color="skill--home"
+            href="skill-expand.html"
+          >
+            <span slot="description">
+              I broke a button on my jacket's sleeve when I was crab walking at a social event, leading to it falling off. Can't believe I fixed it!
+            </span>
+          </reflection-yuh>
+
+          <reflection-yuh
+            date="5/26/25"
+            title="Filing taxes"
+            cat-color="skill--finance"
+            href="skill-expand.html"
+          >
+            <span slot="description">
+              Mi madre took me off her taxes. But now I can do it by myself.
+            </span>
+          </reflection-yuh>
+
+          <reflection-yuh
+            date="5/30/25"
+            title="Replacing a tire"
+            cat-color="skill--car"
+            href="skill-expand.html"
+          >
+            <span slot="description">
+              I wanted to practice this in case I ever get stranded with a flat. 
+
+              Now I just have to make sure I actually do have a spare in my car.
+            </span>
+          </reflection-yuh>
         </div>
 
         <script type="module" src="mode-toggle.js"></script>
         <script type="module">
             import { define } from "@calpoly/mustang";
             import { NavBarElement } from "/src/navbar.js";
-    
+            import { ReflectionElement } from "/src/reflection.js";
+
             define({
-              "navbar-yuh": NavBarElement
+              "navbar-yuh": NavBarElement,
+              "reflection-yuh": ReflectionElement
             });
         </script>  
   </body>

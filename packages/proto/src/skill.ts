@@ -15,7 +15,7 @@ export class SkillElement extends LitElement {
             <div class="skill ${this.catColor}">
               <div class="skill-icon">${this.icon}</div>
               <div class="skill-title">${this.title}</div>
-              <slot="action"><button class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button></slot>
+              <slot name="action"><button class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button></slot>
             </div>
         </a>
     `;
