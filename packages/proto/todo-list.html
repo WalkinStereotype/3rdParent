@@ -19,59 +19,19 @@
   
       <div class="general-main">
         <div class="searchbar">Search...</div>
-        <div class="todo-actual">
-          <h2>To-Do</h2>
-          <br>
-          <a href="skill-expand.html" class="skill-link">
-              <div class="skill skill--car">
-                <div class="skill-icon">Car</div>
-                <div class="skill-title">Replacing a tire</div>
-                <button class="skill-favorite-btn" onclick="event.stopPropagation()">Unprioritize</button>
-                <button class="skill-favorite-btn" onclick="event.stopPropagation()">Remove</button>
-              </div>
-          </a>
-          <skill-yuh
-            href="skill-expand.html"
-            cat-color="skill--custom"
-            icon="Custom"
-            title="Braiding hair"
-          >
-            <button slot="action" class="skill-favorite-btn" onclick="event.stopPropagation()">Unprioritize</button>
-            <button slot="action" class="skill-favorite-btn" onclick="event.stopPropagation()">Remove</button>
-          </skill-yuh>
-        </div>
-        <br>
-        <br>
-        <div class="todo-interested">
-          <h2>Interested</h2>
-          <br>
-          <a href="skill-expand.html" class="skill-link">
-            <div class="skill skill--finance">
-              <div class="skill-icon">Finance</div>
-              <div class="skill-title">Filing taxes</div>
-              <button class="skill-favorite-btn" onclick="event.stopPropagation()">Prioritize</button>
-                <button class="skill-favorite-btn" onclick="event.stopPropagation()">Remove</button>
-            </div>
-          </a>
-          <a href="skill-expand.html" class="skill-link">
-            <div class="skill skill--finance">
-              <div class="skill-icon">Finance</div>
-              <div class="skill-title">Filing taxes</div>
-              <button class="skill-favorite-btn" onclick="event.stopPropagation()">Prioritize</button>
-                <button class="skill-favorite-btn" onclick="event.stopPropagation()">Remove</button>
-            </div>
-          </a>
-        </div>
+        <todo-list src="/data/todo-list.json"></todo-list>
         
         <script type="module" src="mode-toggle.js"></script>
         <script type="module">
           import { define } from "@calpoly/mustang";
           import { NavBarElement } from "/src/navbar.js";
           import { SkillElement } from "/src/skill.js";
+          import { TodoListElement } from "/src/todo-list.js";
   
           define({
             "navbar-yuh": NavBarElement,
-            "skill-yuh": SkillElement
+            "skill-yuh": SkillElement,
+            "todo-list": TodoListElement
           });
         </script>  
   </body>

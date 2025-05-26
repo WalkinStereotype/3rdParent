@@ -18,40 +18,11 @@
     
         <div class="index-main">
           <div class="searchbar">Search...</div>
-          <h2>In Progress...</h2>
-          <br>
-
-          <task-todo 
-            href="skill-expand.html" 
-            title="Replacing a tire" 
-            svg-src="C"
-          >
-            <button slot="action" onclick="event.stopPropagation()">Done?</button>
-          </task-todo>
-          <task-todo 
-            href="skill-expand.html" 
-            title="Filing Taxes" 
-            svg-src="F"
-          >
-            <button slot="action" onclick="event.stopPropagation()">Done?</button>
-          </task-todo>
-
-          <task-todo 
-            href="skill-expand.html" 
-            title="Replacing a tire" 
-            svg-src="C"
-          >
-            <button slot="action" onclick="event.stopPropagation()">Done?</button>
-          </task-todo>
-
+          <todo-index src="/data/todo-list-index.json"></todo-index>
         </div>
     
         <div class="index-extra">
-          <div class="text-center">
-            <h3>Recent Accomplishments</h3>
-          </div>
-          <br>
-          <p>Text</p>
+          <recents-yuh src="/data/recents.json"></recents-yuh>
         </div>
       </div>
     </mu-auth>
@@ -61,11 +32,15 @@
       import { define, Auth } from "@calpoly/mustang";
       import { TaskToDoElement } from "/src/todo-index.js";
       import { NavBarElement } from "/src/navbar.js";
+      import { TodoListIndexElement } from "/src/todo-list-index.js";
+      import { RecentsElement } from "/src/recents.js";
     
       define({
         "task-todo": TaskToDoElement,
         "navbar-yuh": NavBarElement,
-        "mu-auth": Auth.Provider
+        "mu-auth": Auth.Provider,
+        "todo-index": TodoListIndexElement,
+        "recents-yuh": RecentsElement
       });
 
       NavBarElement.initializeOnce();

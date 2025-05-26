@@ -133,6 +133,7 @@ export class NavBarElement extends LitElement {
                   id="profile-popover"
                   class="sign-in-out-popover"
               >
+                  <div>${this.userid || "Who u"}</div>
                   <div class="stats">Skills learned: 0</div>
                   ${this.loggedIn
                       ? this.renderSignOutButton()

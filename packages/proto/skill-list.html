@@ -19,59 +19,8 @@
   
       <div class="general-main">
         <div class="searchbar">Search...</div>
-        <skill-list src="/data/skill-list.json">
-          <skill-yuh
-            href="skill-expand.html"
-            cat-color="skill--home"
-            icon="Home"
-            title="Sewing a button"
-          >
-            <button slot="action" class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button>
-          </skill-yuh>
+        <skill-list src="/data/skill-list.json"></skill-list>
 
-          <skill-yuh
-            href="skill-expand.html"
-            cat-color="skill--car"
-            icon="Car"
-            title="Replacing a tire"
-          >
-            <button slot="action" class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button>
-          </skill-yuh>
-
-          <skill-yuh
-            href="skill-expand.html"
-            cat-color="skill--finance"
-            icon="Finance"
-            title="Filing taxes"
-          >
-            <button slot="action" class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button>
-          </skill-yuh>
-
-          <skill-yuh
-            href="skill-expand.html"
-            cat-color="skill--misc"
-            icon="Misc"
-            title="Fixing a leaky faucet"
-          >
-            <button slot="action" class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button>
-          </skill-yuh>
-
-          <skill-yuh
-            href="skill-expand.html"
-            cat-color="skill--custom"
-            icon="Custom"
-            title="Braiding hair"
-          >
-            <button slot="action" class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button>
-          </skill-yuh>
-        </skill-list>
-        
-        <!-- <a href="index.html">
-            <svg class="icon">
-                <use href="/icons/sprite.svg#icon-back" />
-            </svg>
-            Main Page
-        </a> -->
         <script type="module" src="mode-toggle.js"></script>
         <script type="module">
           import { define } from "@calpoly/mustang";

@@ -2,40 +2,36 @@ import { html, css, LitElement } from "lit";
 import { property, state } from "lit/decorators.js";
 import reset from "./scripts/styles/reset.css.ts";
 
-type Skill = {
+type Todo = {
     title: string;
-    catColor: string;
-    icon: string;
+    svg: string;
     href: string;
 }
 
-
-export class SkillListElement extends LitElement {
+export class TodoListIndexElement extends LitElement {
     @property()
     src?: string;
 
     @state()
-    skills: Array<Skill> = [];
+    todos: Array<Todo> = [];
 
     render() {
-        const { skills } = this;
-        function renderSkill(s: Skill){
+        function renderTodo(p: Todo){
             return html `
-                <skill-yuh
-                    href=${s.href}
-                    cat-color=${s.catColor}
-                    icon=${s.icon}
-                    title=${s.title}
+                <task-todo 
+                    href=${p.href} 
+                    title=${p.title}
+                    svg-src=${p.svg}
                 >
-                    <button slot="action" class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button>
-                </skill-yuh>
-            `
+                    <button slot="action" onclick="event.stopPropagation()">Done?</button>
+                </task-todo>
+            `;
         }
 
         return html`
-            <h2>Skills</h2>
+            <h2>In Progress...</h2>
             <br>
-            ${skills.map(renderSkill)}
+            ${this.todos.map(renderTodo)}
         `;
     }
 
@@ -46,14 +42,13 @@ export class SkillListElement extends LitElement {
 
     hydrate(src: string) {
         fetch(src)
-        .then(res => res.json())
-        .then((json: object) => {
-            if(json) {
-                const skillList = json as Array<Skill>;
-
-                this.skills = skillList;
-            }
-        })
+            .then(res => res.json())
+            .then((json: object) => {
+                if(json) {
+                    const todos = json as Array<Todo>;
+                    this.todos = todos;
+                }
+            })
     }
 
     static styles = [
@@ -68,5 +63,6 @@ export class SkillListElement extends LitElement {
                 cursor: pointer;
                 font-size: 14px;
             }
-        `];
-};
+        `
+    ];
+}
