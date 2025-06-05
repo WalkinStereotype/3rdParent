@@ -1,4 +1,14 @@
-import{i as p,x as b,r as v,a as f,n as e,d as u,b as g}from"./reset.css-DmUNvvkv.js";import{N as c}from"./navbar-CIKKDtv3.js";var h=Object.defineProperty,a=(i,n,d,k)=>{for(var t=void 0,r=i.length-1,l;r>=0;r--)(l=i[r])&&(t=l(n,d,t)||t);return t&&h(n,d,t),t};const s=class s extends p{constructor(){super(...arguments),this.href="",this.title="Default Title"}render(){return b`
+import { html, css, LitElement } from "lit";
+import { property } from "lit/decorators.js";
+import reset from "../styles/reset.css.ts";
+
+export class TaskToDoElement extends LitElement {
+  @property() href?: string = '';
+  @property() title: string = 'Default Title';
+  @property({ attribute: 'svg-src' }) svgSrc?: string;
+
+  override render() {
+    return html`
       <a href=${this.href} class="task-todo-link">
           <div class="task-todo">
             <div class="task-todo-icon">${this.svgSrc}</div>
@@ -6,7 +16,12 @@ import{i as p,x as b,r as v,a as f,n as e,d as u,b as g}from"./reset.css-DmUNvvk
             <slot="action"><button class="task-todo-edit-btn" onclick="event.stopPropagation()">Done?</button></slot>
           </div>
       </a>
-    `}};s.styles=[v.styles,f`
+    `;
+  }
+
+  static styles = [
+    reset.styles,
+    css`
       .task-todo-link {
           text-decoration: none; 
           color: inherit;         
@@ -54,4 +69,5 @@ import{i as p,x as b,r as v,a as f,n as e,d as u,b as g}from"./reset.css-DmUNvvk
           cursor: pointer;
           font-size: 14px;
       }
-    `];let o=s;a([e()],o.prototype,"href");a([e()],o.prototype,"title");a([e({attribute:"svg-src"})],o.prototype,"svgSrc");u({"task-todo":o,"navbar-yuh":c,"mu-auth":g.Provider});c.initializeOnce();
+    `];
+}

@@ -40,9 +40,9 @@ router.get("/", (_, res) => {
     else res.status(404).send();
   });
 });
-router.get("/:userid", (req, res) => {
-  const { userid } = req.params;
-  import_skill_svc.default.get(userid).then((Skill2) => res.json(Skill2)).catch((err) => res.status(404).send(err));
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+  import_skill_svc.default.get(id).then((skill) => res.json(skill)).catch((err) => res.status(404).send(err));
 });
 router.post("/", (req, res) => {
   const newSkill = req.body;

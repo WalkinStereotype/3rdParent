@@ -1,99 +1,48 @@
-import{a as c,i as h,O as v,x as l,e as u,r as b,c as g}from"./reset.css-DmUNvvkv.js";document.getElementById("mode-toggle");document.body.addEventListener("darkmode:toggle",n=>{n.detail.checked?document.body.classList.add("dark-mode"):document.body.classList.remove("dark-mode"),console.log("in custom event")});const m=c`
-    header {
-        color: var(--color-text-header);
-        background-color: var(--color-background-header);
-        font-family: var(--font-display);
-        font-weight: 400;
-        font-style: normal; 
-        margin: 0;                
-        padding: 0;
-    }
+import { html, css, LitElement } from "lit";
+import { state } from "lit/decorators.js";
+import { Observer, Auth, Events } from "@calpoly/mustang";
+import reset from "../styles/reset.css.ts";
+import page from "../styles/page.css.ts";
 
-    html {
-        margin: 0;
-        padding: 0;
-    }
+export class NavBarElement extends LitElement {
+  @state()
+  loggedIn = false;
 
-    body {
-        color: var(--color-text); 
-        background-color: var(--color-background-page);       
-        font-family: var(--font-text);
-        font-optical-sizing: auto;
-        font-weight: 500; /* 400 - 700 */
-        font-style: normal;
-        margin: 0;                
-        padding: 0;
+  @state()
+  userid?: string;
 
-    }
+  _authObserver = new Observer<Auth.Model>(this, "bigbrother:auth");
+  _user?: Auth.User;
 
-    body, body * {
-    transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    
-    h1 {
-        color: inherit;
-        font-size: 1.8 rem;  
-    }
+  get authorization() {
+    return (
+      this._user?.authenticated && {
+        Authorization:
+          `Bearer ${(this._user as Auth.AuthenticatedUser).token}`
+      }
+    );
+  }
 
-    h2, h3, h4, h5, h6 {
-        color: inherit; 
-    }
+  connectedCallback() {
+    super.connectedCallback();
 
-    a {
-        color: var(--color-text-header);
-        text-decoration: underline; 
-        font-weight: normal;   
-    }
-    
-    a:hover {
-        font-weight: bold;     
-    }
+    //Auth
+    this._authObserver.observe((auth: Auth.Model) => {
+      const { user } = auth;
 
-    svg.nav-icon {
-        display: inline;
-        height: 2em;
-        width: 2em;
-        vertical-align: top;
-        fill: currentColor;
-    }
+      if (user && user.authenticated ) {
+        this.loggedIn = true;
+        this.userid = user.username;
+      } else {
+        this.loggedIn = false;
+        this.userid = undefined;
+      }
+    });
 
-    svg.icon {
-        display: inline;
-        height: 2em;
-        width: 2em;
-        vertical-align: top;
-        fill: currentColor;
-    }
+  }
 
-    .searchbar {
-        display: flex;
-        max-width: var(--max-width-main);
-        align-items: center;
-        justify-content: space-between;
-        font-family: var(--font-text);
-        color: var(--color-text-searchbar);
-        background-color: var(--color-background-searchbar);
-        border: 2px solid var(--color-border-searchbar);
-        padding: 6px 16px;
-        border-radius: 64px;
-        margin-bottom: 16px;
-    }
-
-    @media (max-width: 900px) {
-        .nav-title {
-            display: none;
-        }
-        .nav-user {
-            display: none;
-        }
-        .nav-label {
-            display: none;
-        }
-        .sidebar {
-            width: 80px;
-        }
-    }
-`,f={styles:m};var x=Object.defineProperty,p=(n,e,o,r)=>{for(var t=void 0,a=n.length-1,i;a>=0;a--)(i=n[a])&&(t=i(e,o,t)||t);return t&&x(e,o,t),t};const d=class d extends h{constructor(){var o;super(),this.loggedIn=!1,this._authObserver=new v(this,"bigbrother:auth");const e=(o=this.shadowRoot)==null?void 0:o.querySelector("mode-toggle");e==null||e.addEventListener("click",r=>{r.stopPropagation();const t=r.target,a=t.checked,i=new CustomEvent("darkmode:toggle",{bubbles:!0,composed:!0,detail:{checked:a}});t.dispatchEvent(i),console.log("dark mode triggered")})}get authorization(){var e;return((e=this._user)==null?void 0:e.authenticated)&&{Authorization:`Bearer ${this._user.token}`}}connectedCallback(){super.connectedCallback(),this._authObserver.observe(e=>{const{user:o}=e;o&&o.authenticated?(this.loggedIn=!0,this.userid=o.username):(this.loggedIn=!1,this.userid=void 0)})}render(){return l`
+  override render() {
+    return html`
       <div class="sidebar">
         
         <div class="title-wrapper">
@@ -104,28 +53,28 @@ import{a as c,i as h,O as v,x as l,e as u,r as b,c as g}from"./reset.css-DmUNvvk
           
         <div class="menu-wrapper">
           <nav class="menu">
-            <a href="index.html">
+            <a href="/app">
               <svg class="nav-icon">
                 <use href="/icons/sprite.svg#icon-home" />
               </svg>
               <span class="nav-label">Home</span>
             </a>
             <br>
-            <a href="skill-list.html">
+            <a href="/app/skills">
               <svg class="nav-icon">
                 <use href="/icons/sprite.svg#icon-skills" />
               </svg>
               <span class="nav-label">Skills</span>
             </a>
             <br>
-            <a href="todo-list.html">
+            <a href="/app/todo">
               <svg class="nav-icon">
                 <use href="/icons/sprite.svg#icon-todo" />
               </svg>
               <span class="nav-label">To-Do</span>
             </a>
             <br>
-            <a href="log.html">
+            <a href="/app/log">
               <svg class="nav-icon">
                 <use href="/icons/sprite.svg#icon-logs" />
               </svg>
@@ -134,7 +83,20 @@ import{a as c,i as h,O as v,x as l,e as u,r as b,c as g}from"./reset.css-DmUNvvk
             <br>
             <label>
               <input type="checkbox" autocomplete="off" id="mode-toggle"
-                @change=${e=>{e.stopPropagation();const o=e.target,r=o.checked,t=new CustomEvent("darkmode:toggle",{bubbles:!0,composed:!0,detail:{checked:r}});o.dispatchEvent(t),console.log("dark mode triggered")}}
+                @change=${(event: Event) => {
+                  event.stopPropagation();
+                  const eventTarget =  event.target as HTMLInputElement;
+              
+                  const isChecked = eventTarget.checked;
+              
+                  const customEvent = new CustomEvent('darkmode:toggle', {
+                      bubbles: true,
+                      composed: true,
+                      detail: { checked: isChecked }
+                  });
+              
+                  eventTarget.dispatchEvent(customEvent);
+                  console.log("dark mode triggered")}}
               />
               <span class="nav-label">Dark mode</span>
             </label>
@@ -151,7 +113,7 @@ import{a as c,i as h,O as v,x as l,e as u,r as b,c as g}from"./reset.css-DmUNvvk
                     <use href="/icons/sprite.svg#icon-profile" />
                   </svg>
                   <span class="nav-label">
-                    ${this.userid||"Who u"}
+                    ${this.userid || "Who u"}
                   </span>
               </button>
 
@@ -160,27 +122,70 @@ import{a as c,i as h,O as v,x as l,e as u,r as b,c as g}from"./reset.css-DmUNvvk
                   id="profile-popover"
                   class="sign-in-out-popover"
               >
+                  <div>${this.userid || "Who u"}</div>
                   <div class="stats">Skills learned: 0</div>
-                  ${this.loggedIn?this.renderSignOutButton():this.renderSignInButton()}
+                  ${this.loggedIn
+                      ? this.renderSignOutButton()
+                      : this.renderSignInButton()
+                  }
               </div>
           </div>
         </div>
       </div>
-    `}renderSignOutButton(){return l`
+    `;
+  }
+
+  constructor() {
+    super();
+
+    const dm = this.shadowRoot?.querySelector("mode-toggle");
+    
+    dm?.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      const eventTarget = event.target as HTMLInputElement;
+
+      const isChecked = eventTarget.checked;
+
+      const customEvent = new CustomEvent('darkmode:toggle', {
+          bubbles: true,
+          composed: true,
+          detail: { checked: isChecked }
+      });
+
+      eventTarget.dispatchEvent(customEvent);
+      console.log("dark mode triggered")
+    })
+  }
+
+  renderSignOutButton() {
+    return html`
       <button
         class="signing-btn"
-        @click=${e=>{u.relay(e,"auth:message",["auth/signout"])}}
+        @click=${(e: UIEvent) => {
+          Events.relay(e, "auth:message", ["auth/signout"])
+        }}
       >
         Sign Out
       </button>
-    `}renderSignInButton(){return l`
+    `;
+  }
+
+  renderSignInButton() {
+    return html`
       <a 
         class="signing-btn"
         href="/login.html"
       >
         Sign In…
       </a>
-    `}static initializeOnce(){function e(o,r){o==null||o.classList.toggle("dark-mode",r)}document.body.addEventListener("darkmode:toggle",o=>e(o.currentTarget,o.detail.checked)),console.log("in custom event")}};d.styles=[b.styles,f.styles,c`
+    `;
+  }
+
+  static styles = [
+    reset.styles,
+    page.styles,
+    css`
         :root {
             transition: background-color 0.3s ease, color 0.3s ease;
         }    
@@ -320,4 +325,18 @@ import{a as c,i as h,O as v,x as l,e as u,r as b,c as g}from"./reset.css-DmUNvvk
                 width: 80px;
             }
         }
-    `];let s=d;p([g()],s.prototype,"loggedIn");p([g()],s.prototype,"userid");export{s as N};
+    `];
+
+  static initializeOnce() {
+    function toggleDarkMode(page: HTMLElement | null, checked: any) {
+      page?.classList.toggle("dark-mode", checked);
+    }
+
+    document.body.addEventListener("darkmode:toggle", (event: Event) =>
+      toggleDarkMode(event.currentTarget as HTMLElement,
+        (event as CustomEvent).detail.checked)
+    );
+
+    console.log("in custom event")
+  }
+}

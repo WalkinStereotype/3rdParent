@@ -1,0 +1,20 @@
+[
+    {
+        "date": "4/30/25",
+        "title": "Sewing a button",
+        "catColor": "skill--home",
+        "description": "I broke a button on my jacket's sleeve when I was crab walking at a social event, leading to it falling off. Can't believe I fixed it!"
+    },
+    {
+        "date": "5/26/25",
+        "title": "Filing taxes",
+        "catColor": "skill--finance",
+        "description": "Mi madre took me off her taxes. But now I can do it by myself."
+    },
+    {
+        "date": "5/30/25",
+        "title": "Replacing a tire",
+        "catColor": "skill--car",
+        "description": "I wanted to practice this in case I ever get stranded with a flat."
+    }
+]

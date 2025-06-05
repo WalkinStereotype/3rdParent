@@ -1,12 +1,12 @@
-import{i as d,x as p,r as h,a as f,n as r,d as x}from"./reset.css-DmUNvvkv.js";import{N as v}from"./navbar-CIKKDtv3.js";import{s as b}from"./skill-color.css-CPk2sX6q.js";var g=Object.defineProperty,i=(e,s,n,k)=>{for(var o=void 0,a=e.length-1,c;a>=0;a--)(c=e[a])&&(o=c(s,n,o)||o);return o&&g(s,n,o),o};const l=class l extends d{constructor(){super(...arguments),this.href="",this.catColor="skill--custom",this.title="Default Title"}render(){return p`
+import{i as d,x as p,r as h,a as x,n as r}from"./reset.css-7s6RLoVs.js";import{s as f}from"./skill-color.css-C6FHdvjI.js";var g=Object.defineProperty,i=(l,s,n,b)=>{for(var t=void 0,a=l.length-1,c;a>=0;a--)(c=l[a])&&(t=c(s,n,t)||t);return t&&g(s,n,t),t};const e=class e extends d{constructor(){super(...arguments),this.href="",this.catColor="skill--custom",this.title="Default Title"}render(){return p`
         <a href=${this.href} class="skill-link">
             <div class="skill ${this.catColor}">
               <div class="skill-icon">${this.icon}</div>
               <div class="skill-title">${this.title}</div>
-              <slot="action"><button class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button></slot>
+              <slot name="action"><button class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button></slot>
             </div>
         </a>
-    `}};l.styles=[h.styles,b.styles,f`
+    `}};e.styles=[h.styles,f.styles,x`
         .skill-link {
             text-decoration: none; 
             max-width: var(--max-width-main);
@@ -61,4 +61,4 @@ import{i as d,x as p,r as h,a as f,n as r,d as x}from"./reset.css-DmUNvvkv.js";i
         .text-center {
             text-align: center;
         }
-    `];let t=l;i([r()],t.prototype,"href");i([r({attribute:"cat-color"})],t.prototype,"catColor");i([r()],t.prototype,"title");i([r()],t.prototype,"icon");x({"skill-yuh":t,"navbar-yuh":v});
+    `];let o=e;i([r()],o.prototype,"href");i([r({attribute:"cat-color"})],o.prototype,"catColor");i([r()],o.prototype,"title");i([r()],o.prototype,"icon");export{o as S};

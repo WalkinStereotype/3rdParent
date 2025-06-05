@@ -34,7 +34,11 @@ const staticDir = process.env.STATIC || "public";
 app.use(import_express.default.static(staticDir));
 app.use(import_express.default.json());
 app.use("/auth", import_auth.default);
-app.use("/api/skills", import_auth.authenticateUser, import_skills.default);
+app.use(
+  "/api/skills",
+  /* authenticateUser,*/
+  import_skills.default
+);
 app.use("/api/interests", import_auth.authenticateUser, import_interests.default);
 app.use("/api/logs", import_auth.authenticateUser, import_logs.default);
 app.get("/hello", (req, res) => {

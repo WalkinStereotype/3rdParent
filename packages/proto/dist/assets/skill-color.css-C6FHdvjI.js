@@ -1,4 +1,4 @@
-import{a as o}from"./reset.css-DmUNvvkv.js";const r=o`
+import{a as o}from"./reset.css-7s6RLoVs.js";const r=o`
     .skill--home {
         background-color: var(--color-background-home);
     }

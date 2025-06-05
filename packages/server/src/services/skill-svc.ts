@@ -5,7 +5,6 @@ import { Types } from "mongoose";
 
 const SkillSchema = new Schema<Skill>(
     {
-        _id: { type: String, trim: true },
         title: { type: String, required: true, trim: true },
         category: { type: String, required: true, trim: true },
         description: { type: String, trim: true },
@@ -25,8 +24,8 @@ function index(): Promise<Skill[]> {
 }
   
 function get(id: String): Promise<Skill> {
-    return SkillModel.find({ _id: id })
-      .then((list) => list[0])
+    return SkillModel.findById(id)
+      .then((doc: unknown) => doc as Skill)
       .catch((err) => {
         throw `${id} Not Found`;
       });

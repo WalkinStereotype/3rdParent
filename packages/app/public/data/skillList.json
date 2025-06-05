@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Sewing a button",
+        "icon": "Home",
+        "catColor": "skill--home",
+        "href": "skill-expand.html"
+    },
+    {
+        "title": "Replacing a tire",
+        "icon": "Car",
+        "catColor": "skill--car",
+        "href": "skill-expand.html"
+    },
+    {
+        "title": "Filing taxes",
+        "icon": "Finance",
+        "catColor": "skill--finance",
+        "href": "skill-expand.html"
+    },
+    {
+        "title": "Fixing a leaky faucet",
+        "icon": "Misc",
+        "catColor": "skill--misc",
+        "href": "skill-expand.html"
+    },
+    {
+        "title": "Braiding hair",
+        "icon": "Custom",
+        "catColor": "skill--custom",
+        "href": "skill-expand.html"
+    }
+]

@@ -25,7 +25,6 @@ var import_mongoose = require("mongoose");
 var import_mongoose2 = require("mongoose");
 const LogSchema = new import_mongoose.Schema(
   {
-    _id: { type: String, trim: true },
     userID: { type: String, required: true, trim: true },
     skillID: { type: String, required: true, trim: true },
     reflection: { type: String, trim: true }

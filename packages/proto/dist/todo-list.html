@@ -12,9 +12,11 @@
     <link rel="stylesheet" href="/styles/skill-list.css" />
     <link rel="stylesheet" href="/styles/skill-color.css" />
     <link rel="stylesheet" href="/styles/page.css" />
-    <script type="module" crossorigin src="/assets/todo_list-D7Ajr49F.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/reset.css-DmUNvvkv.js">
-    <link rel="modulepreload" crossorigin href="/assets/navbar-CIKKDtv3.js">
+    <script type="module" crossorigin src="/assets/todo_list-mbRHNcSc.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/reset.css-7s6RLoVs.js">
+    <link rel="modulepreload" crossorigin href="/assets/navbar-BOMpJKeZ.js">
+    <link rel="modulepreload" crossorigin href="/assets/skill-color.css-C6FHdvjI.js">
+    <link rel="modulepreload" crossorigin href="/assets/skill-C3c_OpNc.js">
   </head>
   <body>
     <div class="container">
@@ -22,40 +24,7 @@
   
       <div class="general-main">
         <div class="searchbar">Search...</div>
-        <div class="todo-actual">
-          <h2>To-Do</h2>
-          <br>
-          <a href="skill-expand.html" class="skill-link">
-              <div class="skill skill--car">
-                <div class="skill-icon">Car</div>
-                <div class="skill-title">Replacing a tire</div>
-                <button class="skill-favorite-btn" onclick="event.stopPropagation()">Unprioritize</button>
-                <button class="skill-favorite-btn" onclick="event.stopPropagation()">Remove</button>
-              </div>
-          </a>
-          <a href="skill-expand.html" class="skill-link">
-            <div class="skill skill--car">
-              <div class="skill-icon">Car</div>
-              <div class="skill-title">Replacing a tire</div>
-              <button class="skill-favorite-btn" onclick="event.stopPropagation()">Unprioritize</button>
-                <button class="skill-favorite-btn" onclick="event.stopPropagation()">Remove</button>
-            </div>
-          </a>
-        </div>
-        <br>
-        <br>
-        <div class="todo-interested">
-          <h2>Interested</h2>
-          <br>
-          <a href="skill-expand.html" class="skill-link">
-            <div class="skill skill--finance">
-              <div class="skill-icon">Finance</div>
-              <div class="skill-title">Filing taxes</div>
-              <button class="skill-favorite-btn" onclick="event.stopPropagation()">Prioritize</button>
-                <button class="skill-favorite-btn" onclick="event.stopPropagation()">Remove</button>
-            </div>
-          </a>
-        </div>
+        <todo-list src="/data/todo-list.json"></todo-list>
           
   </body>
 </html>

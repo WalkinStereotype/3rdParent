@@ -17,11 +17,11 @@ router.get("/", (_, res: Response) => {
 });
 
 //Get Skills, including the user's custom skills
-router.get("/:userid", (req: Request, res: Response) => {
-    const { userid } = req.params;
+router.get("/:id", (req: Request, res: Response) => {
+    const { id } = req.params;
   
-    Skills.get(userid)
-      .then((Skill: Skill) => res.json(Skill))
+    Skills.get(id)
+      .then((skill: Skill) => res.json(skill))
       .catch((err) => res.status(404).send(err));
 });
 

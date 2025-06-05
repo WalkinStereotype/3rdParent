@@ -25,7 +25,6 @@ var import_mongoose = require("mongoose");
 var import_mongoose2 = require("mongoose");
 const SkillSchema = new import_mongoose.Schema(
   {
-    _id: { type: String, trim: true },
     title: { type: String, required: true, trim: true },
     category: { type: String, required: true, trim: true },
     description: { type: String, trim: true },
@@ -42,7 +41,7 @@ function index() {
   return SkillModel.find();
 }
 function get(id) {
-  return SkillModel.find({ _id: id }).then((list) => list[0]).catch((err) => {
+  return SkillModel.findById(id).then((doc) => doc).catch((err) => {
     throw `${id} Not Found`;
   });
 }

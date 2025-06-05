@@ -1,0 +1,30 @@
+[
+    {
+        "href": "skill-expand.html",
+        "title": "Replacing a tire",
+        "catColor": "skill--car",
+        "icon": "Car",
+        "priority": true
+    },
+    {
+        "href": "skill-expand.html",
+        "title": "Braiding hair",
+        "catColor": "skill--custom",
+        "icon": "Custom",
+        "priority": true
+    },
+    {
+        "href": "skill-expand.html",
+        "title": "Filing taxes",
+        "catColor": "skill--finance",
+        "icon": "Finance",
+        "priority": false
+    },
+    {
+        "href": "skill-expand.html",
+        "title": "Filing taxes",
+        "catColor": "skill--finance",
+        "icon": "Finance",
+        "priority": false
+    }
+]

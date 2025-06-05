@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kurale&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+  </head>
+  <body>
+    <mu-history provides="bigbrother:history">
+        <mu-auth provides="bigbrother:auth">
+            <mu-store provides="bigbrother:store">
+                <div class="container">
+                    <navbar-yuh></navbar-yuh>
+                    <mu-switch></mu-switch>
+                </div>
+            </mu-store>
+        </mu-auth>
+    </mu-history>
+
+    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/scripts/mode-toggle.js"></script>
+  </body>
+</html>
