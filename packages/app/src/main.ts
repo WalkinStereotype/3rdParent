@@ -2,10 +2,14 @@ import {
   Auth,
   define,
   History,
-  Switch
+  Switch,
+  Store
 } from "@calpoly/mustang";
 // import { html, LitElement } from "lit";
 import { html } from "lit";
+import { Msg } from "./messages";
+import { Model, init } from "./model";
+import update from "./update";
 
 import { BackButtonElement } from "./components/backbutton";
 
@@ -76,6 +80,13 @@ define({
         constructor() {
             super(routes, "bigbrother:history", "bigbrother:auth");
         }
+    },
+    "mu-store": class AppStore
+      extends Store.Provider<Model, Msg>
+    {
+      constructor() {
+        super(update, init, "bigbrother:auth");
+      }
     },
 
     "back-button": BackButtonElement,

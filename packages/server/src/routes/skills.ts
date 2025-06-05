@@ -16,6 +16,18 @@ router.get("/", (_, res: Response) => {
     })
 });
 
+router.get("/personal/:userid", (req: Request, res: Response) => {
+  const { userid } = req.params;
+  
+    Skills.indexByCreator(userid).then((data) => {
+        if (data) res 
+            .set("Content-Type", "application/json")
+            .send(JSON.stringify(data));
+        else res 
+            .status(404).send();
+    })
+});
+
 //Get Skills, including the user's custom skills
 router.get("/:id", (req: Request, res: Response) => {
     const { id } = req.params;

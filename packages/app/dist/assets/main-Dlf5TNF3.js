@@ -1,4 +1,4 @@
-import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h as gt,c as ft,_ as bt}from"./state-DruNTKZ4.js";const kt=d`
+import{a as lt,i as c,b as d,x as n,r as p,O as ct,e as ft,c as h,d as R,f as H,n as l,V as bt,h as kt,s as yt,_ as xt}from"./state-Ddp80qzq.js";const mt={};function $t(i,e,r){function o(t,s){const{userid:a}=t;return fetch(`/api/skills/personal/${a}`,{headers:lt.headers(s)}).then(k=>{if(k.status===200)return k.json()}).then(k=>{if(k)return console.log("Skills:",k),k})}switch(i[0]){case"skill/index":o(i[1],r).then(t=>e(s=>({...s,skills:t})));break;default:throw new Error("Unhandled Auth message")}}const wt=c`
     .main {
         flex: 1;
         background-color: var(--color-background-page);
@@ -67,14 +67,14 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
         }
     }
 
-`,b={styles:kt},K=class K extends c{render(){return n`
+`,b={styles:wt},Q=class Q extends d{render(){return n`
             <button @click=${this.handleBack}>
             <svg class="icon">
                 <use href="/icons/sprite.svg#icon-back"></use>
             </svg>
             <span style="font-size: 1.7rem;">Back</span>
             </button>
-        `}handleBack(){window.history.length>1?window.history.back():window.location.href="/app"}};K.styles=[p.styles,b.styles,d`
+        `}handleBack(){window.history.length>1?window.history.back():window.location.href="/app"}};Q.styles=[p.styles,b.styles,c`
             button {
                 background: transparent;
                 border: none;
@@ -99,7 +99,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
                 fill: currentColor;
                 display: inline-block;
             }
-        `];let T=K;var yt=Object.defineProperty,nt=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&yt(e,r,t),t};const Q=class Q extends c{constructor(){var r;super(),this.loggedIn=!1,this._authObserver=new at(this,"bigbrother:auth");const e=(r=this.shadowRoot)==null?void 0:r.querySelector("mode-toggle");e==null||e.addEventListener("click",s=>{s.stopPropagation();const t=s.target,o=t.checked,a=new CustomEvent("darkmode:toggle",{bubbles:!0,composed:!0,detail:{checked:o}});t.dispatchEvent(a),console.log("dark mode triggered")})}get authorization(){var e;return((e=this._user)==null?void 0:e.authenticated)&&{Authorization:`Bearer ${this._user.token}`}}connectedCallback(){super.connectedCallback(),this._authObserver.observe(e=>{const{user:r}=e;r&&r.authenticated?(this.loggedIn=!0,this.userid=r.username):(this.loggedIn=!1,this.userid=void 0)})}render(){return n`
+        `];let q=Q;var Ct=Object.defineProperty,dt=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&Ct(e,r,t),t};const X=class X extends d{constructor(){var r;super(),this.loggedIn=!1,this._authObserver=new ct(this,"bigbrother:auth");const e=(r=this.shadowRoot)==null?void 0:r.querySelector("mode-toggle");e==null||e.addEventListener("click",o=>{o.stopPropagation();const t=o.target,s=t.checked,a=new CustomEvent("darkmode:toggle",{bubbles:!0,composed:!0,detail:{checked:s}});t.dispatchEvent(a),console.log("dark mode triggered")})}get authorization(){var e;return((e=this._user)==null?void 0:e.authenticated)&&{Authorization:`Bearer ${this._user.token}`}}connectedCallback(){super.connectedCallback(),this._authObserver.observe(e=>{const{user:r}=e;r&&r.authenticated?(this.loggedIn=!0,this.userid=r.username):(this.loggedIn=!1,this.userid=void 0)})}render(){return n`
       <div class="sidebar">
         
         <div class="title-wrapper">
@@ -140,7 +140,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
             <br>
             <label>
               <input type="checkbox" autocomplete="off" id="mode-toggle"
-                @change=${e=>{e.stopPropagation();const r=e.target,s=r.checked,t=new CustomEvent("darkmode:toggle",{bubbles:!0,composed:!0,detail:{checked:s}});r.dispatchEvent(t),console.log("dark mode triggered")}}
+                @change=${e=>{e.stopPropagation();const r=e.target,o=r.checked,t=new CustomEvent("darkmode:toggle",{bubbles:!0,composed:!0,detail:{checked:o}});r.dispatchEvent(t),console.log("dark mode triggered")}}
               />
               <span class="nav-label">Dark mode</span>
             </label>
@@ -176,7 +176,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
     `}renderSignOutButton(){return n`
       <button
         class="signing-btn"
-        @click=${e=>{vt.relay(e,"auth:message",["auth/signout"])}}
+        @click=${e=>{ft.relay(e,"auth:message",["auth/signout"])}}
       >
         Sign Out
       </button>
@@ -187,7 +187,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
       >
         Sign In…
       </a>
-    `}static initializeOnce(){function e(r,s){r==null||r.classList.toggle("dark-mode",s)}document.body.addEventListener("darkmode:toggle",r=>e(r.currentTarget,r.detail.checked)),console.log("in custom event")}};Q.styles=[p.styles,b.styles,d`
+    `}static initializeOnce(){function e(r,o){r==null||r.classList.toggle("dark-mode",o)}document.body.addEventListener("darkmode:toggle",r=>e(r.currentTarget,r.detail.checked)),console.log("in custom event")}};X.styles=[p.styles,b.styles,c`
         :root {
             transition: background-color 0.3s ease, color 0.3s ease;
         }    
@@ -327,7 +327,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
                 width: 80px;
             }
         }
-    `];let $=Q;nt([h()],$.prototype,"loggedIn");nt([h()],$.prototype,"userid");const xt=d`
+    `];let C=X;dt([h()],C.prototype,"loggedIn");dt([h()],C.prototype,"userid");const Pt=c`
     .container {
         display: grid;
         grid-template-columns: 1fr 300px;
@@ -366,7 +366,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
             grid-area: right;
         }
     }
-`,mt={styles:xt},$t=d`
+`,_t={styles:Pt},zt=c`
     .searchbar {
         display: flex;
         max-width: var(--max-width-main);
@@ -380,7 +380,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
         border-radius: 64px;
         margin-bottom: 16px;
     }
-`,j={styles:$t};var wt=Object.defineProperty,H=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&wt(e,r,t),t};const I=class I extends c{render(){return n`
+`,j={styles:zt};var Ot=Object.defineProperty,L=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&Ot(e,r,t),t};const A=class A extends d{render(){return n`
         <div class="container">
             <div class="main">
               <div class="searchbar">Search...</div>
@@ -391,7 +391,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
               <recents-yuh src="/data/recents.json"></recents-yuh>
             </div>
         </div>
-    `}};I.uses=R({"mu-form":q.Element}),I.styles=[p.styles,b.styles,mt.styles,j.styles];let k=I;H([l({attribute:"user-id"})],k.prototype,"userid");H([h()],k.prototype,"todosHome");H([h()],k.prototype,"recents");var Ct=Object.defineProperty,lt=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&Ct(e,r,t),t};const X=class X extends c{constructor(){super(...arguments),this.todos=[]}render(){function e(r){return n`
+    `}};A.uses=R({"mu-form":H.Element}),A.styles=[p.styles,b.styles,_t.styles,j.styles];let y=A;L([l({attribute:"user-id"})],y.prototype,"userid");L([h()],y.prototype,"todosHome");L([h()],y.prototype,"recents");var jt=Object.defineProperty,pt=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&jt(e,r,t),t};const Z=class Z extends d{constructor(){super(...arguments),this.todos=[]}render(){function e(r){return n`
                 <task-todo 
                     href=${r.href} 
                     title=${r.title}
@@ -403,7 +403,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
             <h2>In Progress...</h2>
             <br>
             ${this.todos.map(e)}
-        `}connectedCallback(){super.connectedCallback(),this.src&&this.hydrate(this.src)}hydrate(e){fetch(e).then(r=>r.json()).then(r=>{if(r){const s=r;this.todos=s}})}};X.styles=[p.styles,d`        
+        `}connectedCallback(){super.connectedCallback(),this.src&&this.hydrate(this.src)}hydrate(e){fetch(e).then(r=>r.json()).then(r=>{if(r){const o=r;this.todos=o}})}};Z.styles=[p.styles,c`        
             .skill-favorite-btn {
                 color: var(--color-text-no-dark);
                 background-color: var(--color-background-button-no-dark);
@@ -413,7 +413,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
                 cursor: pointer;
                 font-size: 14px;
             }
-        `];let w=X;lt([l()],w.prototype,"src");lt([h()],w.prototype,"todos");var Pt=Object.defineProperty,W=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&Pt(e,r,t),t};const Z=class Z extends c{constructor(){super(...arguments),this.href="",this.title="Default Title"}render(){return n`
+        `];let P=Z;pt([l()],P.prototype,"src");pt([h()],P.prototype,"todos");var St=Object.defineProperty,W=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&St(e,r,t),t};const N=class N extends d{constructor(){super(...arguments),this.href="",this.title="Default Title"}render(){return n`
       <a href=${this.href} class="task-todo-link">
           <div class="task-todo">
             <div class="task-todo-icon">${this.svgSrc}</div>
@@ -421,7 +421,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
             <slot="action"><button class="task-todo-edit-btn" onclick="event.stopPropagation()">Done?</button></slot>
           </div>
       </a>
-    `}};Z.styles=[p.styles,d`
+    `}};N.styles=[p.styles,c`
       .task-todo-link {
           text-decoration: none; 
           color: inherit;         
@@ -469,7 +469,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
           cursor: pointer;
           font-size: 14px;
       }
-    `];let y=Z;W([l()],y.prototype,"href");W([l()],y.prototype,"title");W([l({attribute:"svg-src"})],y.prototype,"svgSrc");var _t=Object.defineProperty,ct=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&_t(e,r,t),t};const L=class L extends c{constructor(){super(...arguments),this.recents=[]}render(){function e(r){return n`
+    `];let x=N;W([l()],x.prototype,"href");W([l()],x.prototype,"title");W([l({attribute:"svg-src"})],x.prototype,"svgSrc");var Dt=Object.defineProperty,ht=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&Dt(e,r,t),t};const V=class V extends d{constructor(){super(...arguments),this.recents=[]}render(){function e(r){return n`
                 <a href=${r.href}>${r.title}</a>
             `}return n`
             <div class="container">
@@ -477,7 +477,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
                 <br>
                 ${this.recents.map(e)}
             </div>
-        `}connectedCallback(){super.connectedCallback(),this.src&&this.hydrate(this.src)}hydrate(e){fetch(e).then(r=>r.json()).then(r=>{if(r){const s=r;this.recents=s}})}};L.styles=[p.styles,d`        
+        `}connectedCallback(){super.connectedCallback(),this.src&&this.hydrate(this.src)}hydrate(e){fetch(e).then(r=>r.json()).then(r=>{if(r){const o=r;this.recents=o}})}};V.styles=[p.styles,c`        
             .container {
                 display: flex;
                 flex-direction: column;
@@ -491,17 +491,17 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
             a:hover {
                 color: var(--color-link-hover);
             }
-        `];let C=L;ct([l()],C.prototype,"src");ct([h()],C.prototype,"recents");var zt=Object.defineProperty,dt=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&zt(e,r,t),t};const A=class A extends c{constructor(){super(...arguments),this.mode="view"}get src(){return"/api/skills/"}render(){return n`
+        `];let _=V;ht([l()],_.prototype,"src");ht([h()],_.prototype,"recents");var It=Object.defineProperty,At=Object.getOwnPropertyDescriptor,Y=(i,e,r,o)=>{for(var t=o>1?void 0:o?At(e,r):e,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=(o?a(e,r,t):a(t))||t);return o&&t&&It(e,r,t),t};const B=class B extends bt{constructor(){super("bigbrother:model"),this.mode="view"}get skillList(){return this.model.skills}get src(){return"/api/skills/"}render(){return n`
             <div class="main">
                 <div class="searchbar">Search...</div>
                 <skill-list src=${this.src}></skill-list>
             </div>
-        `}};A.uses=R({"mu-form":q.Element}),A.styles=[p.styles,b.styles,j.styles];let P=A;dt([l({attribute:"user-id"})],P.prototype,"userid");dt([l()],P.prototype,"mode");var jt=Object.defineProperty,pt=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&jt(e,r,t),t};const N=class N extends c{constructor(){super(...arguments),this.skills=[]}render(){const{skills:e}=this;function r(s){return n`
+        `}attributeChangedCallback(e,r,o){super.attributeChangedCallback(e,r,o),e==="user-id"&&r!==o&&o&&this.dispatchMessage(["skill/index",{userid:o}])}};B.uses=R({"mu-form":H.Element}),B.styles=[p.styles,b.styles,j.styles];let m=B;Y([l({attribute:"user-id"})],m.prototype,"userid",2);Y([l()],m.prototype,"mode",2);Y([h()],m.prototype,"skillList",1);var Bt=Object.defineProperty,ut=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&Bt(e,r,t),t};const E=class E extends d{constructor(){super(...arguments),this.skills=[]}render(){const{skills:e}=this;function r(o){return n`
                 <skill-yuh
-                    href="/app/skills/${s._id}"
-                    cat-color="skill--${s.category}"
-                    icon=${s.category}
-                    title=${s.title}
+                    href="/app/skills/${o._id}"
+                    cat-color="skill--${o.category}"
+                    icon=${o.category}
+                    title=${o.title}
                 >
                     <button slot="action" class="skill-btn" onclick="event.stopPropagation()">Star</button>
                 </skill-yuh>
@@ -509,7 +509,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
             <h2>Skills</h2>
             <br>
             ${e.map(r)}
-        `}connectedCallback(){super.connectedCallback(),this.src&&this.hydrate(this.src)}hydrate(e){fetch(e).then(r=>console.log("hi",r)),fetch(e).then(r=>r.json()).then(r=>{if(r){const s=r;this.skills=s}})}};N.styles=[p.styles,d`        
+        `}connectedCallback(){super.connectedCallback(),this.src&&this.hydrate(this.src)}hydrate(e){fetch(e).then(r=>console.log("hi",r)),fetch(e).then(r=>r.json()).then(r=>{if(r){const o=r;this.skills=o}})}};E.styles=[p.styles,c`        
             .skill-btn {
                 color: var(--color-text-no-dark);
                 background-color: var(--color-background-button-no-dark);
@@ -519,7 +519,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
                 cursor: pointer;
                 font-size: 14px;
             }
-        `];let _=N;pt([l()],_.prototype,"src");pt([h()],_.prototype,"skills");const Ot=d`
+        `];let z=E;ut([l()],z.prototype,"src");ut([h()],z.prototype,"skills");const Mt=c`
     .skill--home {
         background-color: var(--color-background-home);
     }
@@ -539,15 +539,15 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
     .skill--custom {
         background-color: var(--color-background-custom);
     }
-`,Y={styles:Ot};function ht(i){return i?i.charAt(0).toUpperCase()+i.slice(1):""}var St=Object.defineProperty,M=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&St(e,r,t),t};const V=class V extends c{constructor(){super(...arguments),this.href="",this.catColor="skill--custom",this.title="Default Title",this.icon=""}render(){return n`
+`,G={styles:Mt};function vt(i){return i?i.charAt(0).toUpperCase()+i.slice(1):""}var Rt=Object.defineProperty,U=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&Rt(e,r,t),t};const tt=class tt extends d{constructor(){super(...arguments),this.href="",this.catColor="skill--custom",this.title="Default Title",this.icon=""}render(){return n`
         <a href=${this.href} class="skill-link">
             <div class="skill ${this.catColor}">
-              <div class="skill-icon">${ht(this.icon)}</div>
+              <div class="skill-icon">${vt(this.icon)}</div>
               <div class="skill-title">${this.title}</div>
               <slot name="action"><button class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button></slot>
             </div>
         </a>
-    `}};V.styles=[p.styles,Y.styles,d`
+    `}};tt.styles=[p.styles,G.styles,c`
         .skill-link {
             text-decoration: none; 
             max-width: var(--max-width-main);
@@ -602,25 +602,25 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
         .text-center {
             text-align: center;
         }
-    `];let v=V;M([l()],v.prototype,"href");M([l({attribute:"cat-color"})],v.prototype,"catColor");M([l()],v.prototype,"title");M([l()],v.prototype,"icon");var Dt=Object.defineProperty,G=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&Dt(e,r,t),t};const B=class B extends c{constructor(){super(...arguments),this.mode="view"}get src(){return`/api/skills/${this.skillid}`}render(){return n`
+    `];let v=tt;U([l()],v.prototype,"href");U([l({attribute:"cat-color"})],v.prototype,"catColor");U([l()],v.prototype,"title");U([l()],v.prototype,"icon");var Ut=Object.defineProperty,J=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&Ut(e,r,t),t};const M=class M extends d{constructor(){super(...arguments),this.mode="view"}get src(){return`/api/skills/${this.skillid}`}render(){return n`
             <div class="main">
                 <div class="searchbar">Search...</div>
                 <back-button></back-button>
                 <skill-expand-wrapper src=${this.src}></skill-expand>
             </div>
-        `}};B.uses=R({"mu-form":q.Element}),B.styles=[p.styles,b.styles,j.styles];let x=B;G([l({attribute:"user-id"})],x.prototype,"userid");G([l({attribute:"skill-id"})],x.prototype,"skillid");G([l()],x.prototype,"mode");var It=Object.defineProperty,O=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&It(e,r,t),t};const E=class E extends c{constructor(){super(...arguments),this.title="",this.category="",this.description="",this.resources=[],this._authObserver=new at(this,"bigbrother:auth")}get authorization(){var e;return((e=this._user)==null?void 0:e.authenticated)&&{Authorization:`Bearer ${this._user.token}`}}render(){const{resources:e}=this;function r(s){return n`
+        `}};M.uses=R({"mu-form":H.Element}),M.styles=[p.styles,b.styles,j.styles];let $=M;J([l({attribute:"user-id"})],$.prototype,"userid");J([l({attribute:"skill-id"})],$.prototype,"skillid");J([l()],$.prototype,"mode");var Ft=Object.defineProperty,S=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&Ft(e,r,t),t};const rt=class rt extends d{constructor(){super(...arguments),this.title="",this.category="",this.description="",this.resources=[],this._authObserver=new ct(this,"bigbrother:auth")}get authorization(){var e;return((e=this._user)==null?void 0:e.authenticated)&&{Authorization:`Bearer ${this._user.token}`}}render(){const{resources:e}=this;function r(o){return n`
                 <a 
                     class="resource" 
-                    href=${s.url}
+                    href=${o.url}
                     target="_blank"
                 >
-                    ${s.type}: ${s.label}
+                    ${o.type}: ${o.label}
                 </a>
                 <br>
             `}return n`
             <skill-expand 
                 title=${this.title} 
-                category=${ht(this.category)}
+                category=${vt(this.category)}
                 cat-color=skill--${this.category}
                 icon=${this.category.substring(0,1).toUpperCase()}
             >
@@ -630,7 +630,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
                     ${e.map(r)}
                 </div>
             </skill-expand>
-        `}connectedCallback(){super.connectedCallback(),this._authObserver.observe(e=>{this._user=e.user}),this.src&&this.hydrate(this.src)}attributeChangedCallback(e,r,s){super.attributeChangedCallback(e,r,s),e==="src"&&r!==s&&s&&this.hydrate(s)}hydrate(e){fetch(e).then(r=>r.json()).then(r=>{if(r){const s=r;this.title=s.title,this.category=s.category,this.description=s.description,this.resources=s.resources}})}};E.styles=d`  
+        `}connectedCallback(){super.connectedCallback(),this._authObserver.observe(e=>{this._user=e.user}),this.src&&this.hydrate(this.src)}attributeChangedCallback(e,r,o){super.attributeChangedCallback(e,r,o),e==="src"&&r!==o&&o&&this.hydrate(o)}hydrate(e){fetch(e).then(r=>r.json()).then(r=>{if(r){const o=r;this.title=o.title,this.category=o.category,this.description=o.description,this.resources=o.resources}})}};rt.styles=c`  
             .skill-expand-favorite-btn {
                 color: var(--color-text-no-dark);
                 background-color: var(--color-background-button-no-dark);
@@ -649,7 +649,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
                 font-weight: bold;
                 color: var(--color-link-hover);
             }
-        `;let u=E;O([l()],u.prototype,"src");O([h()],u.prototype,"title");O([h()],u.prototype,"category");O([h()],u.prototype,"description");O([h()],u.prototype,"resources");var At=Object.defineProperty,U=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&At(e,r,t),t};const tt=class tt extends c{constructor(){super(...arguments),this.catColor="skill--custom",this.title="Filler Title",this.category="custom",this.icon="C"}render(){return n`
+        `;let u=rt;S([l()],u.prototype,"src");S([h()],u.prototype,"title");S([h()],u.prototype,"category");S([h()],u.prototype,"description");S([h()],u.prototype,"resources");var Tt=Object.defineProperty,F=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&Tt(e,r,t),t};const et=class et extends d{constructor(){super(...arguments),this.catColor="skill--custom",this.title="Filler Title",this.category="custom",this.icon="C"}render(){return n`
         <div class="skill-expand ${this.catColor}">
             <div class="skill-expand-header">
                 <div class="skill-expand-title">${this.title}</div>
@@ -674,7 +674,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
         <br>
         <a href="empty-reflection.html" class="resource">Write reflection</a>
         <br>
-    `}};tt.styles=[p.styles,Y.styles,d`
+    `}};et.styles=[p.styles,G.styles,c`
         .skill-expand {
             display: flex;
             flex-direction: column;
@@ -745,27 +745,27 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
         }
 
 
-    `];let g=tt;U([l({attribute:"cat-color"})],g.prototype,"catColor");U([l()],g.prototype,"title");U([l()],g.prototype,"category");U([l()],g.prototype,"icon");var Bt=Object.defineProperty,Rt=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&Bt(e,r,t),t};const rt=class rt extends c{render(){return n`
+    `];let g=et;F([l({attribute:"cat-color"})],g.prototype,"catColor");F([l()],g.prototype,"title");F([l()],g.prototype,"category");F([l()],g.prototype,"icon");var qt=Object.defineProperty,Ht=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&qt(e,r,t),t};const ot=class ot extends d{render(){return n`
             <div class="main">
                 <div class="searchbar">Search...</div>
                 <todo-list src="/data/todo-list.json"></todo-list>
             </div>
-        `}};rt.styles=[p.styles,b.styles,j.styles];let S=rt;Rt([l({attribute:"user-id"})],S.prototype,"userid");var Mt=Object.defineProperty,J=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&Mt(e,r,t),t};const et=class et extends c{constructor(){super(...arguments),this.highPriorities=[],this.lowPriorities=[]}render(){function e(s){return n`
+        `}};ot.styles=[p.styles,b.styles,j.styles];let D=ot;Ht([l({attribute:"user-id"})],D.prototype,"userid");var Lt=Object.defineProperty,K=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&Lt(e,r,t),t};const st=class st extends d{constructor(){super(...arguments),this.highPriorities=[],this.lowPriorities=[]}render(){function e(o){return n`
                 <skill-yuh
-                href=${s.href}
-                cat-color=${s.catColor}
-                icon=${s.icon}
-                title=${s.title}
+                href=${o.href}
+                cat-color=${o.catColor}
+                icon=${o.icon}
+                title=${o.title}
                 >
                 <button slot="action" class="skill-favorite-btn" onclick="event.stopPropagation()">Unprioritize</button>
                 <button slot="action" class="skill-favorite-btn" onclick="event.stopPropagation()">Remove</button>
                 </skill-yuh>
-            `}function r(s){return n`
+            `}function r(o){return n`
                 <skill-yuh
-                href=${s.href}
-                cat-color=${s.catColor}
-                icon=${s.icon}
-                title=${s.title}
+                href=${o.href}
+                cat-color=${o.catColor}
+                icon=${o.icon}
+                title=${o.title}
                 >
                 <button slot="action" class="skill-favorite-btn" onclick="event.stopPropagation()">Prioritize</button>
                 <button slot="action" class="skill-favorite-btn" onclick="event.stopPropagation()">Remove</button>
@@ -783,7 +783,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
                 <br>
                 ${this.lowPriorities.map(r)}
             </div>
-        `}connectedCallback(){super.connectedCallback(),this.src&&this.hydrate(this.src)}hydrate(e){fetch(e).then(r=>r.json()).then(r=>{if(r){const s=r;this.highPriorities=s.filter(t=>t.priority),this.lowPriorities=s.filter(t=>!t.priority)}})}};et.styles=[p.styles,d`        
+        `}connectedCallback(){super.connectedCallback(),this.src&&this.hydrate(this.src)}hydrate(e){fetch(e).then(r=>r.json()).then(r=>{if(r){const o=r;this.highPriorities=o.filter(t=>t.priority),this.lowPriorities=o.filter(t=>!t.priority)}})}};st.styles=[p.styles,c`        
             .skill-favorite-btn {
                 color: var(--color-text-no-dark);
                 background-color: var(--color-background-button-no-dark);
@@ -793,12 +793,12 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
                 cursor: pointer;
                 font-size: 14px;
             }
-        `];let m=et;J([l()],m.prototype,"src");J([h()],m.prototype,"highPriorities");J([h()],m.prototype,"lowPriorities");var Ut=Object.defineProperty,Ft=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&Ut(e,r,t),t};const ot=class ot extends c{render(){return n`
+        `];let w=st;K([l()],w.prototype,"src");K([h()],w.prototype,"highPriorities");K([h()],w.prototype,"lowPriorities");var Wt=Object.defineProperty,Yt=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&Wt(e,r,t),t};const it=class it extends d{render(){return n`
             <div class="main">
                 <div class="searchbar">Search...</div>
                 <log-yuh src="/data/log.json"></log-yuh>
             </div>
-        `}};ot.styles=[p.styles,b.styles,j.styles];let D=ot;Ft([l({attribute:"user-id"})],D.prototype,"userid");var Tt=Object.defineProperty,ut=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&Tt(e,r,t),t};const st=class st extends c{constructor(){super(...arguments),this.reflections=[]}render(){function e(r){return n`
+        `}};it.styles=[p.styles,b.styles,j.styles];let I=it;Yt([l({attribute:"user-id"})],I.prototype,"userid");var Gt=Object.defineProperty,gt=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&Gt(e,r,t),t};const at=class at extends d{constructor(){super(...arguments),this.reflections=[]}render(){function e(r){return n`
                 <reflection-yuh
                     date=${r.date}
                     title=${r.title}
@@ -814,8 +814,8 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
                 <h2>Log</h2>
                 ${this.reflections.map(e)}
             </div>
-        `}connectedCallback(){super.connectedCallback(),this.src&&this.hydrate(this.src)}hydrate(e){fetch(e).then(r=>r.json()).then(r=>{if(r){const s=r;this.reflections=s}})}};st.styles=[p.styles,d`        
-        `];let z=st;ut([l()],z.prototype,"src");ut([h()],z.prototype,"reflections");const qt=d`
+        `}connectedCallback(){super.connectedCallback(),this.src&&this.hydrate(this.src)}hydrate(e){fetch(e).then(r=>r.json()).then(r=>{if(r){const o=r;this.reflections=o}})}};at.styles=[p.styles,c`        
+        `];let O=at;gt([l()],O.prototype,"src");gt([h()],O.prototype,"reflections");const Jt=c`
     .log-entry {
         color: var(--color-text-no-dark);
         font-family: var(--font-text);
@@ -879,7 +879,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
     a {
         color: var(--color-text-no-dark);
     }
-`,Ht={styles:qt};var Wt=Object.defineProperty,F=(i,e,r,s)=>{for(var t=void 0,o=i.length-1,a;o>=0;o--)(a=i[o])&&(t=a(e,r,t)||t);return t&&Wt(e,r,t),t};const it=class it extends c{constructor(){super(...arguments),this.href="",this.catColor="skill--custom",this.title="Default Title"}render(){return n`
+`,Kt={styles:Jt};var Qt=Object.defineProperty,T=(i,e,r,o)=>{for(var t=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(t=a(e,r,t)||t);return t&&Qt(e,r,t),t};const nt=class nt extends d{constructor(){super(...arguments),this.href="",this.catColor="skill--custom",this.title="Default Title"}render(){return n`
             <div class="log-entry ${this.catColor}">
                 <div class="log-entry-top">
                     <div class="log-entry-info">
@@ -892,7 +892,7 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
                     <slot name="description">what.</slot>
                 </div>
             </div>
-        `}};it.styles=[p.styles,Ht.styles,Y.styles];let f=it;F([l()],f.prototype,"href");F([l({attribute:"cat-color"})],f.prototype,"catColor");F([l()],f.prototype,"title");F([l()],f.prototype,"date");const Yt=[{path:"/app",view:()=>n`
+        `}};nt.styles=[p.styles,Kt.styles,G.styles];let f=nt;T([l()],f.prototype,"href");T([l({attribute:"cat-color"})],f.prototype,"catColor");T([l()],f.prototype,"title");T([l()],f.prototype,"date");const Xt=[{path:"/app",view:()=>n`
       <home-view></home-view>
     `},{path:"/app/skills",view:()=>n`
       <skill-list-view></skill-list-view>
@@ -902,4 +902,4 @@ import{i as d,a as c,x as n,r as p,O as at,e as vt,b as h,d as R,f as q,n as l,h
       <todo-view>Todo list</todo-view>
     `},{path:"/app/log",view:()=>n`
       <log-view>Hey</log-view>
-    `},{path:"/",redirect:"/app"}];R({"mu-auth":ft.Provider,"mu-history":gt.Provider,"mu-switch":class extends bt.Element{constructor(){super(Yt,"bigbrother:history","bigbrother:auth")}},"back-button":T,"navbar-yuh":$,"home-view":k,"todo-index":w,"task-todo":y,"recents-yuh":C,"skill-list-view":P,"skill-list":_,"skill-yuh":v,"skill-expand-view":x,"skill-expand-wrapper":u,"skill-expand":g,"todo-view":S,"todo-list":m,"log-view":D,"log-yuh":z,"reflection-yuh":f});document.getElementById("mode-toggle");document.body.addEventListener("darkmode:toggle",i=>{i.detail.checked?document.body.classList.add("dark-mode"):document.body.classList.remove("dark-mode"),console.log("in custom event")});
+    `},{path:"/",redirect:"/app"}];R({"mu-auth":lt.Provider,"mu-history":kt.Provider,"mu-switch":class extends xt.Element{constructor(){super(Xt,"bigbrother:history","bigbrother:auth")}},"mu-store":class extends yt.Provider{constructor(){super($t,mt,"bigbrother:auth")}},"back-button":q,"navbar-yuh":C,"home-view":y,"todo-index":P,"task-todo":x,"recents-yuh":_,"skill-list-view":m,"skill-list":z,"skill-yuh":v,"skill-expand-view":$,"skill-expand-wrapper":u,"skill-expand":g,"todo-view":D,"todo-list":w,"log-view":I,"log-yuh":O,"reflection-yuh":f});document.getElementById("mode-toggle");document.body.addEventListener("darkmode:toggle",i=>{i.detail.checked?document.body.classList.add("dark-mode"):document.body.classList.remove("dark-mode"),console.log("in custom event")});

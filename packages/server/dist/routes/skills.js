@@ -40,6 +40,13 @@ router.get("/", (_, res) => {
     else res.status(404).send();
   });
 });
+router.get("/personal/:userid", (req, res) => {
+  const { userid } = req.params;
+  import_skill_svc.default.indexByCreator(userid).then((data) => {
+    if (data) res.set("Content-Type", "application/json").send(JSON.stringify(data));
+    else res.status(404).send();
+  });
+});
 router.get("/:id", (req, res) => {
   const { id } = req.params;
   import_skill_svc.default.get(id).then((skill) => res.json(skill)).catch((err) => res.status(404).send(err));
