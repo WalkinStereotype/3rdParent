@@ -163,14 +163,14 @@ export class NavBarElement extends LitElement {
 
   renderSignOutButton() {
     return html`
-      <button
+      <a
         class="signing-btn"
         @click=${(e: UIEvent) => {
           Events.relay(e, "auth:message", ["auth/signout"])
         }}
       >
         Sign Out
-      </button>
+      </a>
     `;
   }
 
@@ -178,7 +178,7 @@ export class NavBarElement extends LitElement {
     return html`
       <a 
         class="signing-btn"
-        href="/login.html"
+        @click=${() => location.assign("/login.html")}
       >
         Sign In…
       </a>

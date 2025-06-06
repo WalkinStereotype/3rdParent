@@ -1,27 +1,27 @@
 [
     {
-        "href": "/app/skills/68202a9911677788c8756ee0",
+        "href": "skill-expand.html",
         "title": "Replacing a tire",
         "catColor": "skill--car",
         "icon": "Car",
         "priority": true
     },
     {
-        "href": "/app/skills/682022cf11677788c8756ede",
+        "href": "skill-expand.html",
         "title": "Braiding hair",
         "catColor": "skill--custom",
         "icon": "Custom",
         "priority": true
     },
     {
-        "href": "/app/skills/68202b3011677788c8756ee2",
+        "href": "skill-expand.html",
         "title": "Filing taxes",
         "catColor": "skill--finance",
         "icon": "Finance",
         "priority": false
     },
     {
-        "href": "/app/skills/68202b3011677788c8756ee2",
+        "href": "skill-expand.html",
         "title": "Filing taxes",
         "catColor": "skill--finance",
         "icon": "Finance",

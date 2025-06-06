@@ -174,16 +174,16 @@ import{a as ct,i as c,b as h,x as n,r as d,O as dt,e as ft,c as p,d as R,f as H,
         </div>
       </div>
     `}renderSignOutButton(){return n`
-      <button
+      <a
         class="signing-btn"
         @click=${e=>{ft.relay(e,"auth:message",["auth/signout"])}}
       >
         Sign Out
-      </button>
+      </a>
     `}renderSignInButton(){return n`
       <a 
         class="signing-btn"
-        href="/login.html"
+        @click=${()=>location.assign("/login.html")}
       >
         Sign In…
       </a>
@@ -491,7 +491,7 @@ import{a as ct,i as c,b as h,x as n,r as d,O as dt,e as ft,c as p,d as R,f as H,
             a:hover {
                 color: var(--color-link-hover);
             }
-        `];let _=E;ut([l()],_.prototype,"src");ut([p()],_.prototype,"recents");var It=Object.defineProperty,J=(i,e,t,o)=>{for(var r=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(r=a(e,t,r)||r);return r&&It(e,t,r),r};const B=class B extends pt{constructor(){super("bigbrother:model"),this.mode="view",this.skills=[]}get src(){return"api/skills/list"}render(){var t;function e(o){return n`
+        `];let _=E;ut([l()],_.prototype,"src");ut([p()],_.prototype,"recents");var It=Object.defineProperty,J=(i,e,t,o)=>{for(var r=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(r=a(e,t,r)||r);return r&&It(e,t,r),r};const B=class B extends pt{constructor(){super("bigbrother:model"),this.mode="view",this.skills=[]}get src(){return"/api/skills/list"}render(){var t;function e(o){return n`
                 <skill-yuh
                     href="/app/skills/${o._id}"
                     cat-color="skill--${o.category}"
@@ -625,7 +625,7 @@ import{a as ct,i as c,b as h,x as n,r as d,O as dt,e as ft,c as p,d as R,f as H,
         .text-center {
             text-align: center;
         }
-    `];let v=rt;U([l()],v.prototype,"href");U([l({attribute:"cat-color"})],v.prototype,"catColor");U([l()],v.prototype,"title");U([l()],v.prototype,"icon");var Ut=Object.defineProperty,Q=(i,e,t,o)=>{for(var r=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(r=a(e,t,r)||r);return r&&Ut(e,t,r),r};const M=class M extends h{constructor(){super(...arguments),this.mode="view"}get src(){return`/api/skills/${this.skillid}`}render(){return n`
+    `];let v=rt;U([l()],v.prototype,"href");U([l({attribute:"cat-color"})],v.prototype,"catColor");U([l()],v.prototype,"title");U([l()],v.prototype,"icon");var Ut=Object.defineProperty,Q=(i,e,t,o)=>{for(var r=void 0,s=i.length-1,a;s>=0;s--)(a=i[s])&&(r=a(e,t,r)||r);return r&&Ut(e,t,r),r};const M=class M extends h{constructor(){super(...arguments),this.mode="view"}get src(){return`/api/skills/expand/${this.skillid}`}render(){return n`
             <div class="main">
                 <div class="searchbar">Search...</div>
                 <back-button></back-button>

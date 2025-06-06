@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/styles/tokens.css" />
   <link rel="stylesheet" href="/styles/page.css" />
   <link rel="stylesheet" href="/styles/login.css" />
-  <script type="module" crossorigin src="/assets/login-DAb_mV17.js"></script>
+  <script type="module" crossorigin src="/assets/signup-DAb_mV17.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/state-Ddp80qzq.js">
   <link rel="modulepreload" crossorigin href="/assets/login-form-CGU_d_zo.js">
 </head>
@@ -22,8 +22,8 @@
       </div>
     
       <main class="login-box">
-        <h3>Login</h3>
-        <login-form api="/auth/login">
+        <h3>Sign Up</h3>
+        <login-form api="/auth/register" redirect="/">
           <label>
             <span>Username:</span>
             <input name="username" autocomplete="off" />
@@ -32,16 +32,17 @@
             <span>Password:</span>
             <input type="password" name="password" />
           </label>
+          <span slot="button-label">Create Account</span>
         </login-form>
       </main>
       <br>
       <p>
-        Don't have an account?
+        Already have an account?
             <a 
-              href="newuser.html"
+              href="login.html"
               class="signup"
             >
-                Sign up here
+                Log in here
             </a>
       </p>
     </mu-auth>
