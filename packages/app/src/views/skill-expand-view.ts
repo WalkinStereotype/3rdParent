@@ -21,7 +21,7 @@ export class SkillExpandViewElement extends LitElement {
     mode = "view";
 
     get src() {
-        return `/api/skills/${this.skillid}`;
+        return `/api/skills/expand/${this.skillid}`;
     }
 
     render() {

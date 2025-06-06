@@ -22,11 +22,11 @@ __export(user_svc_exports, {
 });
 module.exports = __toCommonJS(user_svc_exports);
 var import_mongoose = require("mongoose");
+var import_mongoose2 = require("mongoose");
 const UserSchema = new import_mongoose.Schema(
   {
     username: { type: String, required: true, trim: true },
-    name: { type: String, trim: true },
-    hashedPW: { type: String, required: true, trim: true }
+    name: { type: String, trim: true }
   },
   { collection: "users" }
 );
@@ -42,4 +42,24 @@ function get(id) {
     throw `${id} Not Found`;
   });
 }
-var user_svc_default = { index, get };
+function create(json) {
+  const u = new UserModel(json);
+  return u.save();
+}
+function update(id, user) {
+  console.log(user);
+  return UserModel.findOneAndUpdate({ _id: new import_mongoose2.Types.ObjectId(id) }, user, {
+    new: true
+  }).then((updated) => {
+    if (!updated) throw `${id} not updated`;
+    else return updated;
+  });
+}
+function remove(id) {
+  return UserModel.findOneAndDelete({ id }).then(
+    (deleted) => {
+      if (!deleted) throw `${id} not deleted`;
+    }
+  );
+}
+var user_svc_default = { index, get, create, update, remove };

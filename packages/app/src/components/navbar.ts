@@ -11,6 +11,9 @@ export class NavBarElement extends LitElement {
   @state()
   userid?: string;
 
+  @state()
+  username?: string;
+
   _authObserver = new Observer<Auth.Model>(this, "bigbrother:auth");
   _user?: Auth.User;
 
@@ -32,10 +35,10 @@ export class NavBarElement extends LitElement {
 
       if (user && user.authenticated ) {
         this.loggedIn = true;
-        this.userid = user.username;
+        this.username = user.username;
       } else {
         this.loggedIn = false;
-        this.userid = undefined;
+        this.username = undefined;
       }
     });
 
@@ -113,7 +116,7 @@ export class NavBarElement extends LitElement {
                     <use href="/icons/sprite.svg#icon-profile" />
                   </svg>
                   <span class="nav-label">
-                    ${this.userid || "Who u"}
+                    ${this.username || "Who u"}
                   </span>
               </button>
 
@@ -122,7 +125,7 @@ export class NavBarElement extends LitElement {
                   id="profile-popover"
                   class="sign-in-out-popover"
               >
-                  <div>${this.userid || "Who u"}</div>
+                  <div>${this.username || "Who u"}</div>
                   <div class="stats">Skills learned: 0</div>
                   ${this.loggedIn
                       ? this.renderSignOutButton()

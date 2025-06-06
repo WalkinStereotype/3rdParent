@@ -9,13 +9,26 @@ export default function update(
     apply: Update.ApplyMap<Model>,
     user: Auth.User
 ) {
+    switch (message[0]) {
+        case "skill/index":
+            loadSkillList(message[1], user)
+                .then((skills) =>
+                    apply((model) =>
+                        ({...model, skills})
+                    )
+                );
+            break;
+        default:
+            throw new Error(`Unhandled Auth message`);
+    }
+
     function loadSkillList(
         payload: { userid: string },
-        user:Auth.User
+        user: Auth.User
     ) {
         const { userid } = payload;
-
-        return fetch(`/api/skills/personal/${userid}`, {
+            
+        return fetch(`/api/skills/list/${userid}`, {
             headers: Auth.headers(user)
         })
             .then((response: Response) => {
@@ -30,18 +43,5 @@ export default function update(
                     return json as Skill[];
                 }
             });
-    }
-
-    switch (message[0]) {
-        case "skill/index":
-            loadSkillList(message[1], user)
-                .then((skills) =>
-                    apply((model) =>
-                        ({...model, skills})
-                    )
-                );
-            break;
-        default:
-            throw new Error(`Unhandled Auth message`);
     }
 }

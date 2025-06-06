@@ -2,6 +2,4 @@ export interface User {
     _id?: string;
     username: string;
     name: string | undefined;
-    email: string;
-    hashedPW: string;
 }

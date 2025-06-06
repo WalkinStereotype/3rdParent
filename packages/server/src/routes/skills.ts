@@ -6,7 +6,7 @@ import Skills from "../services/skill-svc";
 
 const router = express.Router();
 
-router.get("/", (_, res: Response) => {
+router.get("/list", (_, res: Response) => {
     Skills.index().then((data) => {
         if (data) res 
             .set("Content-Type", "application/json")
@@ -16,7 +16,7 @@ router.get("/", (_, res: Response) => {
     })
 });
 
-router.get("/personal/:userid", (req: Request, res: Response) => {
+router.get("/list/:userid", (req: Request, res: Response) => {
   const { userid } = req.params;
   
     Skills.indexByCreator(userid).then((data) => {
@@ -29,7 +29,7 @@ router.get("/personal/:userid", (req: Request, res: Response) => {
 });
 
 //Get Skills, including the user's custom skills
-router.get("/:id", (req: Request, res: Response) => {
+router.get("/expand/:id", (req: Request, res: Response) => {
     const { id } = req.params;
   
     Skills.get(id)

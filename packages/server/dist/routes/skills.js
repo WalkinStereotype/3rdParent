@@ -34,20 +34,20 @@ module.exports = __toCommonJS(skills_exports);
 var import_express = __toESM(require("express"));
 var import_skill_svc = __toESM(require("../services/skill-svc"));
 const router = import_express.default.Router();
-router.get("/", (_, res) => {
+router.get("/list", (_, res) => {
   import_skill_svc.default.index().then((data) => {
     if (data) res.set("Content-Type", "application/json").send(JSON.stringify(data));
     else res.status(404).send();
   });
 });
-router.get("/personal/:userid", (req, res) => {
+router.get("/list/:userid", (req, res) => {
   const { userid } = req.params;
   import_skill_svc.default.indexByCreator(userid).then((data) => {
     if (data) res.set("Content-Type", "application/json").send(JSON.stringify(data));
     else res.status(404).send();
   });
 });
-router.get("/:id", (req, res) => {
+router.get("/expand/:id", (req, res) => {
   const { id } = req.params;
   import_skill_svc.default.get(id).then((skill) => res.json(skill)).catch((err) => res.status(404).send(err));
 });

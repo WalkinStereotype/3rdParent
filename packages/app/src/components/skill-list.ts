@@ -1,19 +1,28 @@
-import { html, css, LitElement } from "lit";
+import { html, css } from "lit";
 import { property, state } from "lit/decorators.js";
 import reset from "../styles/reset.css.ts";
+import { View } from "@calpoly/mustang";
 
-import { Skill } from "../models/skill.ts";
+// import { Skill } from "../models/skill.ts";
+import { Skill } from "server/models";
+import { Msg } from "../messages";
+import { Model } from "../model";
 
 
-export class SkillListElement extends LitElement {
-    @property()
-    src?: string;
+export class SkillListElement extends View<Model, Msg> {
+    @property({attribute: "user-id"})
+    userid?: string;
 
     @state()
-    skills: Array<Skill> = [];
+    get skills(): Array<Skill> | undefined {
+        return this.model.skills;
+    };
+
+    constructor() {
+        super("bigbrother:model");
+    }
 
     render() {
-        const { skills } = this;
         function renderSkill(s: Skill){
             return html `
                 <skill-yuh
@@ -30,28 +39,46 @@ export class SkillListElement extends LitElement {
         return html`
             <h2>Skills</h2>
             <br>
-            ${skills.map(renderSkill)}
+            ${this.skills?.map(renderSkill)}
         `;
     }
 
-    connectedCallback() {
-        super.connectedCallback();
-        if (this.src) this.hydrate(this.src);
-    }
+    // connectedCallback() {
+    //     super.connectedCallback();
+    //     if (this.src) this.hydrate(this.src);
+    // }
 
-    hydrate(src: string) {
-        fetch(src)
-        .then(res => console.log("hi", res));
+    // hydrate(src: string) {
+    //     fetch(src)
+    //     .then(res => console.log("hi", res));
 
-        fetch(src)
-        .then(res => res.json())
-        .then((json: object) => {
-            if(json) {
-                const skillList = json as Array<Skill>;
+    //     fetch(src)
+    //     .then(res => res.json())
+    //     .then((json: object) => {
+    //         if(json) {
+    //             const skillList = json as Array<Skill>;
 
-                this.skills = skillList;
-            }
-        });
+    //             this.skills = skillList;
+    //         }
+    //     });
+    // }
+
+    attributeChangedCallback(
+        name: string,
+        oldValue: string,
+        newValue: string
+    ) {
+        super.attributeChangedCallback(name, oldValue, newValue);
+        if (
+            name === "user-id" &&
+            oldValue !== newValue &&
+            newValue
+        ) {
+            this.dispatchMessage([
+            "skill/index",
+            { userid: newValue }
+            ]);
+        }
     }
 
     static styles = [

@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kurale&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/reset.css" />
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="stylesheet" href="/styles/page.css" />
+  <link rel="stylesheet" href="/styles/login.css" />
+  <script type="module">
+    import { define, Auth } from "@calpoly/mustang";
+    import { LoginFormElement } from "/src/auth/login-form";
+
+    define({
+      "mu-auth": Auth.Provider,
+      "login-form": LoginFormElement
+    });
+  </script>
+</head>
+<body class="page">
+  <mu-auth class="container">
+      <div class ="header">
+        <div class="app-logo">:3 :P</div>
+        <h1>3rd Parent</h1>
+      </div>
+    
+      <main class="login-box">
+        <h3>Sign Up</h3>
+        <login-form api="/auth/login">
+          <label>
+            <span>Username:</span>
+            <input name="username" autocomplete="off" />
+          </label>
+          <label>
+            <span>Password:</span>
+            <input type="password" name="password" />
+          </label>
+          <span slot="button-label">Create Account</span>
+        </login-form>
+      </main>
+      <br>
+      <p>
+        Already have an account?
+            <a 
+              href="login.html"
+              class="signup"
+            >
+                Log in here
+            </a>
+      </p>
+    </mu-auth>
+  </body>
+</html>
