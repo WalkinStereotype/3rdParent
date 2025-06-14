@@ -42,6 +42,7 @@ router.get("/list", (_, res) => {
 });
 router.get("/list/:userid", (req, res) => {
   const { userid } = req.params;
+  console.log(req.auth);
   import_skill_svc.default.indexByCreator(userid).then((data) => {
     if (data) res.set("Content-Type", "application/json").send(JSON.stringify(data));
     else res.status(404).send();

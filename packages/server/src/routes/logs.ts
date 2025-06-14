@@ -6,7 +6,7 @@ import Logs from "../services/log-svc";
 
 const router = express.Router();
 
-router.get("/", (_, res: Response) => {
+router.get("/list", (_, res: Response) => {
     Logs.index().then((data) => {
         if (data) res 
             .set("Content-Type", "application/json")
@@ -16,11 +16,22 @@ router.get("/", (_, res: Response) => {
     })
 });
 
+router.get("/list/:userid", (req: Request, res: Response) => {
+  const { userid } = req.params;  
+  Logs.indexByCreator(userid).then((data) => {
+      if (data) res 
+          .set("Content-Type", "application/json")
+          .send(JSON.stringify(data));
+      else res 
+          .status(404).send();
+  })
+});
+
   
-router.get("/:userid", (req: Request, res: Response) => {
-    const { userid } = req.params;
+router.get("/expand/:id", (req: Request, res: Response) => {
+    const { id } = req.params;
   
-    Logs.get(userid)
+    Logs.get(id)
       .then((Log: Log) => res.json(Log))
       .catch((err) => res.status(404).send(err));
 });

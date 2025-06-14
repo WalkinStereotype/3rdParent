@@ -22,7 +22,8 @@ app.use(express.json());
 
 // Use routers
 app.use("/auth", auth);
-app.use("/api/skills", /* authenticateUser, */ skills);
+// app.use("/api/skills", skills);
+app.use("/api/skills", authenticateUser, skills);
 app.use("/api/interests", authenticateUser, interests);
 app.use("/api/logs", authenticateUser, logs);
 

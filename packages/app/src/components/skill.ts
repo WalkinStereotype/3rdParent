@@ -13,13 +13,15 @@ export class SkillElement extends LitElement {
 
   override render() {
     return html`
-        <a href=${this.href} class="skill-link">
-            <div class="skill ${this.catColor}">
-              <div class="skill-icon">${ capitalizeFirstLetter(this.icon) }</div>
-              <div class="skill-title">${this.title}</div>
-              <slot name="action"><button class="skill-favorite-btn" onclick="event.stopPropagation()">Star</button></slot>
-            </div>
-        </a>
+        <div class="skill ${this.catColor}">
+            <a href=${this.href} class="skill-link">
+                <div class="skill-icon">${ capitalizeFirstLetter(this.icon) }</div>
+                <div class="skill-title">${this.title}</div>
+            </a>
+
+            <slot name="action"><button class="skill-favorite-btn" onclick="console.log("click")">Star</button></slot>
+        </div>
+        
     `;
   }
 
@@ -28,30 +30,30 @@ export class SkillElement extends LitElement {
     skillColor.styles,
     css`
         .skill-link {
+            display: flex;
+            align-items: center;
             text-decoration: none; 
-            max-width: var(--max-width-main);
+            max-width: var(--max-width-main) - 75px;
             max-height: var(--max-height-main);
-            color: inherit;         
-            display: block;
+            color: inherit;   
             width: 100%;
+            transition: font-weight 0.2s,  background-color 0.2s;
         }
         
         .skill {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            max-width: var(--max-width-main);
             max-height: var(--max-height-main);
             color: var(--color-text-logo);
-            /* background-color: var(--color-task-todo-background); */
             padding: 12px 16px;
             border-radius: 8px;
             margin-bottom: 16px;
-            transition: background-color 0.2s;
         }
         
-        .skill:hover {
+        .skill-link:hover {
             font-weight: bold;
-            /* background-color: #ccc2a9; */
         }
         
         .skill-icon {

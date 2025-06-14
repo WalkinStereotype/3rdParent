@@ -20,6 +20,9 @@ export class SkillExpandWrapperElement extends LitElement {
     @state() description: string = "";
     @state() resources: Array<Resource> = [];
 
+    @property({ attribute: 'user-id'}) userid: string= "";
+    @property({ attribute: 'skill-id'}) skillid: string= "";
+
     _authObserver = new Observer<Auth.Model>(this, "bigbrother:auth");
     _user?: Auth.User;
     
@@ -49,6 +52,8 @@ export class SkillExpandWrapperElement extends LitElement {
 
         return html`
             <skill-expand 
+                user-id=${this.userid}
+                skill-id=${this.skillid}
                 title=${this.title} 
                 category=${capitalizeFirstLetter(this.category)}
                 cat-color=skill--${this.category}

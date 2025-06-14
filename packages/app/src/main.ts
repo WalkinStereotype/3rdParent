@@ -34,6 +34,8 @@ import { TodoListElement } from "./components/todo-list";
 import { LogViewElement } from "./views/log-view";
 import { LogElement } from "./components/log";
 import { ReflectionElement } from "./components/reflection";
+import { LogAddElement } from "./components/log-add";
+import { LogEditElement } from "./components/log-edit";
 
 
 const routes = [
@@ -44,27 +46,60 @@ const routes = [
     `
   },
   {
-    path: "/app/skills",
-    view: () => html`
-      <skill-list-view></skill-list-view>
-    `
-  },
-  {
-    path: "/app/skills/:skillid",
+    path: "/app/skills/:userid",
     view: (params: Switch.Params) => html`
-      <skill-expand-view skill-id=${params.skillid}>Skill expanded</skill-expand-view>
+      <skill-list-view user-id=${params.userid}></skill-list-view>
     `
   },
   {
-    path: "/app/todo",
-    view: () => html`
-      <todo-view>Todo list</todo-view>
+    path: "/app/skills/:userid/:skillid",
+    view: (params: Switch.Params) => html`
+      <skill-expand-view user-id=${params.userid} skill-id=${params.skillid}>Skill expanded</skill-expand-view>
     `
   },
   {
-    path: "/app/log",
-    view: () => html`
-      <log-view>Hey</log-view>
+    path: "/app/todo/:userid",
+    view: (params: Switch.Params) => html`
+      <todo-view user-id=${params.userid}>Todo list</todo-view>
+    `
+  },
+  {
+    path: "/app/log/:userid",
+    view: (params: Switch.Params) => html`
+      <log-view user-id=${params.userid}>Hey</log-view>
+    `
+  },
+  {
+    path: "/app/log/:userid/:logid",
+    view: (params: Switch.Params) => html`
+      <log-expand-view 
+        user-id=${params.userid} 
+        log-id=${params.logid}
+      >
+        Hey
+      </log-expand-view>
+    `
+  },
+  {
+    path: "/app/log/add/:userid/:skillid",
+    view: (params: Switch.Params) => html`
+      <log-expand-add 
+        user-id=${params.userid}
+        skill-id=${params.skillid}
+      >
+        Hey
+      </log-expand-add>
+    `
+  },
+  {
+    path: "/app/log/:userid/:logid/edit",
+    view: (params: Switch.Params) => html`
+      <log-expand-edit 
+        user-id=${params.userid}
+        log-id=${params.logid}
+      >
+        Hey
+      </log-expand-edit>
     `
   },
   {
@@ -111,5 +146,7 @@ define({
     
     "log-view": LogViewElement,
     "log-yuh": LogElement,
-    "reflection-yuh": ReflectionElement
+    "reflection-yuh": ReflectionElement,
+    "log-expand-add": LogAddElement,
+    "log-expand-edit": LogEditElement,
 });

@@ -4,7 +4,7 @@ import express, {
   Request,
   Response
 } from "express";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 import credentials from "../services/credential-svc";
 
@@ -60,7 +60,7 @@ function generateAccessToken(
 }
 
 export function authenticateUser(
-  req: Request,
+  req: Request & {auth?: string | JwtPayload},
   res: Response,
   next: NextFunction
 ) {
@@ -72,8 +72,10 @@ export function authenticateUser(
     res.status(401).end();
   } else {
     jwt.verify(token, TOKEN_SECRET, (error, decoded) => {
-      if (decoded) next();
-      else res.status(403).end();
+      if (decoded) {
+        req.auth = decoded;
+        next();
+      } else res.status(403).end();
     });
   }
 }

@@ -9,6 +9,9 @@ export class SkillExpandElement extends LitElement {
   @property() category: string = 'custom';
   @property() icon: string = 'C';
 
+  @property({ attribute: 'user-id'}) userid: string= "";
+  @property({ attribute: 'skill-id'}) skillid: string= "";
+
 
   override render() {    
     return html`
@@ -34,7 +37,7 @@ export class SkillExpandElement extends LitElement {
 
         <br>
         <br>
-        <a href="empty-reflection.html" class="resource">Write reflection</a>
+        <a href="/app/log/add/${this.userid}/${this.skillid}" class="resource">Write reflection</a>
         <br>
     `;
   }

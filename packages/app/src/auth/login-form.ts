@@ -81,6 +81,7 @@ export class LoginFormElement extends LitElement {
     switch (name) {
         case "username":
         this.formData = { ...prevData, username: value };
+        // this.redirect = `/app/${value}`;
         break;
         case "password":
         this.formData = { ...prevData, password: value };

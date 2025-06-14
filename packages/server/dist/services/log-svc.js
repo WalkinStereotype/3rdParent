@@ -27,7 +27,8 @@ const LogSchema = new import_mongoose.Schema(
   {
     userID: { type: String, required: true, trim: true },
     skillID: { type: String, required: true, trim: true },
-    reflection: { type: String, trim: true }
+    reflection: { type: String, trim: true },
+    date: { type: Date, required: false, trim: true }
   },
   { collection: "logs" }
 );

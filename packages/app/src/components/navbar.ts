@@ -1,18 +1,20 @@
-import { html, css, LitElement } from "lit";
+// import { html, css, LitElement } from "lit";
+import { html, css } from "lit";
 import { state } from "lit/decorators.js";
-import { Observer, Auth, Events } from "@calpoly/mustang";
+import { Observer, Auth, Events, View } from "@calpoly/mustang";
+
+import { Msg } from "../messages";
+import { Model } from "../model";
+
 import reset from "../styles/reset.css.ts";
 import page from "../styles/page.css.ts";
 
-export class NavBarElement extends LitElement {
+export class NavBarElement extends View<Model, Msg> {
   @state()
   loggedIn = false;
 
   @state()
   userid?: string;
-
-  @state()
-  username?: string;
 
   _authObserver = new Observer<Auth.Model>(this, "bigbrother:auth");
   _user?: Auth.User;
@@ -35,10 +37,11 @@ export class NavBarElement extends LitElement {
 
       if (user && user.authenticated ) {
         this.loggedIn = true;
-        this.username = user.username;
+        this.userid = user.username;
+
       } else {
         this.loggedIn = false;
-        this.username = undefined;
+        this.userid = undefined;
       }
     });
 
@@ -63,21 +66,21 @@ export class NavBarElement extends LitElement {
               <span class="nav-label">Home</span>
             </a>
             <br>
-            <a href="/app/skills">
+            <a href="/app/skills/${this.userid}">
               <svg class="nav-icon">
                 <use href="/icons/sprite.svg#icon-skills" />
               </svg>
               <span class="nav-label">Skills</span>
             </a>
             <br>
-            <a href="/app/todo">
+            <a href="/app/todo/${this.userid}">
               <svg class="nav-icon">
                 <use href="/icons/sprite.svg#icon-todo" />
               </svg>
               <span class="nav-label">To-Do</span>
             </a>
             <br>
-            <a href="/app/log">
+            <a href="/app/log/${this.userid}">
               <svg class="nav-icon">
                 <use href="/icons/sprite.svg#icon-logs" />
               </svg>
@@ -116,7 +119,7 @@ export class NavBarElement extends LitElement {
                     <use href="/icons/sprite.svg#icon-profile" />
                   </svg>
                   <span class="nav-label">
-                    ${this.username || "Who u"}
+                    ${this.userid || "Who r u"}
                   </span>
               </button>
 
@@ -125,7 +128,7 @@ export class NavBarElement extends LitElement {
                   id="profile-popover"
                   class="sign-in-out-popover"
               >
-                  <div>${this.username || "Who u"}</div>
+                  <div>${this.userid || "Who r u"}</div>
                   <div class="stats">Skills learned: 0</div>
                   ${this.loggedIn
                       ? this.renderSignOutButton()
@@ -139,7 +142,7 @@ export class NavBarElement extends LitElement {
   }
 
   constructor() {
-    super();
+    super("bigbrother:model");
 
     const dm = this.shadowRoot?.querySelector("mode-toggle");
     

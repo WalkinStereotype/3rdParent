@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { Skill } from "../models/skill";
 
 import Skills from "../services/skill-svc";
+import { JwtPayload } from "jsonwebtoken";
 
 
 const router = express.Router();
@@ -16,8 +17,9 @@ router.get("/list", (_, res: Response) => {
     })
 });
 
-router.get("/list/:userid", (req: Request, res: Response) => {
+router.get("/list/:userid", (req: Request & {auth?: string | JwtPayload}, res: Response) => {
   const { userid } = req.params;
+    console.log(req.auth);
   
     Skills.indexByCreator(userid).then((data) => {
         if (data) res 

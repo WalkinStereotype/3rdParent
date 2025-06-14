@@ -42,7 +42,11 @@ router.get("/", (_, res) => {
 });
 router.get("/:userid", (req, res) => {
   const { userid } = req.params;
-  import_interest_svc.default.get(userid).then((Interest2) => res.json(Interest2)).catch((err) => res.status(404).send(err));
+  console.log(req.auth);
+  import_interest_svc.default.indexByCreator(userid).then((data) => {
+    if (data) res.set("Content-Type", "application/json").send(JSON.stringify(data));
+    else res.status(404).send();
+  });
 });
 router.post("/", (req, res) => {
   const newInterest = req.body;
