@@ -1,39 +1,35 @@
 import "./index.css";
-import { useState, useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { useEffect } from "react";
+
+import { useAuth } from "@/hooks/contexts/useAuth";
+
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { Session } from "@supabase/supabase-js";
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error("Missing Supabase environment variables");
-}
-
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+import { supabase } from "./lib/supabase";
 
 export default function App() {
-  const [session, setSession] = useState<Session | null>(null);
+  const { user, loading } = useAuth();
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
+    if (!loading) {
+      if (user) {
+        // router.replace('/home');
+      }
+    }
+  }, [loading, user]);
 
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
+  if (loading) {
+    return (
+      <div>
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
-    return () => subscription.unsubscribe();
-  }, []);
-
-  if (!session) {
-    return <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />;
-  } else {
+  if ( user ) {
+    // If user exists, we return null since router.replace will take over
     return <div>Logged in!</div>;
   }
+
+  return <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />;
 }
