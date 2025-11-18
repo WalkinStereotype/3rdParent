@@ -1,0 +1,10 @@
+:root {
+  --font-display: "Kurale", sans-serif;
+  --font-text: "Lora", serif;
+
+  --font-size-title: 1.75em;
+  --font-size-tab: 1.5em;
+  --font-size-section: 1.5em;
+  --font-size-skill-title: 1.25em;
+  --font-size-description: 16px;
+}

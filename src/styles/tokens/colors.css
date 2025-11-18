@@ -1,0 +1,22 @@
+:root {
+  /* General */
+  --color-primary: #9fa483;
+  --color-text: #564f3f;
+  --color-background-page: #fff8e6;
+  --color-text-header: var(--color-text);
+  --color-background-header: #bec5a4;
+  --color-link: #5a7d9a;
+  --color-link-hover: #46637a;
+
+  /* Search Bar */
+  --color-text-searchbar: #939393;
+  --color-background-searchbar: #e0dac9;
+  --color-border-searchbar: #65635d;
+
+  /* Skill Categories */
+  --color-background-home: #d8a7b1;
+  --color-background-car: #d49b7b;
+  --color-background-finance: #e1c16e;
+  --color-background-misc: #afcbda;
+  --color-background-custom: #c4b7d3;
+}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Login from "@/components/layout/auth/Login";
-import Signup from "@/components/layout/auth/Signup";
+import Login from "@/components/auth/Login";
+import Signup from "@/components/auth/Signup";
 
 export default function Auth() {
   const [type, setType] = useState<"login" | "signup">("login");
