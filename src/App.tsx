@@ -1,7 +1,8 @@
-import "./index.css";
+import "@/styles/layout/page.css";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import NavBar from "./components/layout/NavBar";
+import NavBar from "./components/layout/NavBar/NavBar";
 import Home from "./views/Home";
 import Skills from "./views/Skills";
 import ToDo from "./views/Todo";
@@ -23,14 +24,16 @@ export default function App() {
   }
 
   console.log(user);
-  
+
   return (
     <Router>
       {!user && <Auth />}
 
       {user && (
-        <div className="App">
+        // <div className="App">
+        <div className="container">
           <NavBar />
+
           <div className="content">
             <Routes>
               <Route path="/" element={<Home />} />
