@@ -1,17 +1,8 @@
 import "./NavBar.css";
-import { NavLink } from "react-router-dom";
 
 import Logo from "../Logo";
-
-import {
-  IoHome,
-  IoHomeOutline,
-  IoList,
-  IoCalendarClear,
-  IoCalendarClearOutline,
-  IoAlbums,
-  IoAlbumsOutline,
-} from "react-icons/io5";
+import NavItem from "./NavItem";
+import { menuItems } from "./menuItems";
 
 // import { IoAdd, IoArrowBack, IoLink, IoCheckmark } from "react-icons/io5";
 
@@ -24,11 +15,15 @@ export default function NavBar() {
       </div>
 
       <nav className="menu">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/skills">Skills</NavLink>
-        <NavLink to="/todo">To-do</NavLink>
-        <NavLink to="/logs">Logs</NavLink>
-        <NavLink to="/profile">Profile</NavLink>
+        {menuItems.map((item) => (
+          <NavItem
+            key={item.path}
+            name={item.name}
+            path={item.path}
+            icon={item.icon}
+            activeIcon={item.activeIcon}
+          />
+        ))}
       </nav>
     </div>
   );
