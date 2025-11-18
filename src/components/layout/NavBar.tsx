@@ -6,7 +6,8 @@ export default function NavBar() {
       <Link to="/">Home</Link>
       <Link to="/skills">Skills</Link>
       <Link to="/todo">To-do</Link>
-      <Link to="logs">Logs</Link>
+      <Link to="/logs">Logs</Link>
+      <Link to="/profile">Profile</Link>
     </nav>
   );
 }

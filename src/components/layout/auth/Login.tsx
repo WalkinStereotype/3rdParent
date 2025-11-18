@@ -3,7 +3,11 @@ import { supabase } from "@/lib/supabase";
 
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+interface LoginProps {
+  switchType: () => void;
+}
+
+export default function Login({ switchType }: LoginProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -11,7 +15,8 @@ export default function Login() {
 
   const routeTo = useNavigate();
 
-  async function handleLogin() {
+  async function handleLogin(e: React.FormEvent) {
+    e.preventDefault();
     setLoading(true);
     const { error } = await supabase.auth.signInWithPassword({
       email: email.trim().toLowerCase(),
@@ -30,7 +35,7 @@ export default function Login() {
 
   return (
     <div>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={(e) => handleLogin(e)}>
         <h3>Email:</h3>
         <input
           type="email"
@@ -53,6 +58,12 @@ export default function Login() {
           Login
         </button>
       </form>
+      <p>
+        Don't have an account?{" "}
+        <span onClick={switchType} style={{ color: "#6068d3ff" }}>
+          Sign up.
+        </span>
+      </p>
       <p>{errorMessage}</p>
     </div>
   );
