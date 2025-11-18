@@ -1,10 +1,25 @@
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 
+import Logo from "../Logo";
+
+import {
+  IoHome,
+  IoHomeOutline,
+  IoList,
+  IoCalendarClear,
+  IoCalendarClearOutline,
+  IoAlbums,
+  IoAlbumsOutline,
+} from "react-icons/io5";
+
+// import { IoAdd, IoArrowBack, IoLink, IoCheckmark } from "react-icons/io5";
+
 export default function NavBar() {
   return (
     <div className="navbar">
-      <div>
+      <div className="brand">
+        <Logo />
         <h1>3rd Parent</h1>
       </div>
 
@@ -16,6 +31,5 @@ export default function NavBar() {
         <NavLink to="/profile">Profile</NavLink>
       </nav>
     </div>
-    
   );
 }

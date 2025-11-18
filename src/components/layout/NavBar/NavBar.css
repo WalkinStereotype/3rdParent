@@ -5,6 +5,13 @@
   height: 100vh;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  margin-bottom: 20px;
+}
+
 .menu {
   display: flex;
   flex-direction: column;
