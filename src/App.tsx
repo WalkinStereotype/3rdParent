@@ -1,39 +1,47 @@
 import "./index.css";
-import { useState, useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
-import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { Session } from "@supabase/supabase-js";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+import NavBar from "./components/layout/NavBar";
+import Home from "./views/Home";
+import Skills from "./views/Skills";
+import ToDo from "./views/Todo";
+import Logs from "./views/Logs";
+import Profile from "./views/Profile";
+import Auth from "./views/Auth";
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error("Missing Supabase environment variables");
-}
-
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+import { useAuth } from "@/hooks/contexts/useAuth";
 
 export default function App() {
-  const [session, setSession] = useState<Session | null>(null);
+  const { user, loading } = useAuth();
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  if (!session) {
-    return <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />;
-  } else {
-    return <div>Logged in!</div>;
+  if (loading) {
+    return (
+      <div>
+        <p>Loading...</p>
+      </div>
+    );
   }
+
+  console.log(user);
+  
+  return (
+    <Router>
+      {!user && <Auth />}
+
+      {user && (
+        <div className="App">
+          <NavBar />
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/skills" element={<Skills />} />
+              <Route path="/todo" element={<ToDo />} />
+              <Route path="/logs" element={<Logs />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </div>
+        </div>
+      )}
+    </Router>
+  );
 }
