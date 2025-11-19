@@ -8,7 +8,7 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px; 
+  gap: 10px;
   margin-bottom: 20px;
 }
 
@@ -23,10 +23,11 @@
   align-items: center;
   gap: 0.5rem;
   font-size: var(--font-size-section);
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-weight: 500;
   padding: 0.5rem 1rem;
 }
 
 .navlink.active {
-  font-weight: 700;
+  font-weight: 900;
 }

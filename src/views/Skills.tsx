@@ -1,3 +1,9 @@
+import SkillList from "@/components/skills/SkillList";
+
 export default function Skills() {
-  return <p>Skills!</p>;
+  return (
+    <div>
+      <SkillList />
+    </div>
+  );
 }

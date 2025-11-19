@@ -1,7 +1,7 @@
 import SignOutButton from "@/components/profile/SignOutButton";
 
 export default function Profile() {
-  return(
+  return (
     <div>
       <p>Profile!</p>
       <SignOutButton />

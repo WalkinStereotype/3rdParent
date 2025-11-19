@@ -1,0 +1,21 @@
+.skill-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--medium-padding);
+  height: 80px;
+  border-radius: 16px;
+  width: 100%;
+  padding: var(--medium-padding);
+  gap: var(--medium-padding);
+}
+
+.icon {
+  font-size: 2.25em;
+  width: 60px;
+  align-items: center;
+  justify-items: center;
+}
+
+.skill-card-title {
+  width: 100%;
+}
