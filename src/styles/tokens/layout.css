@@ -1,4 +1,10 @@
 :root {
   --max-width-main: 600px;
   --max-height-main: 62px;
+
+  --small-padding: 4px;
+  --medium-padding: 16px;
+  --large-padding: 32px;
+
+  --navbar-width: 250px;
 }

@@ -3,13 +3,15 @@ import "@/styles/base/index.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { AuthProvider } from "@/contexts/AuthContext";
+import { AuthProvider, SkillsProvider } from "@/contexts";
 import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <SkillsProvider>
+        <App />
+      </SkillsProvider>
     </AuthProvider>
   </React.StrictMode>
 );
