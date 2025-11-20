@@ -9,7 +9,7 @@ export const getTodos = async (id: string): Promise<Todo[]> => {
   return await dbGetTodos(id);
 };
 
-export const addSkill = async (
+export const addTodo = async (
   user_id: string,
   skill_id: number
 ): Promise<Todo | null> => {
