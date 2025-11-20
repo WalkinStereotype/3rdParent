@@ -1,0 +1,12 @@
+.back-button {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--medium-padding);
+}
+
+.back-icon {
+  font-size: 1.75em;
+  width: 30px;
+  align-items: center;
+  justify-items: center;
+}

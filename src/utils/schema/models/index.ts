@@ -1,4 +1,5 @@
 export type { Profile } from "./profile";
 export type { Skill } from "./skill";
+export type { Resource }from "./resource";
 export type { Todo } from "./todo";
 export type { Log } from "./log";
