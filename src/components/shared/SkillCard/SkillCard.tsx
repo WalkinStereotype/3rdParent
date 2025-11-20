@@ -13,9 +13,9 @@ export default function SkillCard({ title, type, children }: SkillCardProps) {
   const [ iconOf ] = useSkillIcons();
   
   return (
-    <div className={"skill-card " + type}>
+    <div className={"skill-card " + type} onClick={() => console.log('click!')}>
       <div className="icon">{iconOf(type)}</div>
-      <h2 className="skill-card-title">{title}</h2>
+      <p className="skill-card-title">{title}</p>
       <div className="actions">{children}</div>
     </div>
   );
