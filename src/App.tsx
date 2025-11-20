@@ -1,6 +1,6 @@
 import "@/styles/layout/page.css";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 import NavBar from "./components/layout/NavBar/NavBar";
 import Home from "./views/Home";
@@ -11,6 +11,7 @@ import Profile from "./views/Profile";
 import Auth from "./views/Auth";
 
 import { useAuth } from "@/hooks/contexts/useAuth";
+import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 
 export default function App() {
   const { user, loading } = useAuth();
@@ -23,28 +24,39 @@ export default function App() {
     );
   }
 
-  console.log(user);
-
   return (
     <Router>
-      {!user && <Auth />}
+      <Routes>
 
-      {user && (
-        // <div className="App">
-        <div className="container">
-          <NavBar />
+        {/* Unauthenticated login route */}
+        {!user && (
+          <Route path="/" element={<Auth />} />
+        )}
 
-          <div className="content">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/skills" element={<Skills />} />
-              <Route path="/todo" element={<ToDo />} />
-              <Route path="/logs" element={<Logs />} />
-              <Route path="/profile" element={<Profile />} />
-            </Routes>
-          </div>
-        </div>
-      )}
+        {/* Authenticated routes with navbar */}
+        {user && (
+          <Route
+            element={
+              <div className="container">
+                <NavBar />
+                <div className="content">
+                  <ProtectedRoutes />
+                </div>
+              </div>
+            }
+          >
+            <Route path="/" element={<Home />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/todo" element={<ToDo />} />
+            <Route path="/logs" element={<Logs />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+        )}
+
+        {/* Catch-all redirect */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+
+      </Routes>
     </Router>
   );
 }
