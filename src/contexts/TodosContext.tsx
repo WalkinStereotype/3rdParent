@@ -2,7 +2,12 @@ import React, { createContext, useEffect, useState } from "react";
 import { useSharedAsyncLoader } from "@/hooks/asyncLoaders/useSharedAsyncLoader";
 
 import { Todo } from "@/utils/schema";
-import { getTodos, addTodo, deleteTodo } from "@/services/TodosService";
+import {
+  getTodos,
+  addTodo,
+  deleteTodo,
+  updateTodo,
+} from "@/services/TodosService";
 
 import { useAuth } from "@/hooks/contexts/useAuth";
 
@@ -12,6 +17,9 @@ type TodosContextType = {
   reload_todos: (() => Promise<void>) | null;
   add_todo: ((skill_id: number) => Promise<boolean>) | null;
   delete_todo: ((skill_id: number) => Promise<boolean>) | null;
+  update_todo:
+    | ((skill_id: number, is_priority: boolean) => Promise<boolean>)
+    | null;
 };
 
 export const TodosContext = createContext<TodosContextType>({
@@ -20,6 +28,7 @@ export const TodosContext = createContext<TodosContextType>({
   reload_todos: null,
   add_todo: null,
   delete_todo: null,
+  update_todo: null,
 });
 
 export const TodosProvider = ({ children }: { children: React.ReactNode }) => {
@@ -45,10 +54,7 @@ export const TodosProvider = ({ children }: { children: React.ReactNode }) => {
       setLoading(false);
       return false;
     }
-    setTodos((prev) => [
-      ...prev,
-      data,
-    ]);
+    setTodos((prev) => [...prev, data]);
     setLoading(false);
     return true;
   };
@@ -66,6 +72,22 @@ export const TodosProvider = ({ children }: { children: React.ReactNode }) => {
     return true;
   };
 
+  const update_todo = async (skillId: number, is_priority: boolean) => {
+    if (!userId) return false;
+    setLoading(true);
+    const data = await updateTodo(userId, skillId, is_priority);
+    if (!data) {
+      setLoading(false);
+      return false;
+    }
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.skill_id === skillId ? { ...todo, is_priority: is_priority } : todo
+      )
+    );
+    return true;
+  };
+
   useEffect(() => {
     load_todos();
   }, [userId]);
@@ -78,6 +100,7 @@ export const TodosProvider = ({ children }: { children: React.ReactNode }) => {
         reload_todos: load_todos,
         add_todo,
         delete_todo,
+        update_todo,
       }}
     >
       {children}

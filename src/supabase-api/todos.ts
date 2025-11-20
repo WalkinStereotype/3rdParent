@@ -54,3 +54,23 @@ export const deleteTodo = async (user_id: string, skill_id: number) => {
   console.log(data);
   return data;
 };
+
+export const updateTodo = async (
+  user_id: string,
+  skill_id: number,
+  is_priority: boolean
+) => {
+  const { data, error } = await supabase
+    .from("todos")
+    .update({ is_priority: is_priority})
+    .eq("user_id", user_id)
+    .eq("skill_id", skill_id)
+    .eq("is_priority", (!is_priority));
+  
+  if (error) {
+    console.error("Error updating todo:", error.message);
+    return null;
+  }
+
+  return data;
+};
