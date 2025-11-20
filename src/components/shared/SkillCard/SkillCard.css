@@ -4,6 +4,7 @@
   margin-bottom: var(--medium-padding);
   height: 80px;
   border-radius: 16px;
+  min-width: 600px;
   width: 100%;
   padding: var(--medium-padding);
   gap: var(--medium-padding);

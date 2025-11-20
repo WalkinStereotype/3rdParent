@@ -11,6 +11,7 @@ body {
 }
 
 .content {
+  margin-left: var(--navbar-width);
   width: 100%;
   padding: var(--medium-padding)
 }
@@ -41,6 +42,14 @@ h2 {
 
 .finance {
   background-color: var(--color-background-finance);
+}
+
+.culinary {
+  background-color: var(--color-background-culinary);
+}
+
+.emergency {
+  background-color: var(--color-background-emergency);
 }
 
 .misc {

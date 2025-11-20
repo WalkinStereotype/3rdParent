@@ -2,10 +2,10 @@
   background-color: var(--color-background-header);
   font-weight: 400;
   padding: 1rem;
-
-  position: sticky;
-  top: 0;
+  width: var(--navbar-width);
   height: 100vh;
+  position: fixed;
+  top: 0;
 }
 
 .brand {
