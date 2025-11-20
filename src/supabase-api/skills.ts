@@ -44,7 +44,7 @@ export const deleteSkill = async (created_by: string, skill_id: number) => {
     .select();
 
   if (error) {
-    console.error("Error deleteing skill:", error.message);
+    console.error("Error deleting skill:", error.message);
     return null;
   }
 

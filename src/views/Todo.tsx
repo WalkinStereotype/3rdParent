@@ -6,7 +6,7 @@ export default function Todos() {
   const { skills, reload_skills } = useSkills();
   return (
     <div>
-      <h1>To-do</h1>
+      <h1>To-do (0/3)</h1>
       <br />
       <SkillList skills={skills.slice(0, 3)} />
       <h1>Backlog</h1>
