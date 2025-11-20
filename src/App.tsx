@@ -12,6 +12,7 @@ import Auth from "./views/Auth";
 
 import { useAuth } from "@/hooks/contexts/useAuth";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
+import SkillDetails from "./views/SkillDetails";
 
 export default function App() {
   const { user, loading } = useAuth();
@@ -47,6 +48,7 @@ export default function App() {
           >
             <Route path="/" element={<Home />} />
             <Route path="/skills" element={<Skills />} />
+            <Route path="/skills/:id" element={<SkillDetails />} />
             <Route path="/todo" element={<ToDo />} />
             <Route path="/logs" element={<Logs />} />
             <Route path="/profile" element={<Profile />} />

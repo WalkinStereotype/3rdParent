@@ -10,7 +10,7 @@ interface SkillListProps {
 export default function SkillList({ skills }: SkillListProps){
   return(
     <div className="skill-list">
-      {skills.map((s) => <SkillCard title={s.name} type={s.category}>buttons</SkillCard>)}
+      {skills.map((s) => <SkillCard id={s.id} title={s.name} type={s.category}>buttons</SkillCard>)}
     </div>
   );
 }

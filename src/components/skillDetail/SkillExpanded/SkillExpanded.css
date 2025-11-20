@@ -1,0 +1,25 @@
+.skill-expanded {
+  border-radius: 12px;
+  padding: var(--medium-padding);
+}
+
+.type-container {
+  display: flex;
+  align-items: center;
+  font-size: 1.25em;
+}
+
+.icon {
+  font-size: 1.75em;
+  width: 40px;
+  align-items: center;
+  justify-items: center;
+}
+
+.description-block {
+  background-color: var(--color-inner-background);
+  border-radius: 4px;
+  margin-top: var(--large-padding);
+  padding: var(--medium-padding);
+  min-height: 200px;
+}
