@@ -30,7 +30,7 @@ export const addSkill = async (
     return null;
   }
 
-  return data;
+  return data as Skill;
 };
 
 export const deleteSkill = async (created_by: string, skill_id: number) => {

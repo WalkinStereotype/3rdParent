@@ -13,7 +13,7 @@ export const addSkill = async (
   created_by: string,
   name: string,
   description: string
-): Promise<unknown> => {
+): Promise<Skill | null> => {
   return await dbAddSkill(created_by, name, description);
 };
 
