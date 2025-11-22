@@ -1,4 +1,4 @@
-import SkillList from "@/components/shared/SkillList";
+import SkillsSection from "@/components/shared/SkillsSection";
 
 import StarButton from "@/components/shared/skill-buttons/StarButton";
 import RemoveButton from "@/components/shared/skill-buttons/RemoveButton";
@@ -72,33 +72,30 @@ export default function Todos() {
     </div>
   );
 
-  if (todosPageLoading)
-    return (
-      <div>
-        <h1>To-do (?/?)</h1>
-        <br />
-        <p>Loading...</p>
-        <h1>Backlog (?)</h1>
-        <br />
-        <p>Loading...</p>
-      </div>
-    );
+  let todoTitle = "To-do (?/?)";
+  let backlogTitle = "Backlog (?)";
+
+  if (!todosPageLoading){
+    todoTitle = "To-do (" + priorityLength + "/" + max_priority + ")";
+    backlogTitle = "Backlog (" + backlogLength + ")";
+  }
+
 
   return (
     <div>
-      <h1>
-        To-do ({priorityLength}/{max_priority})
-      </h1>
-      <br />
-      <SkillList
+      <SkillsSection
+        title={todoTitle}
         skills={prioritySkills}
         renderActions={(s) => renderActions(s, true)}
+        emptyText="Star a backlog skill to prioritize it!"
+        loading={todosPageLoading}
       />
-      <h1>Backlog ({backlogLength})</h1>
-      <br />
-      <SkillList
+      <SkillsSection
+        title={backlogTitle}
         skills={backlogSkills}
         renderActions={(s) => renderActions(s, false)}
+        emptyText="Bookmark some skills from the Skills page to add it here!"
+        loading={todosPageLoading}
       />
     </div>
   );

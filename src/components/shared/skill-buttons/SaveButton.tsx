@@ -6,13 +6,12 @@ interface SaveButtonProps {
   isPriority: boolean;
 }
 
-export default function SaveButton({
-  onClick,
-  isPriority
-}: SaveButtonProps) {
+export default function SaveButton({ onClick, isPriority }: SaveButtonProps) {
   const icon = isPriority ? <IoBookmark /> : <IoBookmarkOutline />;
 
   return (
-    <SkillButton onClick={() => onClick(!isPriority)}>{icon}</SkillButton>
+    <SkillButton onClick={() => onClick(!isPriority)}>
+      <span className="enlarge-icon">{icon}</span>
+    </SkillButton>
   );
 }

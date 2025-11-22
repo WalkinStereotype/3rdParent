@@ -1,6 +1,6 @@
 import { Skill, Todo } from "@/utils/schema";
 
-import SkillList from "@/components/shared/SkillList";
+import SkillsSection from "@/components/shared/SkillsSection";
 import SaveButton from "@/components/shared/skill-buttons/SaveButton";
 
 import { useSkills } from "@/hooks/contexts/useSkills";
@@ -29,11 +29,13 @@ export default function Skills() {
 
   return (
     <div>
-      <h1>Skills</h1>
-      <br />
-      {skillsPageLoading 
-        ? <p>Loading...</p>
-        : <SkillList skills={skills} renderActions={renderActions} />}
+      <SkillsSection
+        title="Skills"
+        skills={skills}
+        renderActions={renderActions}
+        emptyText="There may be a problem, refresh the page?"
+        loading={skillsPageLoading}
+      />
     </div>
   );
 }

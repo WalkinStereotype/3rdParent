@@ -34,3 +34,7 @@
 .skill-card-title {
   width: 100%;
 }
+
+.actions {
+  display: flex;
+}
