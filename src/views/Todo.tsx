@@ -20,6 +20,7 @@ export default function Todos() {
     toggle_todo,
     update_todo,
     loading: todosLoading,
+    max_priority,
   } = useTodos();
 
   const todosPageLoading = skillsLoading || todosLoading;
@@ -38,6 +39,9 @@ export default function Todos() {
     .filter((ts) => !ts.is_priority)
     .map(({ skill }) => skill);
 
+  const priorityLength = prioritySkills.length;
+  const backlogLength = backlogSkills.length;
+
   const safeToggleTodo = (skill_id: number) => {
     toggle_todo
       ? toggle_todo(skill_id)
@@ -45,10 +49,17 @@ export default function Todos() {
   };
 
   const safeUpdateTodo = (skill_id: number, is_priority: boolean) => {
-    console.log(skill_id, is_priority);
-    update_todo
-      ? update_todo(skill_id, is_priority)
-      : console.error("No update-todo function found");
+    if (!update_todo) {
+      console.error("No update-todo function found");
+      return;
+    }
+
+    if (is_priority && priorityLength >= max_priority) {
+      console.log("Cannot go over the max priority limit");
+      return;
+    }
+
+    update_todo(skill_id, is_priority);
   };
 
   const renderActions = (s: Skill, isPriority: boolean) => (
@@ -64,10 +75,10 @@ export default function Todos() {
   if (todosPageLoading)
     return (
       <div>
-        <h1>To-do</h1>
+        <h1>To-do (?/?)</h1>
         <br />
         <p>Loading...</p>
-        <h1>Backlog</h1>
+        <h1>Backlog (?)</h1>
         <br />
         <p>Loading...</p>
       </div>
@@ -75,13 +86,15 @@ export default function Todos() {
 
   return (
     <div>
-      <h1>To-do (0/3)</h1>
+      <h1>
+        To-do ({priorityLength}/{max_priority})
+      </h1>
       <br />
       <SkillList
         skills={prioritySkills}
         renderActions={(s) => renderActions(s, true)}
       />
-      <h1>Backlog</h1>
+      <h1>Backlog ({backlogLength})</h1>
       <br />
       <SkillList
         skills={backlogSkills}

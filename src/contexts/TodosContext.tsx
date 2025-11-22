@@ -13,6 +13,7 @@ import { useAuth } from "@/hooks/contexts/useAuth";
 
 type TodosContextType = {
   todos: Todo[];
+  max_priority: number;
   loading: boolean;
   reload_todos: (() => Promise<void>) | null;
   toggle_todo: ((skill_id: number) => Promise<boolean>) | null;
@@ -23,6 +24,7 @@ type TodosContextType = {
 
 export const TodosContext = createContext<TodosContextType>({
   todos: [],
+  max_priority: 3,
   loading: true,
   reload_todos: null,
   toggle_todo: null,
@@ -34,6 +36,8 @@ export const TodosProvider = ({ children }: { children: React.ReactNode }) => {
   const [loadingCount, setLoadingCount] = useState(0);
   const loading = loadingCount > 0;
   const setLoading = (v: boolean) => setLoadingCount((c) => (v ? 1 : -1));
+
+  const max_priority = 3;
 
   const { user } = useAuth();
   const userId = user?.id;
@@ -107,6 +111,7 @@ export const TodosProvider = ({ children }: { children: React.ReactNode }) => {
     <TodosContext.Provider
       value={{
         todos,
+        max_priority,
         loading,
         reload_todos: load_todos,
         toggle_todo,
