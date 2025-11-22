@@ -1,17 +1,92 @@
-import SkillList from "@/components/skills/SkillList";
+import SkillList from "@/components/shared/SkillList";
+
+import StarButton from "@/components/shared/skill-buttons/StarButton";
+import RemoveButton from "@/components/shared/skill-buttons/RemoveButton";
 
 import { useSkills } from "@/hooks/contexts/useSkills";
+import { useTodos } from "@/hooks/contexts/useTodos";
+import { Skill } from "@/utils/schema";
+
+interface TodoSkill {
+  skill: Skill;
+  is_priority: boolean;
+}
 
 export default function Todos() {
-  const { skills, reload_skills } = useSkills();
+  const { skills, reload_skills, loading: skillsLoading } = useSkills();
+  const {
+    todos,
+    reload_todos,
+    toggle_todo,
+    update_todo,
+    loading: todosLoading,
+  } = useTodos();
+
+  const todosPageLoading = skillsLoading || todosLoading;
+
+  const filteredTodoSkills = todos.map(({ skill_id, is_priority }) => {
+    const skillOf = skills.find(({ id }) => id === skill_id);
+
+    return { skill: skillOf, is_priority: is_priority };
+  }) as TodoSkill[];
+
+  const prioritySkills = filteredTodoSkills
+    .filter((ts) => ts.is_priority)
+    .map(({ skill }) => skill);
+
+  const backlogSkills = filteredTodoSkills
+    .filter((ts) => !ts.is_priority)
+    .map(({ skill }) => skill);
+
+  const safeToggleTodo = (skill_id: number) => {
+    toggle_todo
+      ? toggle_todo(skill_id)
+      : console.error("No toggle-todo function found");
+  };
+
+  const safeUpdateTodo = (skill_id: number, is_priority: boolean) => {
+    console.log(skill_id, is_priority);
+    update_todo
+      ? update_todo(skill_id, is_priority)
+      : console.error("No update-todo function found");
+  };
+
+  const renderActions = (s: Skill, isPriority: boolean) => (
+    <div className="flex-display">
+      <StarButton
+        onClick={() => safeUpdateTodo(s.id, !isPriority)}
+        isStar={isPriority}
+      />
+      <RemoveButton onClick={() => safeToggleTodo(s.id)} />
+    </div>
+  );
+
+  if (todosPageLoading)
+    return (
+      <div>
+        <h1>To-do</h1>
+        <br />
+        <p>Loading...</p>
+        <h1>Backlog</h1>
+        <br />
+        <p>Loading...</p>
+      </div>
+    );
+
   return (
     <div>
       <h1>To-do (0/3)</h1>
       <br />
-      <SkillList skills={skills.slice(0, 3)} />
+      <SkillList
+        skills={prioritySkills}
+        renderActions={(s) => renderActions(s, true)}
+      />
       <h1>Backlog</h1>
       <br />
-      <SkillList skills={skills.slice(3, 10)} />
+      <SkillList
+        skills={backlogSkills}
+        renderActions={(s) => renderActions(s, false)}
+      />
     </div>
   );
 }

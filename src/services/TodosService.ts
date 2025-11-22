@@ -12,9 +12,10 @@ export const getTodos = async (id: string): Promise<Todo[]> => {
 
 export const addTodo = async (
   user_id: string,
-  skill_id: number
+  skill_id: number,
+  time?: Date,
 ): Promise<Todo | null> => {
-  return await dbAddTodo(user_id, skill_id);
+  return await dbAddTodo(user_id, skill_id, time);
 };
 
 export const deleteTodo = async (user_id: string, skill_id: number) => {

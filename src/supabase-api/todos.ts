@@ -15,7 +15,11 @@ export const getTodos = async (id: string) => {
   return data as Todo[];
 };
 
-export const addTodo = async (user_id: string, skill_id: number) => {
+export const addTodo = async (
+  user_id: string,
+  skill_id: number,
+  time?: Date
+) => {
   const { data, error } = await supabase
     .from("todos")
     .insert([
@@ -23,6 +27,7 @@ export const addTodo = async (user_id: string, skill_id: number) => {
         user_id: user_id,
         skill_id: skill_id,
         is_priority: false,
+        updated_at: time ? time : Date.now(),
       },
     ])
     .select()
@@ -62,11 +67,12 @@ export const updateTodo = async (
 ) => {
   const { data, error } = await supabase
     .from("todos")
-    .update({ is_priority: is_priority})
+    .update({ is_priority: is_priority })
     .eq("user_id", user_id)
     .eq("skill_id", skill_id)
-    .eq("is_priority", (!is_priority));
-  
+    .eq("is_priority", !is_priority)
+    .select();
+
   if (error) {
     console.error("Error updating todo:", error.message);
     return null;

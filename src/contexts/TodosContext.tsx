@@ -15,8 +15,7 @@ type TodosContextType = {
   todos: Todo[];
   loading: boolean;
   reload_todos: (() => Promise<void>) | null;
-  add_todo: ((skill_id: number) => Promise<boolean>) | null;
-  delete_todo: ((skill_id: number) => Promise<boolean>) | null;
+  toggle_todo: ((skill_id: number) => Promise<boolean>) | null;
   update_todo:
     | ((skill_id: number, is_priority: boolean) => Promise<boolean>)
     | null;
@@ -26,8 +25,7 @@ export const TodosContext = createContext<TodosContextType>({
   todos: [],
   loading: true,
   reload_todos: null,
-  add_todo: null,
-  delete_todo: null,
+  toggle_todo: null,
   update_todo: null,
 });
 
@@ -46,45 +44,58 @@ export const TodosProvider = ({ children }: { children: React.ReactNode }) => {
     setTodos(result);
   }, setLoading);
 
-  const add_todo = async (skill_id: number) => {
-    if (!userId) return false;
-    setLoading(true);
-    const data = await addTodo(userId, skill_id);
-    if (!data) {
-      setLoading(false);
-      return false;
-    }
-    setTodos((prev) => [...prev, data]);
-    setLoading(false);
-    return true;
+  const findTodo = (skill_id: number) => {
+    return todos.find((t) => t.skill_id === skill_id);
   };
 
-  const delete_todo = async (skillId: number) => {
+  const toggle_todo = async (skill_id: number) => {
     if (!userId) return false;
-    setLoading(true);
-    const data = await deleteTodo(userId, skillId);
+
+    const supposedTodo = findTodo(skill_id);
+    const time = new Date();
+
+    const old = todos;
+
+    setTodos((prev) =>
+      supposedTodo
+        ? prev.filter((t) => t.skill_id !== skill_id)
+        : ([
+            ...prev,
+            { skill_id: skill_id, is_priority: false, updated_at: time },
+          ] as Todo[])
+    );
+
+    const data = await (supposedTodo
+      ? deleteTodo(userId, skill_id)
+      : addTodo(userId, skill_id, time));
+
     if (!data) {
-      setLoading(false);
+      console.error("Failed to toggle todo: no data returned, roll back state");
+
+      setTodos(old);
       return false;
     }
-    setTodos((prev) => prev.filter((s) => s.skill_id !== skillId));
-    setLoading(false);
     return true;
   };
 
   const update_todo = async (skillId: number, is_priority: boolean) => {
     if (!userId) return false;
-    setLoading(true);
-    const data = await updateTodo(userId, skillId, is_priority);
-    if (!data) {
-      setLoading(false);
-      return false;
-    }
+
+    const old = todos;
     setTodos((prev) =>
       prev.map((todo) =>
-        todo.skill_id === skillId ? { ...todo, is_priority: is_priority } : todo
+        todo.skill_id === skillId ? { ...todo, is_priority } : todo
       )
     );
+
+    const data = await updateTodo(userId, skillId, is_priority);
+
+    if (!data) {
+      console.error("update_todo failed — rolling back");
+      setTodos(old);
+      return false;
+    }
+
     return true;
   };
 
@@ -98,8 +109,7 @@ export const TodosProvider = ({ children }: { children: React.ReactNode }) => {
         todos,
         loading,
         reload_todos: load_todos,
-        add_todo,
-        delete_todo,
+        toggle_todo,
         update_todo,
       }}
     >

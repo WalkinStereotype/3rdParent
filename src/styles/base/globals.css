@@ -59,3 +59,7 @@ h2 {
 .custom {
   background-color: var(--color-background-custom);
 }
+
+.flex-display{
+  display: flex;
+}
