@@ -1,0 +1,35 @@
+button.skill-button {
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  background-color: transparent;
+  border: none;
+}
+
+.enlarge-icon {
+  font-size: 1.5em;
+}
+
+/* button.skill-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+}
+
+.no-text {
+  background-color: transparent;
+  border: none;
+}
+
+.with-text {
+  background-color: var(--color-background-searchbar);
+  border: "1px";
+  border-radius: 16px;
+  padding-left: var(--small-padding);
+  padding-right: var(--small-padding);
+}
+
+.button-text {
+  font-size: 0.60em;
+} */

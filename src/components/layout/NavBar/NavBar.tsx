@@ -4,7 +4,7 @@ import Logo from "../Logo";
 import NavItem from "./NavItem";
 import { menuItems } from "./menuItems";
 
-// import { IoAdd, IoArrowBack, IoLink, IoCheckmark } from "react-icons/io5";
+// import { IoAdd, IoLink, IoCheckmark } from "react-icons/io5";
 
 export default function NavBar() {
   return (

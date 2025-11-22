@@ -18,6 +18,12 @@
   filter: brightness(0.95);
 }
 
+.skill-card-main {
+  display: flex;
+  align-items: center;
+  gap: var(--medium-padding);
+}
+
 .icon {
   font-size: 1.75em;
   width: 60px;
@@ -27,4 +33,8 @@
 
 .skill-card-title {
   width: 100%;
+}
+
+.actions {
+  display: flex;
 }
