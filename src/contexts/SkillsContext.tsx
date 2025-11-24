@@ -5,25 +5,31 @@ import { Skill } from "@/utils/schema";
 import { getSkills, addSkill, deleteSkill } from "@/services/SkillsService";
 
 import { useAuth } from "@/hooks/contexts/useAuth";
+import { getCategories } from "@/supabase-api/categories";
 
 type SkillsContextType = {
   skills: Skill[];
+  categories: String[];
   loading: boolean;
   reload_skills: (() => Promise<void>) | null;
+  reload_categories: (() => Promise<void>) | null;
   add_skill: ((name: string, description: string) => Promise<boolean>) | null;
   delete_skill: ((skill_id: number) => Promise<boolean>) | null;
 };
 
 export const SkillsContext = createContext<SkillsContextType>({
   skills: [],
+  categories: [],
   loading: true,
   reload_skills: null,
+  reload_categories: null,
   add_skill: null,
   delete_skill: null,
 });
 
 export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
   const [skills, setSkills] = useState<Skill[]>([]);
+  const [categories, setCategories] = useState<String[]>([]);
   const [loadingCount, setLoadingCount] = useState(0);
   const loading = loadingCount > 0;
   const setLoading = (v: boolean) => setLoadingCount((c) => (v ? 1 : -1));
@@ -35,6 +41,12 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     if (!userId) return;
     const result = await getSkills(userId);
     setSkills(result);
+  }, setLoading);
+
+  const load_categories = useSharedAsyncLoader(async () => {
+    if (!userId) return;
+    const result = await getCategories();
+    setCategories(result);
   }, setLoading);
 
   const add_skill = async (name: string, description: string) => {
@@ -74,8 +86,10 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     <SkillsContext.Provider
       value={{
         skills,
+        categories,
         loading,
         reload_skills: load_skills,
+        reload_categories: load_categories,
         add_skill,
         delete_skill,
       }}
