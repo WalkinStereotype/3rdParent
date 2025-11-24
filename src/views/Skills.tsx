@@ -1,9 +1,10 @@
 import { useState } from "react";
 
-import { Skill, Todo } from "@/utils/schema";
+import { Skill } from "@/utils/schema";
 
 import SkillsSection from "@/components/shared/SkillsSection";
 import SaveButton from "@/components/shared/skill-buttons/SaveButton";
+import CategorySelector from "@/components/shared/CategorySelector";
 
 import { useSkills } from "@/hooks/contexts/useSkills";
 import { useTodos } from "@/hooks/contexts/useTodos";
@@ -23,7 +24,7 @@ export default function Skills() {
     loading: todosLoading,
   } = useTodos();
 
-  const [selectedCategory, setSelectedCategory] = useState<String | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const safeToggleTodo = (skill_id: number) => {
     toggle_todo
@@ -32,10 +33,6 @@ export default function Skills() {
   };
 
   const skillsPageLoading = skillsLoading || todosLoading;
-
-  // const handleTagPress = async(category: String) => {
-  //   setSelectedCategory(category);
-  // }
 
   const filteredSkills = selectedCategory
     ? skills.filter(({ category }) => category === selectedCategory)
@@ -54,10 +51,17 @@ export default function Skills() {
     <div>
       <SkillsSection
         title="Skills"
-        skills={skills}
+        skills={filteredSkills}
         renderActions={renderActions}
         emptyText="There may be a problem, refresh the page?"
         loading={skillsPageLoading}
+        filters={
+          <CategorySelector
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onTagPress={setSelectedCategory}
+          />
+        }
       />
     </div>
   );

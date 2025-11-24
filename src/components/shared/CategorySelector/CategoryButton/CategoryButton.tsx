@@ -1,4 +1,4 @@
-import "CategoryButton.css";
+import "./CategoryButton.css";
 
 interface CategoryButtonProps {
   name: string;

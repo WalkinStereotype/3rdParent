@@ -3,13 +3,13 @@ import { useSharedAsyncLoader } from "@/hooks/asyncLoaders/useSharedAsyncLoader"
 
 import { Skill } from "@/utils/schema";
 import { getSkills, addSkill, deleteSkill } from "@/services/SkillsService";
+import { getCategories } from "@/services/CategoriesService";
 
 import { useAuth } from "@/hooks/contexts/useAuth";
-import { getCategories } from "@/supabase-api/categories";
 
 type SkillsContextType = {
   skills: Skill[];
-  categories: String[];
+  categories: string[];
   loading: boolean;
   reload_skills: (() => Promise<void>) | null;
   reload_categories: (() => Promise<void>) | null;
@@ -29,7 +29,7 @@ export const SkillsContext = createContext<SkillsContextType>({
 
 export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
   const [skills, setSkills] = useState<Skill[]>([]);
-  const [categories, setCategories] = useState<String[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
   const [loadingCount, setLoadingCount] = useState(0);
   const loading = loadingCount > 0;
   const setLoading = (v: boolean) => setLoadingCount((c) => (v ? 1 : -1));
@@ -80,6 +80,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     load_skills();
+    load_categories();
   }, [userId]);
 
   return (

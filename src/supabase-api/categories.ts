@@ -10,6 +10,5 @@ export const getCategories = async () => {
     console.error("Error fetching categories:", error?.message);
     return [];
   }
-
-  return data.map(({ name }) => name as String);
+  return data.map(({ name }) => name as string);
 };
