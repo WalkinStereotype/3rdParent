@@ -1,0 +1,6 @@
+.category-selector {
+  display: flex;
+  gap: var(--small-padding);
+  padding-bottom: var(--medium-padding);
+  width: calc("100vw" - var(--navbar-width));
+}

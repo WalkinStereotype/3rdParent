@@ -13,7 +13,7 @@ export default function CategorySelector({
   onTagPress,
 }: CategorySelectorProps) {
   return (
-    <div>
+    <div className="category-selector">
       <CategoryButton
         key="filter-all"
         name="all"

@@ -13,7 +13,7 @@ body {
 .content {
   margin-left: var(--navbar-width);
   width: 100%;
-  padding: var(--medium-padding)
+  padding: var(--medium-padding);
 }
 
 a {
@@ -31,7 +31,19 @@ h2 {
   font-size: var(--font-size-section);
 }
 
+h3 {
+  font-family: var(--font-display);
+}
+
+button {
+  color: var(--font-text);
+}
+
 /* Skill classes */
+.all {
+  background-color: var(--color-background-all);
+}
+
 .home {
   background-color: var(--color-background-home);
 }
@@ -60,6 +72,6 @@ h2 {
   background-color: var(--color-background-custom);
 }
 
-.flex-display{
+.flex-display {
   display: flex;
 }

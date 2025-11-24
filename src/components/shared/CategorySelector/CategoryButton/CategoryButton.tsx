@@ -1,4 +1,5 @@
 import "./CategoryButton.css";
+import useSkillIcons from "@/hooks/useSkillIcons";
 
 interface CategoryButtonProps {
   name: string;
@@ -11,12 +12,13 @@ export default function CategoryButton({
   onClick,
   selected,
 }: CategoryButtonProps) {
+  const [iconOf] = useSkillIcons();
+  const className = "category-button " + name + (selected ? " selected" : "");
+
   return (
-    <button
-      onClick={onClick}
-      className={selected ? "category-button selected" : "category-button"}
-    >
-      {name}
+    <button onClick={onClick} className={className}>
+      {iconOf(name)}
+      <h3>{name}</h3>
     </button>
   );
 }

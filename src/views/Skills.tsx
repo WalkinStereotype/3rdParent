@@ -47,13 +47,18 @@ export default function Skills() {
     </div>
   );
 
+  const emptyText =
+    selectedCategory === "custom"
+      ? "Add your own skills now!"
+      : "There may be a problem, refresh the page?";
+
   return (
     <div>
       <SkillsSection
         title="Skills"
         skills={filteredSkills}
         renderActions={renderActions}
-        emptyText="There may be a problem, refresh the page?"
+        emptyText={emptyText}
         loading={skillsPageLoading}
         filters={
           <CategorySelector
