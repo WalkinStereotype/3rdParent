@@ -11,6 +11,10 @@ body {
   line-height: 1.5;
 }
 
+button {
+  box-shadow: none;
+}
+
 img,
 picture {
   max-width: 100%;

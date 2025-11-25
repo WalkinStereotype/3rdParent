@@ -43,8 +43,10 @@ export default function Login({ switchType }: LoginProps) {
         <Logo />
         <h1>3rd Parent</h1>
       </div>
+      <p>The place to learn the basics of life</p>
+      <br />
       <div className="auth-form">
-        <form onSubmit={(e) => handleLogin(e)}>
+        <form className="inner-auth-form" onSubmit={(e) => handleLogin(e)}>
           <h3>Email:</h3>
           <input
             type="email"
@@ -62,15 +64,15 @@ export default function Login({ switchType }: LoginProps) {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-
-          <button type="submit" disabled={loading}>
+          <br />
+          <button type="submit" className="auth-button" disabled={loading}>
             Login
           </button>
         </form>
         <br />
         <p>
           Don't have an account?{" "}
-          <span onClick={switchType} style={{ color: "#6068d3ff" }}>
+          <span onClick={switchType} className="switch-auth-text">
             Sign up.
           </span>
         </p>
