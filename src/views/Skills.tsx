@@ -1,14 +1,30 @@
-import { Skill, Todo } from "@/utils/schema";
+import { useState } from "react";
+
+import { Skill } from "@/utils/schema";
 
 import SkillsSection from "@/components/shared/SkillsSection";
 import SaveButton from "@/components/shared/skill-buttons/SaveButton";
+import CategorySelector from "@/components/shared/CategorySelector";
 
 import { useSkills } from "@/hooks/contexts/useSkills";
 import { useTodos } from "@/hooks/contexts/useTodos";
 
 export default function Skills() {
-  const { skills, reload_skills, loading: skillsLoading } = useSkills();
-  const { todos, reload_todos, toggle_todo, loading: todosLoading } = useTodos();
+  const {
+    skills,
+    categories,
+    reload_skills,
+    reload_categories,
+    loading: skillsLoading,
+  } = useSkills();
+  const {
+    todos,
+    reload_todos,
+    toggle_todo,
+    loading: todosLoading,
+  } = useTodos();
+
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const safeToggleTodo = (skill_id: number) => {
     toggle_todo
@@ -17,6 +33,10 @@ export default function Skills() {
   };
 
   const skillsPageLoading = skillsLoading || todosLoading;
+
+  const filteredSkills = selectedCategory
+    ? skills.filter(({ category }) => category === selectedCategory)
+    : skills;
 
   const renderActions = (s: Skill) => (
     <div>
@@ -27,14 +47,26 @@ export default function Skills() {
     </div>
   );
 
+  const emptyText =
+    selectedCategory === "custom"
+      ? "Add your own skills now!"
+      : "There may be a problem, refresh the page?";
+
   return (
     <div>
       <SkillsSection
         title="Skills"
-        skills={skills}
+        skills={filteredSkills}
         renderActions={renderActions}
-        emptyText="There may be a problem, refresh the page?"
+        emptyText={emptyText}
         loading={skillsPageLoading}
+        filters={
+          <CategorySelector
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onTagPress={setSelectedCategory}
+          />
+        }
       />
     </div>
   );

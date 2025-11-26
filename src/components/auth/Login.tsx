@@ -1,7 +1,11 @@
+import "./auth.css";
+
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 
 import { useNavigate } from "react-router-dom";
+
+import Logo from "../layout/Logo";
 
 interface LoginProps {
   switchType: () => void;
@@ -34,37 +38,46 @@ export default function Login({ switchType }: LoginProps) {
   }
 
   return (
-    <div>
-      <form onSubmit={(e) => handleLogin(e)}>
-        <h3>Email:</h3>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+    <div className="auth-container">
+      <div className="brand">
+        <Logo />
+        <h1>3rd Parent</h1>
+      </div>
+      <p>The place to learn the basics of life</p>
+      <br />
+      <div className="auth-form">
+        <form className="inner-auth-form" onSubmit={(e) => handleLogin(e)}>
+          <h3>Email:</h3>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        <h3>Password:</h3>
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-
-        <button type="submit" disabled={loading}>
-          Login
-        </button>
-      </form>
-      <p>
-        Don't have an account?{" "}
-        <span onClick={switchType} style={{ color: "#6068d3ff" }}>
-          Sign up.
-        </span>
-      </p>
-      <p>{errorMessage}</p>
+          <h3>Password:</h3>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <br />
+          <button type="submit" className="auth-button" disabled={loading}>
+            Login
+          </button>
+        </form>
+        <br />
+        <p>
+          Don't have an account?{" "}
+          <span onClick={switchType} className="switch-auth-text">
+            Sign up.
+          </span>
+        </p>
+        <p>{errorMessage}</p>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,9 @@
+import "./auth.css";
+
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
+
+import Logo from "../layout/Logo";
 
 interface SignupProps {
   switchType: () => void;
@@ -70,55 +74,65 @@ export default function Signup({ switchType }: SignupProps) {
   }
 
   return (
-    <div>
-      <form onSubmit={(e) => handleSignup(e)}>
-        <h3>Email:</h3>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+    <div className="auth-container">
+      <div className="brand">
+        <Logo />
+        <h1>3rd Parent</h1>
+      </div>
+      <p>The place to learn the basics of life</p>
+      <br />
+      <div className="auth-form">
+        <form className="inner-auth-form" onSubmit={(e) => handleSignup(e)}>
+          <h3>Email:</h3>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        <h3>Username:</h3>
-        <input
-          type="username"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
+          <h3>Username:</h3>
+          <input
+            type="username"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
 
-        <h3>Password:</h3>
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+          <h3>Password:</h3>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-        <h3>Confirm Password:</h3>
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-
-        <button type="submit" disabled={loading}>
-          Login
-        </button>
-      </form>
-      <p>
-        Have an account?{" "}
-        <span onClick={switchType} style={{ color: "#6068d3ff" }}>
-          Log in.
-        </span>
-      </p>
-      <p>{errorMessage}</p>
+          <h3>Confirm Password:</h3>
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            value={password}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+          <br />
+          <button type="submit" className="auth-button" disabled={loading}>
+            Sign Up
+          </button>
+        </form>
+        <br />
+        <p>
+          Have an account?{" "}
+          <span onClick={switchType} className="switch-auth-text">
+            Log in.
+          </span>
+        </p>
+        
+        <p>{errorMessage}</p>
+      </div>
     </div>
   );
 }

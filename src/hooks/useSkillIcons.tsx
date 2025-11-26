@@ -6,6 +6,7 @@ import {
   IoWarning,
   IoDice,
   IoBrush,
+  IoApps,
 } from "react-icons/io5";
 
 export default function useSkillIcons() {
@@ -25,6 +26,8 @@ export default function useSkillIcons() {
         return <IoDice />;
       case "custom":
         return <IoBrush />;
+      case "all":
+        return <IoApps />;
       default:
         return null;
     }

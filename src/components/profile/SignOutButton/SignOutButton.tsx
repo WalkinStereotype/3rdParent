@@ -1,3 +1,5 @@
+import "./SignOutButton.css";
+
 import { supabase } from "@/lib/supabase";
 import { useNavigate } from "react-router-dom";
 
@@ -14,5 +16,5 @@ export default function SignOutButton() {
     }
   }
 
-  return <button onClick={onSignOutButtonPress}>Sign out</button>;
+  return <button className="sign-out-button" onClick={onSignOutButtonPress}>Sign out</button>;
 }

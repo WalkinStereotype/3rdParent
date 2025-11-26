@@ -8,6 +8,7 @@ interface SkillsSectionProps {
   renderActions?: (s: Skill) => React.ReactNode;
   emptyText?: string;
   loading?: boolean;
+  filters?: React.ReactNode;
 }
 
 export default function SkillsSection({
@@ -16,6 +17,7 @@ export default function SkillsSection({
   renderActions,
   emptyText,
   loading,
+  filters,
 }: SkillsSectionProps) {
   if (loading) {
     return (
@@ -31,6 +33,7 @@ export default function SkillsSection({
     <div>
       <h1>{title}</h1>
       <br />
+      {filters}
       {skills.length === 0 ? (
         emptyText && (
           <div>

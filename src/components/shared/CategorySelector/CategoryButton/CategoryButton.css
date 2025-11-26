@@ -1,0 +1,16 @@
+button.category-button {
+  display: flex;
+  border-radius: 16px;
+  border-color: var(--color-text);
+  padding: var(--small-padding);
+  gap: var(--small-padding);
+  align-items: center;
+}
+
+button.category-button:hover {
+  cursor: pointer;
+}
+
+button.selected {
+  border-width: 4px;
+}
