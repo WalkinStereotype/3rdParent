@@ -70,7 +70,7 @@ export const deleteLog = async ({
   return data;
 };
 
-export const editLog = async ({
+export const updateLog = async ({
   user_id,
   log_id,
   description,
