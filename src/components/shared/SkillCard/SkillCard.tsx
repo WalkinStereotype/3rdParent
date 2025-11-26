@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./SkillCard.css";
 import useSkillIcons from "@/hooks/useSkillIcons";
 
-// import { IoAdd, IoArrowBack, IoLink, IoCheckmark } from "react-icons/io5";
+// import { IoAdd, IoLink, } from "react-icons/io5";
 
 interface SkillCardProps {
   id: number;

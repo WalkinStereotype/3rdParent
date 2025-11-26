@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { Skill, Log } from "@/utils/schema";
 import useDateFormatter from "@/hooks/useDateFormatter";
+import LogCard from "@/components/shared/LogCard";
 
 import { useSkills, useLogs } from "@/hooks/contexts";
 
@@ -48,17 +49,19 @@ export default function Logs() {
   return (
     <div>
       <h2>Logs</h2>
+      <br />
       {logsPageLoading ? (
         <p>Loading</p>
       ) : (
-        filteredLogSkills.map((ls) => (
-          <div>
-            <h3>Skill: {ls.skill_name}</h3>
-            <p>Category: {ls.category}</p>
-            <br />
-            <p>Description: {ls.log_description}</p>
-            <br />
-          </div>
+        filteredLogSkills.map(({log_id, skill_id, skill_name, category, log_description, log_created_at }) => (
+          <LogCard 
+            id={log_id}
+            skill_id={skill_id}
+            title={skill_name}
+            category={category}
+            created_at={log_created_at}
+            description={log_description}
+          />
         ))
       )}
     </div>

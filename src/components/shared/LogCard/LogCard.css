@@ -1,0 +1,28 @@
+.log-card {
+  margin-bottom: var(--medium-padding);
+  padding: var(--medium-padding);
+  border-radius: 16px;
+  min-width: 500px;
+  max-width: 800px;
+}
+
+.log-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.log-header-left {
+  display: flex;
+}
+
+.log-card-title {
+  font-size: 1.50em;
+  font-weight: 600;
+}
+
+.log-description-container{
+  padding: var(--medium-padding);
+  background-color: var(--color-background-searchbar);
+  border-radius: 8px;
+}
