@@ -14,7 +14,8 @@ type SkillsContextType = {
   reload_skills: (() => Promise<void>) | null;
   reload_categories: (() => Promise<void>) | null;
   add_skill: ((name: string, description: string) => Promise<boolean>) | null;
-  delete_skill: ((skill_id: number) => Promise<boolean>) | null;
+  delete_skill: ((skillId: number) => Promise<boolean>) | null;
+  find_skill: ((skillId: number) => Skill | null) | null;
 };
 
 export const SkillsContext = createContext<SkillsContextType>({
@@ -25,6 +26,7 @@ export const SkillsContext = createContext<SkillsContextType>({
   reload_categories: null,
   add_skill: null,
   delete_skill: null,
+  find_skill: null,
 });
 
 export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
@@ -78,6 +80,12 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     return true;
   };
 
+  const find_skill = (skillId: number) => {
+    const skillOf = skills.find(({ id }) => id === skillId);
+
+    return skillOf ? skillOf : null;
+  };
+
   useEffect(() => {
     load_skills();
     load_categories();
@@ -93,6 +101,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         reload_categories: load_categories,
         add_skill,
         delete_skill,
+        find_skill,
       }}
     >
       {children}

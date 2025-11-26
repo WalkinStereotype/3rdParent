@@ -6,8 +6,7 @@ import SkillsSection from "@/components/shared/SkillsSection";
 import SaveButton from "@/components/shared/skill-buttons/SaveButton";
 import CategorySelector from "@/components/shared/CategorySelector";
 
-import { useSkills } from "@/hooks/contexts/useSkills";
-import { useTodos } from "@/hooks/contexts/useTodos";
+import { useSkills, useTodos } from "@/hooks/contexts";
 
 export default function Skills() {
   const {

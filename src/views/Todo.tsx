@@ -3,8 +3,7 @@ import SkillsSection from "@/components/shared/SkillsSection";
 import StarButton from "@/components/shared/skill-buttons/StarButton";
 import RemoveButton from "@/components/shared/skill-buttons/RemoveButton";
 
-import { useSkills } from "@/hooks/contexts/useSkills";
-import { useTodos } from "@/hooks/contexts/useTodos";
+import { useSkills, useTodos } from "@/hooks/contexts";
 import { Skill } from "@/utils/schema";
 
 interface TodoSkill {
