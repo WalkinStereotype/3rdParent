@@ -8,6 +8,7 @@ import {
   ProfileProvider,
   SkillsProvider,
   TodosProvider,
+  LogsProvider,
 } from "@/contexts";
 import App from "./App";
 
@@ -17,7 +18,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <ProfileProvider>
         <SkillsProvider>
           <TodosProvider>
-            <App />
+            <LogsProvider>
+              <App />
+            </LogsProvider>
           </TodosProvider>
         </SkillsProvider>
       </ProfileProvider>

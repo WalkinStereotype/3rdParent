@@ -3,8 +3,7 @@ import SkillsSection from "@/components/shared/SkillsSection";
 import StarButton from "@/components/shared/skill-buttons/StarButton";
 import RemoveButton from "@/components/shared/skill-buttons/RemoveButton";
 
-import { useSkills } from "@/hooks/contexts/useSkills";
-import { useTodos } from "@/hooks/contexts/useTodos";
+import { useSkills, useTodos } from "@/hooks/contexts";
 import { Skill } from "@/utils/schema";
 
 interface TodoSkill {
@@ -23,13 +22,15 @@ export default function Todos() {
     max_priority,
   } = useTodos();
 
-  const todosPageLoading = skillsLoading || todosLoading;
+  const todosPageLoading = skillsLoading || todosLoading || skills.length == 0;
 
-  const filteredTodoSkills = todos.map(({ skill_id, is_priority }) => {
-    const skillOf = skills.find(({ id }) => id === skill_id);
+  const filteredTodoSkills: TodoSkill[] = todosPageLoading
+    ? []
+    : (todos.map(({ skill_id, is_priority }) => {
+        const skillOf = skills.find(({ id }) => id === skill_id);
 
-    return { skill: skillOf, is_priority: is_priority };
-  }) as TodoSkill[];
+        return { skill: skillOf, is_priority: is_priority };
+      }) as TodoSkill[]);
 
   const prioritySkills = filteredTodoSkills
     .filter((ts) => ts.is_priority)
@@ -75,11 +76,10 @@ export default function Todos() {
   let todoTitle = "To-do (?/?)";
   let backlogTitle = "Backlog (?)";
 
-  if (!todosPageLoading){
+  if (!todosPageLoading) {
     todoTitle = "To-do (" + priorityLength + "/" + max_priority + ")";
     backlogTitle = "Backlog (" + backlogLength + ")";
   }
-
 
   return (
     <div>
