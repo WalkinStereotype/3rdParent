@@ -1,5 +1,6 @@
 import "./LogCard.css";
 import useSkillIcons from "@/hooks/useSkillIcons";
+import useDateFormatter from "@/hooks/useDateFormatter";
 
 import { IoPencil } from "react-icons/io5";
 
@@ -21,6 +22,7 @@ export default function LogCard({
   description,
 }: LogCardProps) {
   const [iconOf] = useSkillIcons();
+  const [formatDate] = useDateFormatter();
 
   return (
     <div className={"log-card " + category}>
@@ -30,7 +32,7 @@ export default function LogCard({
           <p className="log-card-title">{title}</p>
           {/* <div className="icon"><IoPencil/></div> */}
         </div>
-        <p className="log-card-date">07/16/25</p>
+        <p className="log-card-date">{formatDate(created_at)}</p>
       </div>
       <br />
       <div className="log-description-container">
@@ -38,4 +40,4 @@ export default function LogCard({
       </div>
     </div>
   );
-};
+}

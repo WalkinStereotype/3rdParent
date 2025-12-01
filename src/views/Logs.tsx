@@ -55,6 +55,7 @@ export default function Logs() {
       ) : (
         filteredLogSkills.map(({log_id, skill_id, skill_name, category, log_description, log_created_at }) => (
           <LogCard 
+            key={log_id}
             id={log_id}
             skill_id={skill_id}
             title={skill_name}

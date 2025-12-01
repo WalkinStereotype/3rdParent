@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useSkills } from "@/hooks/contexts/useSkills";
+import { useSkills, useLogs, useTodos } from "@/hooks/contexts";
 
 import SkillExpanded from "@/components/skillDetail/SkillExpanded";
 import ResourceList from "@/components/skillDetail/ResourceList";
