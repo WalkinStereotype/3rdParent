@@ -3,6 +3,10 @@
   padding: var(--medium-padding);
   border-radius: 16px;
   min-width: 500px;
+  max-width: 1000px;
+}
+
+.log-list-element {
   max-width: 800px;
 }
 

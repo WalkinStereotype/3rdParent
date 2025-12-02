@@ -29,7 +29,11 @@ export default function LogCard({
   const [formatDate] = useDateFormatter();
 
   return (
-    <div className={"log-card " + category}>
+    <div
+      className={
+        category + (inSkillDetail ? " log-card" : " log-card log-list-element")
+      }
+    >
       <div className="log-header">
         {inSkillDetail ? (
           <div className="log-header-left">
@@ -38,7 +42,9 @@ export default function LogCard({
         ) : (
           <div className="log-header-left">
             <div className="icon">{iconOf(category)}</div>
-            <Link to={`/skills/${skill_id}`} className="log-card-title">{title}</Link>
+            <Link to={`/skills/${skill_id}`} className="log-card-title">
+              {title}
+            </Link>
           </div>
         )}
 

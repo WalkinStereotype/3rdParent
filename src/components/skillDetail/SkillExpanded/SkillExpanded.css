@@ -1,6 +1,8 @@
 .skill-expanded {
   border-radius: 12px;
   padding: var(--medium-padding);
+  min-width: 500px;
+  max-width: 1000px;
 }
 
 .skill-expanded-top-row {
