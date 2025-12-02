@@ -22,6 +22,7 @@ export default function Skills() {
     reload_todos,
     toggle_todo,
     loading: todosLoading,
+    is_todo,
   } = useTodos();
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -42,7 +43,7 @@ export default function Skills() {
     <div>
       <SaveButton
         onClick={() => safeToggleTodo(s.id)}
-        isPriority={todos.some((t) => t.skill_id === s.id)}
+        isPriority={is_todo(s.id)}
       />
     </div>
   );

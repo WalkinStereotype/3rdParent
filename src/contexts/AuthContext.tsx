@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { Session, User } from '@supabase/supabase-js';
+import { requiredInContext } from '@/utils/helpers/requiredInContext';
 
 import { updateEmail } from '@/services/AuthService';
 
@@ -8,14 +9,14 @@ type AuthContextType = {
   session: Session | null;
   user: User | null;
   loading: boolean;
-  update_email: ((email: string) => Promise<boolean>) | null;
+  update_email: (email: string) => Promise<boolean>;
 };
 
 export const AuthContext = createContext<AuthContextType> ({
   session: null,
   user: null,
   loading: true,
-  update_email: null,
+  update_email: requiredInContext("Auth", "update_email"),
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {

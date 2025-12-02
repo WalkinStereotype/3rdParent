@@ -7,7 +7,18 @@ import BackButton from "@/components/shared/BackButton";
 
 export default function SkillDetails() {
   const { id } = useParams();
-  const { skills } = useSkills();
+  const {
+    skills,
+    categories,
+    reload_skills,
+    reload_categories,
+    loading: skillsLoading,
+  } = useSkills();
+  const { logs, reload_logs, loading: logsLoading } = useLogs();
+  const {
+    toggle_todo,
+    loading: todosLoading,
+  } = useTodos();
 
   if (!id) {
     return <p>UNDEFINED</p>;
@@ -30,6 +41,8 @@ export default function SkillDetails() {
       >
         Resources here
       </SkillExpanded>
+
+      {}
     </div>
   );
 }

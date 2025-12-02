@@ -3,6 +3,17 @@
   padding: var(--medium-padding);
 }
 
+.skill-expanded-top-row {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between
+}
+
+.skill-expanded-buttons {
+  display: flex;
+}
+
 .type-container {
   display: flex;
   align-items: center;
