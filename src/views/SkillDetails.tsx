@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, Links, useParams } from "react-router-dom";
 import { useSkills, useLogs, useTodos } from "@/hooks/contexts";
 
 import SkillExpanded from "@/components/skillDetail/SkillExpanded";
@@ -55,7 +55,7 @@ export default function SkillDetails() {
           inSkillDetail
         />
       ) : (
-        <p>Write about it?</p>
+        <Link to="/skills" className="link">Write about it?</Link>
       )}
     </div>
   );

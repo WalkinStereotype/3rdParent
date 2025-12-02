@@ -21,6 +21,11 @@
   font-weight: 600;
 }
 
+.log-card-title:hover {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
 .log-description-container{
   padding: var(--medium-padding);
   background-color: var(--color-background-searchbar);

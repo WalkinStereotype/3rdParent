@@ -21,6 +21,17 @@ a {
   text-decoration: none;
 }
 
+.link {
+  color: var(--color-link);
+  font-size: 1.25em;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: var(--color-link-hover);
+  font-weight: 500;
+}
+
 h1 {
   font-family: var(--font-display);
   font-size: var(--font-size-title);

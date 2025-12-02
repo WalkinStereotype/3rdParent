@@ -2,6 +2,8 @@ import "./LogCard.css";
 import useSkillIcons from "@/hooks/useSkillIcons";
 import useDateFormatter from "@/hooks/useDateFormatter";
 
+import { Link } from "react-router-dom";
+
 import { IoPencil } from "react-icons/io5";
 
 interface LogCardProps {
@@ -36,7 +38,7 @@ export default function LogCard({
         ) : (
           <div className="log-header-left">
             <div className="icon">{iconOf(category)}</div>
-            <p className="log-card-title">{title}</p>
+            <Link to={`/skills/${skill_id}`} className="log-card-title">{title}</Link>
           </div>
         )}
 
