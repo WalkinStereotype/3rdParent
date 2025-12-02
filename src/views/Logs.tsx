@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import { Skill, Log } from "@/utils/schema";
-import useDateFormatter from "@/hooks/useDateFormatter";
 import LogCard from "@/components/shared/LogCard";
 
 import { useSkills, useLogs } from "@/hooks/contexts";
@@ -25,8 +24,6 @@ export default function Logs() {
     loading: skillsLoading,
   } = useSkills();
   const { logs, reload_logs, loading: logsLoading } = useLogs();
-
-  const [formatDate] = useDateFormatter();
 
   const logsPageLoading = skillsLoading || logsLoading || skills.length == 0;
 

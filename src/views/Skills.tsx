@@ -16,9 +16,8 @@ export default function Skills() {
     reload_categories,
     loading: skillsLoading,
   } = useSkills();
-  const { logs, reload_logs, loading: logsLoading } = useLogs();
+  const { find_log, reload_logs, loading: logsLoading } = useLogs();
   const {
-    todos,
     reload_todos,
     toggle_todo,
     loading: todosLoading,
@@ -26,12 +25,6 @@ export default function Skills() {
   } = useTodos();
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
-  const safeToggleTodo = (skill_id: number) => {
-    toggle_todo
-      ? toggle_todo(skill_id)
-      : console.error("No toggle-todo function found");
-  };
 
   const skillsPageLoading = skillsLoading || todosLoading;
 
@@ -42,7 +35,7 @@ export default function Skills() {
   const renderActions = (s: Skill) => (
     <div>
       <SaveButton
-        onClick={() => safeToggleTodo(s.id)}
+        onClick={() => toggle_todo(s.id)}
         isPriority={is_todo(s.id)}
       />
     </div>

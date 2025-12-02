@@ -26,7 +26,7 @@ type LogsContextType = {
     log_id: number;
     description: string;
   }) => Promise<boolean>;
-  has_log: (skill_id: number) => boolean;
+  find_log: (skill_id: number) => Log | undefined;
 };
 
 export const LogsContext = createContext<LogsContextType>({
@@ -36,7 +36,7 @@ export const LogsContext = createContext<LogsContextType>({
   add_log: requiredInContext("Logs", "add_log"),
   delete_log: requiredInContext("Logs", "delete_log"),
   update_log: requiredInContext("Logs", "update_log"),
-  has_log: requiredInContext("Logs", "has_log"),
+  find_log: requiredInContext("Logs", "find_log"),
 });
 
 export const LogsProvider = ({ children }: { children: React.ReactNode }) => {
@@ -56,8 +56,8 @@ export const LogsProvider = ({ children }: { children: React.ReactNode }) => {
     setLogs(result);
   }, setLoading);
 
-  const findSkillOfLog = (skill_id: number) => {
-    return logs.some((l) => l.skill_id === skill_id);
+  const findLog = (skill_id: number) => {
+    return logs.find((l) => l.skill_id === skill_id);
   };
 
   const add_log = async ({
@@ -135,7 +135,7 @@ export const LogsProvider = ({ children }: { children: React.ReactNode }) => {
         add_log,
         delete_log,
         update_log,
-        has_log: findSkillOfLog,
+        find_log: findLog,
       }}
     >
       {children}
