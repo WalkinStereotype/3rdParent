@@ -1,19 +1,26 @@
 .skill-expanded {
   border-radius: 12px;
   padding: var(--medium-padding);
+  min-width: 500px;
+  max-width: 1000px;
+}
+
+.skill-expanded-top-row {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between
+}
+
+.skill-expanded-buttons {
+  display: flex;
 }
 
 .type-container {
   display: flex;
   align-items: center;
   font-size: 1.25em;
-}
-
-.icon {
-  font-size: 1.75em;
-  width: 40px;
-  align-items: center;
-  justify-items: center;
+  gap: var(--regular-padding);
 }
 
 .description-block {

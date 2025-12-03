@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Skill, Log } from "@/utils/schema";
-import useDateFormatter from "@/hooks/useDateFormatter";
 import LogCard from "@/components/shared/LogCard";
 
 import { useSkills, useLogs } from "@/hooks/contexts";
@@ -17,6 +17,7 @@ interface LogSkill {
 }
 
 export default function Logs() {
+  const navigate = useNavigate();
   const {
     skills,
     categories,
@@ -25,8 +26,6 @@ export default function Logs() {
     loading: skillsLoading,
   } = useSkills();
   const { logs, reload_logs, loading: logsLoading } = useLogs();
-
-  const [formatDate] = useDateFormatter();
 
   const logsPageLoading = skillsLoading || logsLoading || skills.length == 0;
 
@@ -55,12 +54,14 @@ export default function Logs() {
       ) : (
         filteredLogSkills.map(({log_id, skill_id, skill_name, category, log_description, log_created_at }) => (
           <LogCard 
+            key={log_id}
             id={log_id}
             skill_id={skill_id}
             title={skill_name}
             category={category}
             created_at={log_created_at}
             description={log_description}
+            on_edit={() => navigate(`/skills/${skill_id}?write=true`)}
           />
         ))
       )}

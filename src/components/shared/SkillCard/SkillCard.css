@@ -9,7 +9,8 @@
   min-width: 600px;
   width: 100%;
   padding: var(--medium-padding);
-  gap: var(--medium-padding);
+  /* gap: var(--medium-padding); */
+  justify-content: space-between;
 }
 
 .skill-card:hover {
@@ -24,11 +25,11 @@
   gap: var(--medium-padding);
 }
 
-.icon {
-  font-size: 1.75em;
-  width: 60px;
+.skill-card-left {
+  display: flex;
   align-items: center;
   justify-items: center;
+  gap: var(--medium-padding);
 }
 
 .skill-card-title {

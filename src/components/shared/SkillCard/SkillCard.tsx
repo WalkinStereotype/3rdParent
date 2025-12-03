@@ -24,8 +24,10 @@ export default function SkillCard({
 
   return (
     <div className={"skill-card " + type} onClick={goToDetail}>
-      <div className="icon">{iconOf(type)}</div>
-      <p className="skill-card-title">{title}</p>
+      <div className={"skill-card-left"}>
+        <div className="icon">{iconOf(type)}</div>
+        <p className="skill-card-title">{title}</p>
+      </div>
       <div className="actions" onClick={(e) => e.stopPropagation()}>
         {children}
       </div>

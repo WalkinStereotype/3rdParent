@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import { requiredInContext } from "@/utils/helpers/requiredInContext";
 
 import { Profile, UserInfoUpdate } from "@/utils/schema";
 import { getProfile, updateProfile } from "@/services/ProfileService";
@@ -9,15 +10,15 @@ import { useAuth } from "@/hooks/contexts/useAuth";
 type ProfileContextType = {
   profile: Profile | null;
   loading: boolean;
-  reload_profile: (() => Promise<void>) | null;
-  update_profile: ((newProfile: Profile) => Promise<boolean>) | null;
+  reload_profile: () => Promise<void>;
+  update_profile: (newProfile: Profile) => Promise<boolean>;
 };
 
 export const ProfileContext = createContext<ProfileContextType>({
   profile: null,
   loading: true,
-  reload_profile: null,
-  update_profile: null,
+  reload_profile: requiredInContext("Profile", "reload_profile"),
+  update_profile: requiredInContext("Profile", "update_profile"),
 });
 
 export const ProfileProvider = ({

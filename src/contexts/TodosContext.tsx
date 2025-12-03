@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useSharedAsyncLoader } from "@/hooks/asyncLoaders/useSharedAsyncLoader";
+import { requiredInContext } from "@/utils/helpers/requiredInContext";
 
 import { Todo } from "@/utils/schema";
 import {
@@ -15,20 +16,20 @@ type TodosContextType = {
   todos: Todo[];
   max_priority: number;
   loading: boolean;
-  reload_todos: (() => Promise<void>) | null;
-  toggle_todo: ((skill_id: number) => Promise<boolean>) | null;
-  update_todo:
-    | ((skill_id: number, is_priority: boolean) => Promise<boolean>)
-    | null;
+  reload_todos: (() => Promise<void>);
+  toggle_todo: ((skill_id: number) => Promise<boolean>);
+  update_todo: ((skill_id: number, is_priority: boolean) => Promise<boolean>);
+  is_todo: ((skill_id: number) => boolean);
 };
 
 export const TodosContext = createContext<TodosContextType>({
   todos: [],
   max_priority: 3,
   loading: true,
-  reload_todos: null,
-  toggle_todo: null,
-  update_todo: null,
+  reload_todos: requiredInContext("Todos", "reload_todos"),
+  toggle_todo: requiredInContext("Todos", "toggle_todo"),
+  update_todo: requiredInContext("Todos", "update_todo"),
+  is_todo: requiredInContext("Todos", "is_todo"),
 });
 
 export const TodosProvider = ({ children }: { children: React.ReactNode }) => {
@@ -50,6 +51,10 @@ export const TodosProvider = ({ children }: { children: React.ReactNode }) => {
 
   const findTodo = (skill_id: number) => {
     return todos.find((t) => t.skill_id === skill_id);
+  };
+
+  const isTodo = (skill_id: number) => {
+    return todos.some((t) => t.skill_id === skill_id);
   };
 
   const toggle_todo = async (skill_id: number) => {
@@ -116,6 +121,7 @@ export const TodosProvider = ({ children }: { children: React.ReactNode }) => {
         reload_todos: load_todos,
         toggle_todo,
         update_todo,
+        is_todo: isTodo,
       }}
     >
       {children}

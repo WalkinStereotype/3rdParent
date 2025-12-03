@@ -1,39 +1,48 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useSharedAsyncLoader } from "@/hooks/asyncLoaders/useSharedAsyncLoader";
+import { requiredInContext } from "@/utils/helpers/requiredInContext";
 
 import { Log } from "@/utils/schema";
-import {
-  getLogs,
-  addLog,
-  deleteLog,
-  updateLog,
-} from "@/services/LogsService";
+import { getLogs, addLog, deleteLog, updateLog } from "@/services/LogsService";
 
-import { useAuth } from "@/hooks/contexts/useAuth";
+import { useAuth, useTodos } from "@/hooks/contexts";
 
 type LogsContextType = {
   logs: Log[];
   loading: boolean;
-  reload_logs: (() => Promise<void>) | null;
-  add_log: (({skill_id, description}: {skill_id: number, description: string}) => Promise<boolean>) | null;
-  delete_log: ((log_id: number) => Promise<boolean>) | null;
-  update_log:
-    | (({ log_id, description }: { log_id: number, description: string}) => Promise<boolean>)
-    | null;
+  reload_logs: () => Promise<void>;
+  add_log: ({
+    skill_id,
+    description,
+  }: {
+    skill_id: number;
+    description: string;
+  }) => Promise<boolean>;
+  delete_log: (log_id: number) => Promise<boolean>;
+  update_log: ({
+    log_id,
+    description,
+  }: {
+    log_id: number;
+    description: string;
+  }) => Promise<boolean>;
+  find_log: (skill_id: number) => Log | undefined;
 };
 
 export const LogsContext = createContext<LogsContextType>({
   logs: [],
   loading: true,
-  reload_logs: null,
-  add_log: null,
-  delete_log: null,
-  update_log: null,
+  reload_logs: requiredInContext("Logs", "reload_logs"),
+  add_log: requiredInContext("Logs", "add_log"),
+  delete_log: requiredInContext("Logs", "delete_log"),
+  update_log: requiredInContext("Logs", "update_log"),
+  find_log: requiredInContext("Logs", "find_log"),
 });
 
 export const LogsProvider = ({ children }: { children: React.ReactNode }) => {
   const [logs, setLogs] = useState<Log[]>([]);
   const [loadingCount, setLoadingCount] = useState(0);
+  const { reload_todos } = useTodos();
   const loading = loadingCount > 0;
   const setLoading = (v: boolean) => setLoadingCount((c) => (v ? 1 : -1));
 
@@ -48,37 +57,68 @@ export const LogsProvider = ({ children }: { children: React.ReactNode }) => {
     setLogs(result);
   }, setLoading);
 
-  const findSkillOfLog = (skill_id: number) => {
+  const findLog = (skill_id: number) => {
     return logs.find((l) => l.skill_id === skill_id);
   };
 
-  const add_log = async ({ skill_id, description }: { skill_id: number, description: string}) => {
+  const add_log = async ({
+    skill_id,
+    description,
+  }: {
+    skill_id: number;
+    description: string;
+  }) => {
     if (!userId) return false;
-    setLoading(true);
-    const data = await addLog({ user_id: userId, skill_id, description});
+
+    const tempId = Date.now();
+    const optimisticLog: Log = {
+      id: tempId,
+      skill_id,
+      description,
+      created_at: new Date(),
+      updated_at: new Date(),
+    };
+
+    setLogs((prev) => [...prev, optimisticLog]);
+
+    const data = await addLog({ user_id: userId, skill_id, description });
+
     if (!data) {
-      setLoading(false);
+      console.error("add_log failed — rolling back");
+      setLogs((prev) => prev.filter((l) => l.id !== tempId));
       return false;
     }
 
-    setLogs((prev) => [...prev, data]);
+    // Replace temp with real
+    setLogs((prev) => prev.map((l) => (l.id === tempId ? data : l)));
+    reload_todos();
+
     return true;
   };
 
   const delete_log = async (log_id: number) => {
     if (!userId) return false;
-    setLoading(true);
+
+    const oldLogs = logs;
+    setLogs((prev) => prev.filter((l) => l.id !== log_id));
+
     const data = await deleteLog({ user_id: userId, log_id });
     if (!data) {
-      setLoading(false);
+      console.error("delete_log failed — rolling back");
+      setLogs(oldLogs);
       return false;
     }
-    setLogs((prev) => prev.filter((l) => l.id !== log_id));
+
     return true;
   };
 
-
-  const update_log = async ({ log_id, description }: { log_id: number, description: string}) => {
+  const update_log = async ({
+    log_id,
+    description,
+  }: {
+    log_id: number;
+    description: string;
+  }) => {
     if (!userId) return false;
 
     const old = logs;
@@ -116,6 +156,7 @@ export const LogsProvider = ({ children }: { children: React.ReactNode }) => {
         add_log,
         delete_log,
         update_log,
+        find_log: findLog,
       }}
     >
       {children}

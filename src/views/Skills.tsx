@@ -6,7 +6,7 @@ import SkillsSection from "@/components/shared/SkillsSection";
 import SaveButton from "@/components/shared/skill-buttons/SaveButton";
 import CategorySelector from "@/components/shared/CategorySelector";
 
-import { useSkills, useTodos } from "@/hooks/contexts";
+import { useSkills, useLogs, useTodos } from "@/hooks/contexts";
 
 export default function Skills() {
   const {
@@ -16,20 +16,15 @@ export default function Skills() {
     reload_categories,
     loading: skillsLoading,
   } = useSkills();
+  const { find_log, reload_logs, loading: logsLoading } = useLogs();
   const {
-    todos,
     reload_todos,
     toggle_todo,
     loading: todosLoading,
+    is_todo,
   } = useTodos();
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
-  const safeToggleTodo = (skill_id: number) => {
-    toggle_todo
-      ? toggle_todo(skill_id)
-      : console.error("No toggle-todo function found");
-  };
 
   const skillsPageLoading = skillsLoading || todosLoading;
 
@@ -40,8 +35,8 @@ export default function Skills() {
   const renderActions = (s: Skill) => (
     <div>
       <SaveButton
-        onClick={() => safeToggleTodo(s.id)}
-        isPriority={todos.some((t) => t.skill_id === s.id)}
+        onClick={() => toggle_todo(s.id)}
+        isPriority={is_todo(s.id)}
       />
     </div>
   );

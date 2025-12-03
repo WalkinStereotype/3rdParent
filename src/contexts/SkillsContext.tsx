@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useSharedAsyncLoader } from "@/hooks/asyncLoaders/useSharedAsyncLoader";
+import { requiredInContext } from "@/utils/helpers/requiredInContext";
 
 import { Skill } from "@/utils/schema";
 import { getSkills, addSkill, deleteSkill } from "@/services/SkillsService";
@@ -11,22 +12,22 @@ type SkillsContextType = {
   skills: Skill[];
   categories: string[];
   loading: boolean;
-  reload_skills: (() => Promise<void>) | null;
-  reload_categories: (() => Promise<void>) | null;
-  add_skill: ((name: string, description: string) => Promise<boolean>) | null;
-  delete_skill: ((skillId: number) => Promise<boolean>) | null;
-  find_skill: ((skillId: number) => Skill | null) | null;
+  reload_skills: () => Promise<void>;
+  reload_categories: () => Promise<void>;
+  add_skill: (name: string, description: string) => Promise<boolean>;
+  delete_skill: (skillId: number) => Promise<boolean>;
+  find_skill: (skillId: number) => Skill | undefined;
 };
 
 export const SkillsContext = createContext<SkillsContextType>({
   skills: [],
   categories: [],
   loading: true,
-  reload_skills: null,
-  reload_categories: null,
-  add_skill: null,
-  delete_skill: null,
-  find_skill: null,
+  reload_skills: requiredInContext("Skills", "reload_skills"),
+  reload_categories: requiredInContext("Skills", "reload_categories"),
+  add_skill: requiredInContext("Skills", "add_skill"),
+  delete_skill: requiredInContext("Skills", "delete_skill"),
+  find_skill: requiredInContext("Skills", "find_skill"),
 });
 
 export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
@@ -81,9 +82,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const find_skill = (skillId: number) => {
-    const skillOf = skills.find(({ id }) => id === skillId);
-
-    return skillOf ? skillOf : null;
+    return skills.find(({ id }) => id === skillId);
   };
 
   useEffect(() => {

@@ -1,15 +1,21 @@
 import "./LogCard.css";
 import useSkillIcons from "@/hooks/useSkillIcons";
+import useDateFormatter from "@/hooks/useDateFormatter";
+
+import { Link } from "react-router-dom";
 
 import { IoPencil } from "react-icons/io5";
+import EditButton from "../skill-buttons/EditButton";
 
 interface LogCardProps {
   id: number;
   skill_id: number;
-  title: string;
+  title?: string;
   category: string;
   created_at: Date;
   description: string;
+  on_edit: () => void; 
+  inSkillDetail?: boolean;
 }
 
 export default function LogCard({
@@ -19,18 +25,36 @@ export default function LogCard({
   category,
   created_at,
   description,
+  on_edit,
+  inSkillDetail,
 }: LogCardProps) {
   const [iconOf] = useSkillIcons();
+  const [formatDate] = useDateFormatter();
 
   return (
-    <div className={"log-card " + category}>
+    <div
+      className={
+        category + (inSkillDetail ? " log-card" : " log-card log-list-element")
+      }
+    >
       <div className="log-header">
-        <div className="log-header-left">
-          <div className="icon">{iconOf(category)}</div>
-          <p className="log-card-title">{title}</p>
-          {/* <div className="icon"><IoPencil/></div> */}
-        </div>
-        <p className="log-card-date">07/16/25</p>
+        {inSkillDetail ? (
+          <div className="gap-flex">
+            <p className="log-card-title">{"Log"}</p>
+            <EditButton onClick={on_edit}/>
+          </div>
+        ) : (
+          <div className="gap-flex">
+            <div className="icon">{iconOf(category)}</div>
+            <Link to={`/skills/${skill_id}`} className="log-card-title log-card-title-link">
+              {title}
+            </Link>
+            <EditButton onClick={on_edit}/>
+          </div>
+        )}
+
+        {/* <div className="icon"><IoPencil/></div> */}
+        <p className="log-card-date">{formatDate(created_at)}</p>
       </div>
       <br />
       <div className="log-description-container">
@@ -38,4 +62,4 @@ export default function LogCard({
       </div>
     </div>
   );
-};
+}
