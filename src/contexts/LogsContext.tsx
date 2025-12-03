@@ -68,26 +68,45 @@ export const LogsProvider = ({ children }: { children: React.ReactNode }) => {
     description: string;
   }) => {
     if (!userId) return false;
-    setLoading(true);
+
+    const tempId = Date.now();
+    const optimisticLog: Log = {
+      id: tempId,
+      skill_id,
+      description,
+      created_at: new Date(),
+      updated_at: new Date(),
+    };
+
+    setLogs((prev) => [...prev, optimisticLog]);
+
     const data = await addLog({ user_id: userId, skill_id, description });
+
     if (!data) {
-      setLoading(false);
+      console.error("add_log failed — rolling back");
+      setLogs((prev) => prev.filter((l) => l.id !== tempId));
       return false;
     }
 
-    setLogs((prev) => [...prev, data]);
+    // Replace temp with real
+    setLogs((prev) => prev.map((l) => (l.id === tempId ? data : l)));
+
     return true;
   };
 
   const delete_log = async (log_id: number) => {
     if (!userId) return false;
-    setLoading(true);
+
+    const oldLogs = logs;
+    setLogs((prev) => prev.filter((l) => l.id !== log_id));
+
     const data = await deleteLog({ user_id: userId, log_id });
     if (!data) {
-      setLoading(false);
+      console.error("delete_log failed — rolling back");
+      setLogs(oldLogs);
       return false;
     }
-    setLogs((prev) => prev.filter((l) => l.id !== log_id));
+
     return true;
   };
 

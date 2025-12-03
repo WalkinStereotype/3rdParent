@@ -1,4 +1,5 @@
 import "./LogCard.css";
+import "./LogCardEditor.css";
 import useSkillIcons from "@/hooks/useSkillIcons";
 import useDateFormatter from "@/hooks/useDateFormatter";
 
@@ -51,9 +52,9 @@ export default function LogCardEditor({
       />
 
       <div className="gap-flex">
-        <button onClick={onCancel}>Cancel</button>
-        <button onClick={onSubmit}>Submit</button>
-        {onDelete && <button onClick={onDelete}>Delete Log</button>}
+        <button className="log-action" onClick={onCancel}>Cancel</button>
+        <button  className="log-action"onClick={onSubmit}>Submit</button>
+        {onDelete && <button className="log-action" onClick={onDelete}>Delete Log</button>}
       </div>
     </div>
   );

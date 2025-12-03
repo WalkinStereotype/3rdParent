@@ -70,7 +70,8 @@ export default function SkillDetails() {
         {...(log && {
           id: log.id,
           draft: draft,
-          onDelete: () => console.log("delete")
+          created_at: log.created_at,
+          onDelete: () => console.log("delete"),
         })}
       />
     );

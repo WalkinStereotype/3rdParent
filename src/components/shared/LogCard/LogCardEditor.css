@@ -1,0 +1,12 @@
+button.log-action {
+  background-color: var(--color-background-searchbar);
+  color: var(--color-text);
+  border-color: var(--color-text);
+  padding: var(--regular-padding);
+  border-radius: 20px;
+}
+
+button.log-action:hover {
+  cursor: pointer;
+  filter: brightness(0.95);
+} 
