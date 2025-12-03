@@ -16,7 +16,7 @@ type SkillsContextType = {
   reload_categories: () => Promise<void>;
   add_skill: (name: string, description: string) => Promise<boolean>;
   delete_skill: (skillId: number) => Promise<boolean>;
-  find_skill: (skillId: number) => Skill | null;
+  find_skill: (skillId: number) => Skill | undefined;
 };
 
 export const SkillsContext = createContext<SkillsContextType>({
@@ -82,9 +82,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const find_skill = (skillId: number) => {
-    const skillOf = skills.find(({ id }) => id === skillId);
-
-    return skillOf ? skillOf : null;
+    return skills.find(({ id }) => id === skillId);
   };
 
   useEffect(() => {

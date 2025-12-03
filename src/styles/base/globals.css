@@ -83,6 +83,19 @@ button {
   background-color: var(--color-background-custom);
 }
 
+.gap-flex {
+  display: flex;
+  gap: var(--regular-padding);
+  align-items: center;
+  justify-items: center;
+}
+
+.icon {
+  font-size: 1.75em;
+  align-items: center;
+  justify-items: center;
+}
+
 .flex-display {
   display: flex;
 }

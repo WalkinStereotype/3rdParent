@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Skill, Log } from "@/utils/schema";
 import LogCard from "@/components/shared/LogCard";
@@ -16,6 +17,7 @@ interface LogSkill {
 }
 
 export default function Logs() {
+  const navigate = useNavigate();
   const {
     skills,
     categories,
@@ -59,6 +61,7 @@ export default function Logs() {
             category={category}
             created_at={log_created_at}
             description={log_description}
+            on_edit={() => navigate(`/skills/${skill_id}?write=true`)}
           />
         ))
       )}

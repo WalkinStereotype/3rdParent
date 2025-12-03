@@ -16,22 +16,24 @@
   justify-content: space-between;
 }
 
-.log-header-left {
+/* .log-header-left {
   display: flex;
-}
+} */
 
 .log-card-title {
   font-size: 1.50em;
   font-weight: 600;
 }
 
-.log-card-title:hover {
+.log-card-title-link:hover {
   text-decoration: underline;
   font-weight: 700;
 }
 
-.log-description-container{
+.log-description-container {
   padding: var(--medium-padding);
   background-color: var(--color-background-searchbar);
   border-radius: 8px;
+  resize: none;
+  width: 100%;
 }
