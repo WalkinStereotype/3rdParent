@@ -5,7 +5,7 @@ import { requiredInContext } from "@/utils/helpers/requiredInContext";
 import { Log } from "@/utils/schema";
 import { getLogs, addLog, deleteLog, updateLog } from "@/services/LogsService";
 
-import { useAuth } from "@/hooks/contexts/useAuth";
+import { useAuth, useTodos } from "@/hooks/contexts";
 
 type LogsContextType = {
   logs: Log[];
@@ -42,6 +42,7 @@ export const LogsContext = createContext<LogsContextType>({
 export const LogsProvider = ({ children }: { children: React.ReactNode }) => {
   const [logs, setLogs] = useState<Log[]>([]);
   const [loadingCount, setLoadingCount] = useState(0);
+  const { reload_todos } = useTodos();
   const loading = loadingCount > 0;
   const setLoading = (v: boolean) => setLoadingCount((c) => (v ? 1 : -1));
 
@@ -90,6 +91,7 @@ export const LogsProvider = ({ children }: { children: React.ReactNode }) => {
 
     // Replace temp with real
     setLogs((prev) => prev.map((l) => (l.id === tempId ? data : l)));
+    reload_todos();
 
     return true;
   };

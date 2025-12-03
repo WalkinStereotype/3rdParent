@@ -25,17 +25,11 @@ export const addLog = async ({
   skill_id: number;
   description: string;
 }) => {
-  const { data, error } = await supabase
-    .from("logs")
-    .insert([
-      {
-        user_id,
-        skill_id,
-        description,
-      },
-    ])
-    .select()
-    .single();
+  const { data, error } = await supabase.rpc("add_log_and_clear_todo", {
+    p_user_id: user_id,
+    p_skill_id: skill_id,
+    p_description: description,
+  });
 
   if (error) {
     console.error("Error adding log", error.message);
@@ -57,7 +51,7 @@ export const deleteLog = async ({
     .delete()
     .match({
       user_id,
-      log_id,
+      id: log_id,
     })
     .select();
 

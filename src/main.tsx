@@ -17,11 +17,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <AuthProvider>
       <ProfileProvider>
         <SkillsProvider>
-          <LogsProvider>
-            <TodosProvider>
+          <TodosProvider>
+            <LogsProvider>
               <App />
-            </TodosProvider>
-          </LogsProvider>
+            </LogsProvider>
+          </TodosProvider>
         </SkillsProvider>
       </ProfileProvider>
     </AuthProvider>

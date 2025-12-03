@@ -16,7 +16,14 @@ export default function SkillDetails() {
   const navigate = useNavigate();
 
   const { find_skill, reload_skills, loading: skillsLoading } = useSkills();
-  const { find_log, reload_logs, loading: logsLoading } = useLogs();
+  const {
+    find_log,
+    reload_logs,
+    add_log,
+    delete_log,
+    update_log,
+    loading: logsLoading,
+  } = useLogs();
   const { toggle_todo, loading: todosLoading } = useTodos();
 
   const [isWriting, setIsWriting] = useState(false);
@@ -36,8 +43,20 @@ export default function SkillDetails() {
 
   if (!skill_id || !skill) return <p>UNDEFINED</p>;
 
-  const handleEditSubmit = () => console.log("done editing");
-  const handleCreateSubmit = () => console.log("done creating");
+  const handleCreateSubmit = () => {
+    add_log({ skill_id: skill_id, description: draft });
+    navigate(`?write=false`);
+  };
+  const handleEditSubmit = () => {
+    if (!log) return;
+    update_log({ log_id: log.id, description: draft });
+    navigate(`?write=false`);
+  };
+  const handleDelete = () => {
+    if (!log) return;
+    delete_log(log.id);
+    navigate(`?write=false`);
+  };
 
   const renderLogArea = (log: Log | undefined, isWriting: boolean) => {
     if (!isWriting) {
@@ -71,7 +90,7 @@ export default function SkillDetails() {
           id: log.id,
           draft: draft,
           created_at: log.created_at,
-          onDelete: () => console.log("delete"),
+          onDelete: handleDelete,
         })}
       />
     );
