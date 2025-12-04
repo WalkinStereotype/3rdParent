@@ -24,7 +24,7 @@ export default function SkillDetails() {
     update_log,
     loading: logsLoading,
   } = useLogs();
-  const { toggle_todo, loading: todosLoading } = useTodos();
+  const { toggle_todo, is_todo, loading: todosLoading } = useTodos();
 
   const [isWriting, setIsWriting] = useState(false);
   const [draft, setDraft] = useState("");
@@ -104,7 +104,9 @@ export default function SkillDetails() {
         name={skill.name}
         type={skill.category}
         description={skill.description}
-        has_log={typeof log !== undefined}
+        has_log={log ? true : false}
+        is_todo={is_todo(skill_id)}
+        on_toggle_todo={() => toggle_todo(skill_id)}
       >
         Resources here
       </SkillExpanded>

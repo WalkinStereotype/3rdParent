@@ -10,6 +10,8 @@ interface SkillExpandedProps {
   type: string;
   description: string;
   has_log?: boolean;
+  is_todo?: boolean;
+  on_toggle_todo?: () => void;
 }
 
 export default function SkillExpanded({
@@ -17,7 +19,9 @@ export default function SkillExpanded({
   name,
   type,
   description,
-  has_log,
+  has_log = false,
+  is_todo = false,
+  on_toggle_todo = () => console.log("No toggle function implemented"),
   children,
 }: React.PropsWithChildren<SkillExpandedProps>) {
   const [iconOf] = useSkillIcons();
@@ -30,10 +34,7 @@ export default function SkillExpanded({
           {has_log ? (
             <p>Completed</p>
           ) : (
-            <SaveButton
-              isPriority={false}
-              onClick={() => console.log("saved from expanded")}
-            />
+            <SaveButton isPriority={is_todo} onClick={on_toggle_todo} />
           )}
         </div>
       </div>
