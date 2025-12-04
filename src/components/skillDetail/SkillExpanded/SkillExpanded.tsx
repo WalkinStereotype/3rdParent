@@ -9,6 +9,7 @@ interface SkillExpandedProps {
   name: string;
   type: string;
   description: string;
+  has_log?: boolean;
 }
 
 export default function SkillExpanded({
@@ -16,16 +17,24 @@ export default function SkillExpanded({
   name,
   type,
   description,
-  children
+  has_log,
+  children,
 }: React.PropsWithChildren<SkillExpandedProps>) {
-  const [ iconOf ] = useSkillIcons();
+  const [iconOf] = useSkillIcons();
 
   return (
     <div className={"skill-expanded " + type}>
       <div className={"skill-expanded-top-row"}>
         <h2>{name}</h2>
         <div className={"skill-expanded-buttons"}>
-          <SaveButton isPriority={false} onClick={() => console.log("saved from expanded")}/>
+          {has_log ? (
+            <p>Completed</p>
+          ) : (
+            <SaveButton
+              isPriority={false}
+              onClick={() => console.log("saved from expanded")}
+            />
+          )}
         </div>
       </div>
       <div className="type-container">
@@ -34,9 +43,9 @@ export default function SkillExpanded({
       </div>
       <div className="description-block">
         <p>{description}</p>
-        <br/>
+        <br />
         {children}
       </div>
     </div>
   );
-};
+}

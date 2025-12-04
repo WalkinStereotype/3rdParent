@@ -104,6 +104,7 @@ export default function SkillDetails() {
         name={skill.name}
         type={skill.category}
         description={skill.description}
+        has_log={typeof log !== undefined}
       >
         Resources here
       </SkillExpanded>
