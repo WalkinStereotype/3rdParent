@@ -10,3 +10,9 @@ button.log-action:hover {
   cursor: pointer;
   filter: brightness(0.95);
 } 
+
+.content-right {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: var(--regular-padding)
+}

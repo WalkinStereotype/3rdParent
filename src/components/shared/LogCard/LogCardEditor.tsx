@@ -3,8 +3,6 @@ import "./LogCardEditor.css";
 import useSkillIcons from "@/hooks/useSkillIcons";
 import useDateFormatter from "@/hooks/useDateFormatter";
 
-import { Link } from "react-router-dom";
-
 interface LogCardEditorProps {
   id?: number;
   skill_id: number;
@@ -31,6 +29,9 @@ export default function LogCardEditor({
   const [iconOf] = useSkillIcons();
   const [formatDate] = useDateFormatter();
 
+  const min = 120;
+  const max = 800;
+
   return (
     <div className={category + " log-card"}>
       <div className="log-header">
@@ -49,7 +50,9 @@ export default function LogCardEditor({
         value={draft ? draft : ""}
         onChange={(e) => setDraft(e.target.value)}
         rows={3}
+        maxLength={max}
       />
+      <div className="content-right">{draft ? draft.length : 0}/{max}</div>
 
       <div className="gap-flex">
         <button className="log-action" onClick={onCancel}>Cancel</button>
