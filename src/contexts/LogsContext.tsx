@@ -70,6 +70,8 @@ export const LogsProvider = ({ children }: { children: React.ReactNode }) => {
   }) => {
     if (!userId) return false;
 
+    const oldLogs = logs;
+
     const tempId = Date.now();
     const optimisticLog: Log = {
       id: tempId,
@@ -79,13 +81,13 @@ export const LogsProvider = ({ children }: { children: React.ReactNode }) => {
       updated_at: new Date(),
     };
 
-    setLogs((prev) => [...prev, optimisticLog]);
+    setLogs((prev) => [optimisticLog, ...prev]);
 
     const data = await addLog({ user_id: userId, skill_id, description });
 
     if (!data) {
       console.error("add_log failed — rolling back");
-      setLogs((prev) => prev.filter((l) => l.id !== tempId));
+      setLogs(oldLogs);
       return false;
     }
 
@@ -95,7 +97,7 @@ export const LogsProvider = ({ children }: { children: React.ReactNode }) => {
 
     return true;
   };
-
+  
   const delete_log = async (log_id: number) => {
     if (!userId) return false;
 
