@@ -28,6 +28,7 @@ export default function SkillDetails() {
 
   const [isWriting, setIsWriting] = useState(false);
   const [draft, setDraft] = useState("");
+  const [showEmptyLogError, setShowEmptyLogError] = useState(false);
 
   const skill_id = id ? Number(id) : undefined;
   const skill = skill_id ? find_skill(skill_id) : undefined;
@@ -41,16 +42,38 @@ export default function SkillDetails() {
     if (log) setDraft(log.description);
   }, [log]);
 
+  useEffect(() => {
+    setShowEmptyLogError(false);
+  }, [searchParams, draft]);
+
   if (!skill_id || !skill) return <p>UNDEFINED</p>;
 
   const handleCreateSubmit = () => {
-    add_log({ skill_id: skill_id, description: draft });
-    navigate(`?write=false`);
+    if (draft.length > 0) {
+      add_log({ skill_id: skill_id, description: draft });
+      navigate(`?write=false`);
+    } else {
+      setShowEmptyLogError(true);
+    }
   };
   const handleEditSubmit = () => {
     if (!log) return;
-    update_log({ log_id: log.id, description: draft });
+
+    if (draft.length === 0) {
+      setShowEmptyLogError(true);
+      return;
+    }
+
+    // Only update if changed
+    if (draft !== log.description) {
+      update_log({ log_id: log.id, description: draft });
+    }
+
     navigate(`?write=false`);
+  };
+  const handleCancel = () => {
+    setDraft(log ? log.description : "");
+    navigate(".", { replace: true });
   };
   const handleDelete = () => {
     if (!log) return;
@@ -84,7 +107,7 @@ export default function SkillDetails() {
         skill_id={skill_id}
         category={skill.category}
         setDraft={setDraft}
-        onCancel={() => navigate(".", { replace: true })}
+        onCancel={handleCancel}
         onSubmit={log ? handleEditSubmit : handleCreateSubmit}
         {...(log && {
           id: log.id,
@@ -112,6 +135,11 @@ export default function SkillDetails() {
       </SkillExpanded>
       <br />
       {renderLogArea(log, isWriting)}
+      {showEmptyLogError && (
+        <p className="error-message">
+          Error: Please make sure you write something before submitting.
+        </p>
+      )}
     </div>
   );
 }
