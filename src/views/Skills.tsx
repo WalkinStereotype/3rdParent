@@ -25,21 +25,27 @@ export default function Skills() {
   } = useTodos();
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [hideLogged, setHideLogged] = useState(true);
+  const [hideHidden, setHideHidden] = useState(true);
 
-  const skillsPageLoading = skillsLoading || todosLoading;
+  const skillsPageLoading =
+    skillsLoading || todosLoading || logsLoading || skills.length == 0;
 
   const filteredSkills = selectedCategory
     ? skills.filter(({ category }) => category === selectedCategory)
     : skills;
 
-  const renderActions = (s: Skill) => (
-    <div>
-      <SaveButton
-        onClick={() => toggle_todo(s.id)}
-        isPriority={is_todo(s.id)}
-      />
-    </div>
-  );
+  const renderActions = (s: Skill) =>
+    find_log(s.id) ? (
+      <p>Completed</p>
+    ) : (
+      <div>
+        <SaveButton
+          onClick={() => toggle_todo(s.id)}
+          isPriority={is_todo(s.id)}
+        />
+      </div>
+    );
 
   const emptyText =
     selectedCategory === "custom"

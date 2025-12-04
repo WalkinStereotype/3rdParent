@@ -1,4 +1,5 @@
 import SkillsSection from "@/components/shared/SkillsSection";
+import { useNavigate } from "react-router-dom";
 
 import StarButton from "@/components/shared/skill-buttons/StarButton";
 import RemoveButton from "@/components/shared/skill-buttons/RemoveButton";
@@ -8,6 +9,7 @@ import { Skill } from "@/utils/schema";
 import DoneButton from "@/components/shared/skill-buttons/DoneButton";
 
 export default function Home() {
+  const navigate = useNavigate();
   const { skills, reload_skills, loading: skillsLoading } = useSkills();
   const { todos, reload_todos, loading: todosLoading } = useTodos();
 
@@ -21,7 +23,7 @@ export default function Home() {
 
   const renderActions = (s: Skill) => (
     <div className="flex-display">
-      <DoneButton onClick={() => console.log("Done Pressed!")} />
+      <DoneButton onClick={() => navigate(`/skills/${s.id}?write=true`)} />
     </div>
   );
 
