@@ -33,17 +33,18 @@ export default function NavBar() {
         <h1>3rd Parent</h1>
       </div>
 
-      <nav className="menu">
-        {menuItems[0].map((item) => (
-          <NavItem
-            key={item.path}
-            name={item.name}
-            path={item.path}
-            icon={item.icon}
-            activeIcon={item.activeIcon}
-          />
-        ))}
-
+      <nav className="nav-buttons-container">
+        <div className="menu">
+          {menuItems[0].map((item) => (
+            <NavItem
+              key={item.path}
+              name={item.name}
+              path={item.path}
+              icon={item.icon}
+              activeIcon={item.activeIcon}
+            />
+          ))}
+        </div>
         {profileButton}
       </nav>
     </div>

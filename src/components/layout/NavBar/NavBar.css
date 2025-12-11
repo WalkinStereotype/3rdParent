@@ -15,10 +15,16 @@
   margin-bottom: 20px;
 }
 
+.nav-buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 68px);
+}
+
 .menu {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 60px);
 }
 
 .navlink {
