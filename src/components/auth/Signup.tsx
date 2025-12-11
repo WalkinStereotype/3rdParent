@@ -130,7 +130,9 @@ export default function Signup({ switchType }: SignupProps) {
             Log in.
           </span>
         </p>
-        
+      </div>
+      
+      <div>
         <p>{errorMessage}</p>
       </div>
     </div>
