@@ -114,7 +114,7 @@ export default function Signup({ switchType }: SignupProps) {
           <input
             type="password"
             placeholder="Confirm Password"
-            value={password}
+            value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />

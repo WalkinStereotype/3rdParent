@@ -28,7 +28,8 @@
   font-size: var(--font-size-section);
   font-family: var(--font-display);
   font-weight: 500;
-  padding: 0.5rem 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .navlink.active {
