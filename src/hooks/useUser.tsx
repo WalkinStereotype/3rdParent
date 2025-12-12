@@ -46,7 +46,7 @@ export const useUser = () => {
     // Determine overall success
     const success = results.every((r) => r);
 
-    return success;
+    return { success: success };
   };
 
   return { user: userInfo, loading, updateUserInfo };

@@ -1,6 +1,7 @@
 import "./auth.css";
 
 import { useState } from "react";
+import PasswordConstraints from "./PasswordConstraints";
 import { supabase } from "@/lib/supabase";
 
 import Logo from "../layout/Logo";
@@ -118,6 +119,7 @@ export default function Signup({ switchType }: SignupProps) {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
+          <PasswordConstraints pw={password}/>
           <br />
           <button type="submit" className="auth-button" disabled={loading}>
             Sign Up
@@ -131,7 +133,7 @@ export default function Signup({ switchType }: SignupProps) {
           </span>
         </p>
       </div>
-      
+
       <div>
         <p>{errorMessage}</p>
       </div>

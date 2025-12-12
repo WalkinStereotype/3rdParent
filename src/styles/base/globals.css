@@ -50,6 +50,15 @@ button {
   color: var(--font-text);
 }
 
+/* PW Req fulfilled */
+.success {
+  color: var(--color-success);
+}
+
+.fail {
+  color: var(--color-fail);
+}
+
 /* Skill classes */
 .all {
   background-color: var(--color-background-all);
@@ -98,4 +107,8 @@ button {
 
 .flex-display {
   display: flex;
+}
+
+.smaller {
+  font-size: var(--font-size-pw-reqs);
 }

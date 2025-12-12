@@ -10,6 +10,9 @@
 
   --color-inner-background: #e0dac9;
 
+  --color-success: #1E5631;
+  --color-fail: #C62828;
+
   /* Search Bar */
   --color-text-searchbar: #939393;
   --color-background-searchbar: #e0dac9;
