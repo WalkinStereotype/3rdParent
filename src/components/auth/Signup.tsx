@@ -3,6 +3,7 @@ import "./auth.css";
 import { useState } from "react";
 import PasswordConstraints from "./PasswordConstraints";
 import { supabase } from "@/lib/supabase";
+import { useAuth } from "@/hooks/contexts";
 
 import Logo from "../layout/Logo";
 

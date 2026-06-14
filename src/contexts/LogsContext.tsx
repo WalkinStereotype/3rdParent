@@ -44,7 +44,7 @@ export const LogsProvider = ({ children }: { children: React.ReactNode }) => {
   const [loadingCount, setLoadingCount] = useState(0);
   const { reload_todos } = useTodos();
   const loading = loadingCount > 0;
-  const setLoading = (v: boolean) => setLoadingCount((c) => (v ? 1 : -1));
+  const setLoading = (v: boolean) => setLoadingCount((c) => c + (v ? 1 : -1));
 
   const max_priority = 3;
 

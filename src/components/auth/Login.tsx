@@ -4,6 +4,7 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/contexts";
 
 import Logo from "../layout/Logo";
 

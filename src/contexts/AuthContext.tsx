@@ -21,7 +21,9 @@ export const AuthContext = createContext<AuthContextType> ({
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loadingCount, setLoadingCount] = useState(0);
+  const loading = loadingCount > 0;
+  const setLoading = (v: boolean) => setLoadingCount((c) => c + (v ? 1 : -1));
 
   useEffect(() => {
     const initAuth = async () => {

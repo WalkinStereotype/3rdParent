@@ -36,7 +36,7 @@ export const TodosProvider = ({ children }: { children: React.ReactNode }) => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [loadingCount, setLoadingCount] = useState(0);
   const loading = loadingCount > 0;
-  const setLoading = (v: boolean) => setLoadingCount((c) => (v ? 1 : -1));
+  const setLoading = (v: boolean) => setLoadingCount((c) => c + (v ? 1 : -1));
 
   const max_priority = 3;
 
